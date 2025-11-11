@@ -1,69 +1,63 @@
-# -*- coding: utf-8 -*-
 """
-CRT Buddy - 你的桌面千禧年伙伴
-Y2K风格桌面宠物 Meme 生成器
+CRT Buddy - Main Application
+Y2K Desktop Pet and Meme Generator
 """
 import sys
 import os
+
+# PyInstaller-compatible imports
+import PyQt6.QtWidgets
+import PyQt6.QtCore
+import PyQt6.QtGui
+
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QIcon
+
 from core.pet_window import CRTBuddyWindow
 from generators.meme_engine import MemeEngine
 
 
 class CRTBuddyApp:
-    """CRT Buddy应用程序主类"""
+    """CRT Buddy Application Main Class"""
     
     def __init__(self):
         self.app = QApplication(sys.argv)
         self.app.setApplicationName("CRT Buddy")
         
-        # 初始化Meme引擎
         self.meme_engine = MemeEngine(output_dir="output")
-        
-        # 创建主窗口
         self.window = CRTBuddyWindow()
-        
-        # 连接信号
         self.setup_connections()
         
-        # 显示欢迎消息
         QTimer.singleShot(500, self.show_welcome)
     
     def setup_connections(self):
-        """设置信号连接"""
-        # 图片拖放处理
+        """Setup signal connections"""
         self.window.image_dropped.connect(self.handle_image_drop)
-        
-        # 按钮点击处理
         self.window.generate_btn.clicked.connect(self.handle_generate)
         self.window.effect_btn.clicked.connect(self.handle_random_effect)
     
     def show_welcome(self):
-        """显示欢迎消息"""
-        self.window.set_status("? WELCOME TO CRT BUDDY ?")
+        """Show welcome message"""
+        self.window.set_status("WELCOME TO CRT BUDDY")
         self.window.set_mood("happy")
         
         QTimer.singleShot(3000, lambda: self.window.set_status(
-            "? READY TO GENERATE Y2K VIBES ?"
+            "READY TO GENERATE Y2K VIBES"
         ))
     
     def handle_image_drop(self, image_path):
-        """处理图片拖放"""
+        """Handle image drop"""
         self.window.set_mood("processing")
-        self.window.set_status("? PROCESSING IMAGE...")
+        self.window.set_status("PROCESSING IMAGE...")
         
-        # 延迟处理以显示动画
         QTimer.singleShot(500, lambda: self.process_image(image_path))
     
     def process_image(self, image_path):
-        """处理图片并应用效果"""
+        """Process image and apply effects"""
         try:
-            # 获取输入文本
             text = self.window.get_input_text()
             
-            # 生成Meme
             result_img = self.meme_engine.generate_image_meme(
                 image_path, 
                 text=text,
@@ -71,79 +65,71 @@ class CRTBuddyApp:
             )
             
             if result_img:
-                # 保存结果
                 output_path = self.meme_engine.save_meme(result_img, "y2k_image")
                 
                 if output_path:
                     self.window.set_mood("happy")
-                    self.window.set_status(f"? SAVED: {os.path.basename(output_path)}")
-                    
-                    # 显示成功消息
+                    self.window.set_status(f"SAVED: {os.path.basename(output_path)}")
                     QTimer.singleShot(2000, self.show_success_message)
                 else:
-                    self.window.set_status("? Failed to save meme")
+                    self.window.set_status("Failed to save meme")
             else:
-                self.window.set_status("? Failed to process image")
+                self.window.set_status("Failed to process image")
                 self.window.set_mood("idle")
                 
         except Exception as e:
             print(f"Error processing image: {e}")
-            self.window.set_status(f"? ERROR: {str(e)}")
+            self.window.set_status(f"ERROR: {str(e)}")
             self.window.set_mood("idle")
     
     def handle_generate(self):
-        """处理生成Meme按钮"""
+        """Handle generate meme button"""
         text = self.window.get_input_text().strip()
         
         if not text:
-            self.window.set_status("? Please enter some text first!")
+            self.window.set_status("Please enter some text first!")
             return
         
         self.window.set_mood("processing")
-        self.window.set_status("? GENERATING Y2K MEME...")
+        self.window.set_status("GENERATING Y2K MEME...")
         
-        # 延迟处理以显示动画
         QTimer.singleShot(500, lambda: self.generate_text_meme(text))
     
     def generate_text_meme(self, text):
-        """生成文字Meme"""
+        """Generate text meme"""
         try:
-            # 生成Meme
             result_img = self.meme_engine.generate_text_meme(text, style='random')
             
             if result_img:
-                # 保存结果
                 output_path = self.meme_engine.save_meme(result_img, "y2k_text")
                 
                 if output_path:
                     self.window.set_mood("happy")
-                    self.window.set_status(f"? SAVED: {os.path.basename(output_path)}")
+                    self.window.set_status(f"SAVED: {os.path.basename(output_path)}")
                     self.window.clear_input()
                     
-                    # 显示成功消息
                     QTimer.singleShot(2000, self.show_success_message)
                 else:
-                    self.window.set_status("? Failed to save meme")
+                    self.window.set_status("Failed to save meme")
             else:
-                self.window.set_status("? Failed to generate meme")
+                self.window.set_status("Failed to generate meme")
                 
         except Exception as e:
             print(f"Error generating text meme: {e}")
-            self.window.set_status(f"? ERROR: {str(e)}")
+            self.window.set_status(f"ERROR: {str(e)}")
         
         finally:
             QTimer.singleShot(3000, lambda: self.window.set_mood("idle"))
     
     def handle_random_effect(self):
-        """处理随机特效按钮"""
+        """Handle random effect button"""
         self.window.set_mood("processing")
-        self.window.set_status("? GENERATING RANDOM Y2K MAGIC...")
+        self.window.set_status("GENERATING RANDOM Y2K MAGIC...")
         
-        # 延迟处理
         QTimer.singleShot(500, self.generate_random_meme)
     
     def generate_random_meme(self):
-        """生成完全随机的Meme"""
+        """Generate completely random meme"""
         try:
             result_img = self.meme_engine.generate_random_meme()
             
@@ -152,41 +138,41 @@ class CRTBuddyApp:
                 
                 if output_path:
                     self.window.set_mood("happy")
-                    self.window.set_status(f"? SAVED: {os.path.basename(output_path)}")
+                    self.window.set_status(f"SAVED: {os.path.basename(output_path)}")
                     
                     QTimer.singleShot(2000, self.show_success_message)
                 else:
-                    self.window.set_status("? Failed to save meme")
+                    self.window.set_status("Failed to save meme")
             else:
-                self.window.set_status("? Failed to generate meme")
+                self.window.set_status("Failed to generate meme")
                 
         except Exception as e:
             print(f"Error generating random meme: {e}")
-            self.window.set_status(f"? ERROR: {str(e)}")
+            self.window.set_status(f"ERROR: {str(e)}")
         
         finally:
             QTimer.singleShot(3000, lambda: self.window.set_mood("idle"))
     
     def show_success_message(self):
-        """显示成功消息并重置状态"""
-        self.window.set_status("? CHECK THE 'output' FOLDER! ?")
+        """Show success message and reset status"""
+        self.window.set_status("CHECK THE 'output' FOLDER!")
         QTimer.singleShot(3000, lambda: self.window.set_status(
-            "? READY TO GENERATE Y2K VIBES ?"
+            "READY TO GENERATE Y2K VIBES"
         ))
     
     def run(self):
-        """运行应用程序"""
+        """Run application"""
         self.window.show()
         return self.app.exec()
 
 
 def main():
-    """主函数"""
+    """Main function"""
     print("=" * 50)
-    print("  CRT BUDDY - 你的桌面千禧年伙伴")
+    print("  CRT BUDDY - Y2K Desktop Pet")
     print("  Y2K Desktop Pet & Meme Generator")
     print("=" * 50)
-    print("\n? Starting CRT Buddy...\n")
+    print("\nStarting CRT Buddy...\n")
     
     app = CRTBuddyApp()
     sys.exit(app.run())

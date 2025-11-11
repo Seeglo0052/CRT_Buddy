@@ -361,3 +361,70 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+dist/
+build/
+*.manifest
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+output/
+*.exe
+*.zip
+*.7z
+*.rar
+*.pkg
+*.pyz
+*.toc
+base_library.zip
+*.html
+warn-*.txt
+xref-*.html
+
+# Spec files (keep the main one)
+CRT_Buddy.spec
+PyQt6_Test.spec
+CRT_Buddy_fixed.spec

@@ -14,6 +14,11 @@ pil_datas, pil_binaries, pil_hiddenimports = collect_all('PIL')
 # Collect all cv2/OpenCV modules
 cv2_datas, cv2_binaries, cv2_hiddenimports = collect_all('cv2')
 
+# Add pixel font
+font_datas = [
+    ('../DinkieBitmap-v1.5.0-KeDingKeMao/ttf/DinkieBitmap-9px.ttf', 'DinkieBitmap-v1.5.0-KeDingKeMao/ttf')
+]
+
 # Additional hidden imports
 additional_hiddenimports = [
     'numpy',
@@ -50,7 +55,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=pyqt6_binaries + pil_binaries + cv2_binaries,
-    datas=pyqt6_datas + pil_datas + cv2_datas,
+    datas=pyqt6_datas + pil_datas + cv2_datas + font_datas,
     hiddenimports=all_hiddenimports,
     hookspath=[],
     hooksconfig={},

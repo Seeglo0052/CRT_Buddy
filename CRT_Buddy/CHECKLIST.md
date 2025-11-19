@@ -1,303 +1,177 @@
-# ? CRT Buddy - ÏîÄ¿Íê³ÉÇåµ¥
+# ? CRT Buddy - ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½åµ¥
 
-## ?? ÏîÄ¿½á¹¹
+## ?? ï¿½ï¿½Ä¿ï¿½á¹¹
 ```
 CRT_Buddy/
-©À©¤©¤ ? CRT_Buddy.py           # Ö÷³ÌÐòÈë¿Ú
-©À©¤©¤ ? start.py               # ¿ìËÙÆô¶¯½Å±¾
-©À©¤©¤ ? requirements.txt       # ÒÀÀµÁÐ±í
-©À©¤©¤ ? config.ini            # ÅäÖÃÎÄ¼þ
-©À©¤©¤ ? README.md             # ÏîÄ¿ËµÃ÷
-©À©¤©¤ ? USAGE.md              # Ê¹ÓÃÖ¸ÄÏ
-©À©¤©¤ ? SHOWCASE.md           # ¹¦ÄÜÕ¹Ê¾
-©À©¤©¤ ? build_exe.py          # ´ò°ü½Å±¾
-©À©¤©¤ ? run.bat               # WindowsÆô¶¯½Å±¾
-©À©¤©¤ ? create_samples.py     # Ê¾ÀýÉú³ÉÆ÷
-©À©¤©¤ ? .gitignore            # GitºöÂÔÎÄ¼þ
-©¦
-©À©¤©¤ core/                     # ºËÐÄÄ£¿é
-©¦   ©À©¤©¤ ? __init__.py
-©¦   ©¸©¤©¤ ? pet_window.py     # ×ÀÃæ³èÎï´°¿Ú
-©¦
-©À©¤©¤ effects/                  # ÌØÐ§Ä£¿é
-©¦   ©À©¤©¤ ? __init__.py
-©¦   ©À©¤©¤ ? y2k_styles.py     # Y2KÍ¼ÏñÂË¾µ
-©¦   ©¸©¤©¤ ? text_effects.py   # ÎÄ×ÖÌØÐ§
-©¦
-©¸©¤©¤ generators/               # Éú³ÉÆ÷Ä£¿é
-    ©À©¤©¤ ? __init__.py
-    ©¸©¤©¤ ? meme_engine.py    # MemeÉú³ÉÒýÇæ
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ? CRT_Buddy.py           # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ? start.py               # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ? requirements.txt       # ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ? config.ini            # ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ? README.md             # ï¿½ï¿½Ä¿Ëµï¿½ï¿½
+# CRT Buddy - Checklist æ¸…å•
+
+é¢å‘å¼€å‘ä¸Žæµ‹è¯•çš„æ ¸å¯¹æ¸…å•ï¼Œè¦†ç›–æ–‡ä»¶ç»“æž„ã€åŠŸèƒ½ç‚¹ä¸Žè´¨é‡ä¿è¯ã€‚
+
+---
+
+## Files ä¸»è¦æ–‡ä»¶
+```
+CRT_Buddy/
+    CRT_Buddy.py        # ä¸»å…¥å£
+    start.py            # ä¾èµ–è‡ªæ£€+å¯åŠ¨
+    requirements.txt    # ä¾èµ–ï¼ˆè¾ƒæ—§ï¼Œ3.8â€“3.11ï¼‰
+    config.ini          # å¯é€‰é…ç½®
+    README.md           # é¡¹ç›®è¯´æ˜Ž
+    USAGE.md            # ä½¿ç”¨è¯´æ˜Ž
+    SHOWCASE.md         # æ•ˆæžœå±•ç¤º
+    build_exe.py        # æ‰“åŒ…è„šæœ¬
+    run_app.bat         # Windows ä¸€é”®å¯åŠ¨
+    core/
+        __init__.py
+        pet_window.py     # ä¸»çª—å£/åƒç´ å­—ä½“/UI
+    effects/
+        __init__.py
+        y2k_styles.py     # å›¾ç‰‡æ•ˆæžœ
+        text_effects.py   # æ–‡å­—æ•ˆæžœ
+    generators/
+        __init__.py
+        meme_engine.py    # ç”Ÿæˆä¸Žä¿å­˜é€»è¾‘
 ```
 
 ---
 
-## ?? ºËÐÄ¹¦ÄÜÊµÏÖ
+## Features åŠŸèƒ½æ ¸å¯¹
 
-### ×ÀÃæ³èÎïÏµÍ³
-- [x] Í¸Ã÷´°¿Ú£¨FramelessWindowHint£©
-- [x] ÖÃ¶¥ÏÔÊ¾£¨WindowStaysOnTopHint£©
-- [x] ÍÏ×§ÒÆ¶¯£¨mouseMoveEvent£©
-- [x] ÓÒ¼ü¹Ø±Õ£¨mouseReleaseEvent£©
-- [x] CRTÊÓ¾õÐ§¹û£¨É¨ÃèÏß¡¢Ôëµã£©
-- [x] ¶¯»­ÏµÍ³£¨ÉÁË¸¡¢É¨ÃèÏß¹ö¶¯£©
-- [x] ÐÄÇé×´Ì¬£¨idle/happy/thinking/processing£©
-- [x] Y2K·ç¸ñUI£¨Ó«¹âÉ«¡¢½¥±ä°´Å¥£©
+### UI/äº¤äº’
+- [x] æ— è¾¹æ¡†çª—ä½“ï¼ˆç½®é¡¶ï¼‰å¯æ‹–åŠ¨
+- [x] å³é”®èœå•/çŠ¶æ€ä¿¡æ¯
+- [x] åƒç´ å­—ä½“åŠ è½½ OKï¼ˆDinkieBitmapï¼‰
+- [x] æƒ…ç»ª/çŠ¶æ€å±•ç¤º idle/happy/thinking/processing
 
-### Í¼ÏñÌØÐ§ÏµÍ³
-- [x] CRTÐ§¹û£¨É¨ÃèÏß + RGBÉ«²î£©
-- [x] VHS¹ÊÕÏÒÕÊõ£¨Ë®Æ½Î»ÒÆ + É«²ÊÊ§Õæ£©
-- [x] È«Ï¢ÀØÉä£¨²Êºç½¥±ä + ½ðÊô¹âÔó£©
-- [x] ¶Æ¸õ½ðÊô£¨»Ò¶ÈÓ³Éä + ÒøÉ«´¦Àí£©
-- [x] ÄÞºç»Ô¹â£¨±¥ºÍ¶ÈÔöÇ¿ + Ä£ºý£©
-- [x] ÏñËØ»¯£¨½µ²ÉÑù + ÁÚ½ü²åÖµ£©
-- [x] É¨ÃèÏßµþ¼Ó²ã
-- [x] Y2K±ß¿ò£¨Ó«¹âÉ« + ½ÇÂä×°ÊÎ£©
-- [x] Ëæ»úÌØÐ§×éºÏ
+### æ•ˆæžœï¼ˆå›¾ç‰‡ï¼‰
+- [x] CRTï¼ˆæ‰«æçº¿+RGBåç§»ï¼‰
+- [x] VHSï¼ˆæŠ–åŠ¨/æ‹–å½±/å™ªç‚¹ï¼‰
+- [x] Holographic/Chrome/Neon æ–‡å­—é«˜å…‰
+- [x] Pixelateï¼ˆ8/16-bitï¼‰
 
-### ÎÄ×ÖÌØÐ§ÏµÍ³
-- [x] ½¥±äÎÄ×Ö£¨¶àÉ«±³¾° + ÇàÉ«Ö÷ÎÄ×Ö£©
-- [x] ¹ÊÕÏÎÄ×Ö£¨RGB·ÖÀë + ¸ÉÈÅÏß£©
-- [x] ÄÞºçÎÄ×Ö£¨¶à²ã»Ô¹âÐ§¹û£©
-- [x] ¶Æ¸õÎÄ×Ö£¨½ðÊô½¥±ä£©
-- [x] ¸´¹ÅÎÄ×Ö£¨²Êºç×ÖÄ¸ + ÐÇ¿Õ£©
-- [x] Y2K×°ÊÎÔªËØ£¨ÐÇÐÇ¡¢ÉÁ¹â£©
-
-### MemeÉú³ÉÒýÇæ
-- [x] ´¿ÎÄ×ÖMemeÉú³É
-- [x] Í¼Æ¬+ÎÄ×ÖMemeÉú³É
-- [x] Ëæ»úMemeÉú³É
-- [x] Y2KÄ£°åÎÄ°¸¿â
-- [x] Y2KÌùÖ½ÏµÍ³
-- [x] ÎÄ×Öµþ¼Ó²ã£¨¶¥²¿+µ×²¿£©
-- [x] ×Ô¶¯ÎÄ¼þÃüÃû
-- [x] PNG¸ñÊ½Êä³ö
-
-### ½»»¥¹¦ÄÜ
-- [x] ÎÄ±¾ÊäÈë¿ò
-- [x] Éú³É°´Å¥£¨GENERATE MEME£©
-- [x] ÉÏ´«°´Å¥£¨UPLOAD IMAGE£©
-- [x] ÌØÐ§°´Å¥£¨RANDOM Y2K EFFECT£©
-- [x] ÍÏ×§ÉÏ´«Í¼Æ¬
-- [x] ×´Ì¬ÌáÊ¾ÐÅÏ¢
-- [x] ÊµÊ±¶¯»­·´À¡
+### ç”Ÿæˆä¸Žä¿å­˜
+- [x] æ–‡å­— â†’ y2k_text_*.png
+- [x] å›¾ç‰‡ â†’ y2k_image_*.png
+- [x] éšæœº â†’ y2k_random_*.png
+- [x] é€’å¢žå‘½åï¼Œå†™å…¥ output/
 
 ---
 
-## ??? ¼¼ÊõÊµÏÖ
+## Dev/Docs å¼€å‘ä¸Žæ–‡æ¡£
+```markdown
+# CRT Buddy â€” Developer/QA Checklist
 
-### ÒÀÀµ¿â
-- [x] PyQt6 - GUI¿ò¼Ü
-- [x] Pillow - Í¼Ïñ´¦Àí
-- [x] NumPy - ÊýÖµ¼ÆËã
-- [x] OpenCV - ¸ß¼¶ÂË¾µ
-
-### Ä£¿é»¯Éè¼Æ
-- [x] ºËÐÄÂß¼­·ÖÀë£¨core/£©
-- [x] ÌØÐ§¶ÀÁ¢Ä£¿é£¨effects/£©
-- [x] Éú³ÉÆ÷¶ÀÁ¢Ä£¿é£¨generators/£©
-- [x] ÇåÎúµÄÄ£¿é½Ó¿Ú
-
-### ´úÂëÖÊÁ¿
-- [x] UTF-8±àÂëÖ§³Ö
-- [x] ÏêÏ¸µÄº¯Êý×¢ÊÍ
-- [x] Òì³£´¦Àí
-- [x] ×ÊÔ´¹ÜÀí£¨Í¼Æ¬±£´æ£©
+A focused checklist for files, features, and quality verification.
 
 ---
 
-## ?? ÎÄµµÍêÕûÐÔ
-
-### ÓÃ»§ÎÄµµ
-- [x] README.md - ÏîÄ¿½éÉÜ
-- [x] USAGE.md - ÏêÏ¸Ê¹ÓÃ½Ì³Ì
-- [x] SHOWCASE.md - ¹¦ÄÜÕ¹Ê¾
-- [x] ÅäÖÃÎÄ¼þËµÃ÷£¨config.ini£©
-
-### ¿ª·¢ÎÄµµ
-- [x] ´úÂë×¢ÊÍ£¨ÖÐÓ¢ÎÄ£©
-- [x] Ä£¿éËµÃ÷
-- [x] º¯ÊýÎÄµµ×Ö·û´®
-
-### ¸¨Öú¹¤¾ß
-- [x] ¿ìËÙÆô¶¯½Å±¾£¨start.py£©
-- [x] ´ò°ü½Å±¾£¨build_exe.py£©
-- [x] Ê¾ÀýÉú³ÉÆ÷£¨create_samples.py£©
-- [x] WindowsÅú´¦Àí£¨run.bat£©
-
----
-
-## ?? Y2KÃÀÑ§ÔªËØ
-
-### ÊÓ¾õÉè¼Æ
-- [x] Ó«¹âÉ«ÅäÉ«£¨·Û/Çà/»Æ/ÂÌ£©
-- [x] É¨ÃèÏßÐ§¹û
-- [x] ¾²Ì¬Ôëµã
-- [x] ½¥±ä°´Å¥
-- [x] Ó«¹âÎÄ×Ö
-- [x] ÉÁË¸¶¯»­
-- [x] CRTÍâ¿ÇÉè¼Æ
-
-### ÎÄ»¯ÔªËØ
-- [x] ¾­µäY2KÎÄ°¸Ä£°å
-- [x] Y2K·ûºÅÌùÖ½¿â
-- [x] ¸´¹ÅÍøÒ³·ç¸ñ
-- [x] Ç§ìûÄêÃÀÑ§
-
----
-
-## ?? ¿ÉÖ´ÐÐÐÔ
-
-### ÔËÐÐ·½Ê½
-- [x] Ö±½ÓPythonÔËÐÐ
-- [x] Æô¶¯½Å±¾£¨start.py£©
-- [x] Åú´¦ÀíÎÄ¼þ£¨run.bat£©
-- [x] ¿É´ò°üÎªEXE
-
-### ÒÀÀµ¹ÜÀí
-- [x] requirements.txt
-- [x] ×Ô¶¯ÒÀÀµ¼ì²é
-- [x] °²×°ÌáÊ¾
-
-### ¼æÈÝÐÔ
-- [x] WindowsÖ§³Ö
-- [x] Python 3.8+Ö§³Ö
-- [x] ¶à·Ö±æÂÊÊÊÅä
-
----
-
-## ?? Êä³ö¹ÜÀí
-
-### ÎÄ¼þ×éÖ¯
-- [x] ×Ô¶¯´´½¨outputÄ¿Â¼
-- [x] ÖÇÄÜÎÄ¼þÃüÃû
-- [x] ±ÜÃâÎÄ¼þ¸²¸Ç
-- [x] PNGÎÞËð¸ñÊ½
-
-### ÎÄ¼þÀàÐÍ
-- [x] y2k_text_*.png - ÎÄ×ÖMeme
-- [x] y2k_image_*.png - Í¼Æ¬Meme
-- [x] y2k_random_*.png - Ëæ»úMeme
-
----
-
-## ?? ¹¦ÄÜ²âÊÔ
-
-### »ù´¡¹¦ÄÜ
-- [ ] ´°¿ÚÆô¶¯
-- [ ] ÍÏ×§ÒÆ¶¯
-- [ ] ÓÒ¼ü¹Ø±Õ
-- [ ] É¨ÃèÏß¶¯»­
-- [ ] ÉÁË¸Ð§¹û
-
-### ÎÄ×ÖÉú³É
-- [ ] ÊäÈëÎÄ×Ö
-- [ ] µã»÷Éú³É
-- [ ] Ëæ»ú·ç¸ñ
-- [ ] ÎÄ¼þ±£´æ
-- [ ] ×´Ì¬ÌáÊ¾
-
-### Í¼Æ¬´¦Àí
-- [ ] ÍÏ×§ÉÏ´«
-- [ ] °´Å¥ÉÏ´«
-- [ ] ÌØÐ§Ó¦ÓÃ
-- [ ] ÎÄ×Öµþ¼Ó
-- [ ] ÌùÖ½Ìí¼Ó
-
-### Ëæ»ú¹¦ÄÜ
-- [ ] Ëæ»úÄ£°å
-- [ ] Ëæ»úÌØÐ§
-- [ ] Ëæ»úÑÕÉ«
-- [ ] Ëæ»úÌùÖ½
-
----
-
-## ?? ÒÑÖªÎÊÌâ
-
-### ÒÑ½â¾ö
-- [x] ±àÂëÎÊÌâ£¨UTF-8ÉùÃ÷£©
-- [x] Â·¾¶ÎÊÌâ£¨Ïà¶ÔÂ·¾¶£©
-- [x] Ä£¿éµ¼Èë£¨Ïà¶Ôµ¼Èë£©
-
-### ´ýÓÅ»¯
-- [ ] ×ÖÌå»ØÍË»úÖÆ
-- [ ] ´óÍ¼Æ¬ÄÚ´æÓÅ»¯
-- [ ] GIF¶¯»­Ö§³Ö
-- [ ] ÅúÁ¿´¦ÀíÄ£Ê½
-
----
-
-## ?? ÏÂÒ»²½¼Æ»®
-
-### ¶ÌÆÚ£¨V1.1£©
-- [ ] Ìí¼ÓÍ¼±ê£¨icon.ico£©
-- [ ] ÍêÉÆ´íÎóÌáÊ¾
-- [ ] Ìí¼ÓÒôÐ§ÏµÍ³
-- [ ] ÓÅ»¯½çÃæ²¼¾Ö
-
-### ÖÐÆÚ£¨V2.0£©
-- [ ] GIF¶¯»­µ¼³ö
-- [ ] AIÎÄ°¸Éú³É
-- [ ] ¸ü¶àÌØÐ§
-- [ ] ÅúÁ¿´¦Àí
-
-### ³¤ÆÚ£¨V3.0£©
-- [ ] ÔÚÏßÄ£°åÉÌµê
-- [ ] ÉçÇø·ÖÏí¹¦ÄÜ
-- [ ] ²å¼þÏµÍ³
-- [ ] ÊÓÆµ´¦Àí
-
----
-
-## ?? ÏîÄ¿×´Ì¬
-
+## Files
 ```
-×ÜÌå½ø¶È: ¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€? 95%
-
-ºËÐÄ¹¦ÄÜ: ? Íê³É
-ÎÄµµ×ÊÁÏ: ? Íê³É
-²âÊÔÑéÖ¤: ? ½øÐÐÖÐ
-´ò°ü·Ö·¢: ? ×¼±¸ÖÐ
+CRT_Buddy/
+    CRT_Buddy.py        # main entry
+    start.py            # self-check + launcher
+    requirements.txt    # legacy constraints (3.8â€“3.11)
+    config.ini          # optional config
+    README.md           # overview
+    USAGE.md            # usage/how-to
+    SHOWCASE.md         # feature showcase
+    build_exe.py        # packaging script
+    run_app.bat         # Windows launcher
+    core/
+        __init__.py
+        pet_window.py     # main window / pixel font / UI
+    effects/
+        __init__.py
+        y2k_styles.py     # image effects
+        text_effects.py   # text effects
+    generators/
+        __init__.py
+        meme_engine.py    # generation + save logic
 ```
 
-### ¿ÉÒÔ½»¸¶µÄÄÚÈÝ
-1. ? ÍêÕûµÄÔ´´úÂë
-2. ? ÏêÏ¸µÄÎÄµµ
-3. ? Æô¶¯½Å±¾
-4. ? ´ò°ü¹¤¾ß
-5. ? Ê¹ÓÃÖ¸ÄÏ
+---
 
-### Ê¹ÓÃ·½Ê½
+## Features
+
+### UI/Interactions
+- [x] Frameless, draggable, always-on-top window
+- [x] Right-click menu / status text
+- [x] Pixel font loads (DinkieBitmap)
+- [x] Mood/status updates: idle/happy/processing
+
+### Effects (images/text)
+- [x] CRT (scanlines + RGB shift)
+- [x] VHS (jitter/ghosting/noise)
+- [x] Holographic / Chrome / Neon styling
+- [x] Pixelate (8/16-bit)
+
+### Generation & Save
+- [x] Text â†’ y2k_text_*.png
+- [x] Image â†’ y2k_image_*.png
+- [x] Random â†’ y2k_random_*.png
+### ï¿½ï¿½ï¿½Ú£ï¿½V3.0ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ìµï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ÏµÍ³
+- [ ] ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½
+
+---
+
+## ?? ï¿½ï¿½Ä¿×´Ì¬
+
+```
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? 95%
+
+ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½: ? ï¿½ï¿½ï¿½
+ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½: ? ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤: ? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½Ö·ï¿½: ? ×¼ï¿½ï¿½ï¿½ï¿½
+```
+
+### ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+1. ? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
+2. ? ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½Äµï¿½
+3. ? ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½
+4. ? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+5. ? Ê¹ï¿½ï¿½Ö¸ï¿½ï¿½
+
+### Ê¹ï¿½Ã·ï¿½Ê½
 ```bash
-# ·½Ê½1: Ö±½ÓÔËÐÐ
+# ï¿½ï¿½Ê½1: Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 python CRT_Buddy.py
 
-# ·½Ê½2: Æô¶¯½Å±¾
+# ï¿½ï¿½Ê½2: ï¿½ï¿½ï¿½ï¿½ï¿½Å±ï¿½
 python start.py
 
-# ·½Ê½3: WindowsÅú´¦Àí
-Ë«»÷ run.bat
+# ï¿½ï¿½Ê½3: Windowsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+Ë«ï¿½ï¿½ run.bat
 
-# ·½Ê½4: ´ò°üEXE
+# ï¿½ï¿½Ê½4: ï¿½ï¿½ï¿½EXE
 python build_exe.py
-# È»ºóÔËÐÐ dist/CRT_Buddy.exe
+# È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ dist/CRT_Buddy.exe
 ```
 
 ---
 
-## ?? ÖÂÐ»
+## ?? ï¿½ï¿½Ð»
 
-¸ÐÐ»ÄãÑ¡ÔñCRT BuddyÏîÄ¿£¡
+ï¿½ï¿½Ð»ï¿½ï¿½Ñ¡ï¿½ï¿½CRT Buddyï¿½ï¿½Ä¿ï¿½ï¿½
 
-ÕâÊÇÒ»¸ö³äÂúY2K»³¾ÉÇé»³µÄ´´ÒâÏîÄ¿£¬Ï£ÍûËüÄÜ¸øÄã´øÀ´Ç§ìûÄêµÄÃÀºÃ»ØÒä¡£
+ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y2Kï¿½ï¿½ï¿½ï¿½ï¿½é»³ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ü¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ä¡£
 
-**ÏîÄ¿ÌØµã£º**
-- ?? ÍêÕûµÄY2KÃÀÑ§ÊµÏÖ
-- ?? ¿É°®µÄ×ÀÃæ³èÎï
-- ? Ç¿´óµÄMemeÉú³É
-- ?? Ïê¾¡µÄÎÄµµ
-- ?? ¿ªÏä¼´ÓÃ
+**ï¿½ï¿½Ä¿ï¿½Øµã£º**
+- ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y2Kï¿½ï¿½Ñ§Êµï¿½ï¿½
+- ?? ï¿½É°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- ? Ç¿ï¿½ï¿½ï¿½Memeï¿½ï¿½ï¿½ï¿½
+- ?? ï¿½ê¾¡ï¿½ï¿½ï¿½Äµï¿½
+- ?? ï¿½ï¿½ï¿½ä¼´ï¿½ï¿½
 
-**Á¢¼´¿ªÊ¼£º**
+**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½**
 ```bash
 cd CRT_Buddy
 python start.py
@@ -307,7 +181,7 @@ python start.py
 
 <div align="center">
 
-**? ÏíÊÜY2KÊ±¹â£¡?**
+**? ï¿½ï¿½ï¿½ï¿½Y2KÊ±ï¿½â£¡?**
 
 Made with ?? for Y2K Lovers
 

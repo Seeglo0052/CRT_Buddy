@@ -1,20 +1,20 @@
-# ?? ÖØÒª£ºPyQt6°²×°Ê§°Ü - ½â¾ö·½°¸
+# ?? ï¿½ï¿½Òªï¿½ï¿½PyQt6ï¿½ï¿½×°Ê§ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-## ?? ÎÊÌâËµÃ÷
+## ?? ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½
 
-ÄãµÄ¿ª·¢»·¾³**È±ÉÙPyQt6**£¬Õâ¾ÍÊÇÎªÊ²Ã´£º
-1. ³ÌÐòÎÞ·¨Ö±½ÓÔËÐÐ
-2. ´ò°üµÄEXEÒ²ÎÞ·¨ÔËÐÐ
+ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**È±ï¿½ï¿½PyQt6**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÊ²Ã´ï¿½ï¿½
+1. ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+2. ï¿½ï¿½ï¿½ï¿½ï¿½EXEÒ²ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½
 
-´íÎóÐÅÏ¢£º
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
 ```
 ModuleNotFoundError: No module named 'PyQt6.QtWidgets'
 ```
 
-## ??? ¸ù±¾Ô­Òò
+## ??? ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½
 
-WindowsÂ·¾¶³¤¶ÈÏÞÖÆ£¨260×Ö·û£©µ¼ÖÂPyQt6°²×°Ê§°Ü¡£
-¾ßÌåÂ·¾¶Ì«³¤£º
+WindowsÂ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½260ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PyQt6ï¿½ï¿½×°Ê§ï¿½Ü¡ï¿½
+ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½Ì«ï¿½ï¿½ï¿½ï¿½
 ```
 C:\Users\SEEGLO\AppData\Local\Packages\
   PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\
@@ -25,135 +25,84 @@ C:\Users\SEEGLO\AppData\Local\Packages\
 
 ---
 
-## ? ½â¾ö·½°¸£¨3ÖÖ·½·¨£©
+## ? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### ·½·¨1£ºÆôÓÃ³¤Â·¾¶Ö§³Ö£¨ÍÆ¼ö£©?
+### ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Â·ï¿½ï¿½Ö§ï¿½Ö£ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½?
 
-#### ²½Öè1£ºÐÞ¸Ä×¢²á±í
+#### ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½Þ¸ï¿½×¢ï¿½ï¿½ï¿½
 ```
-1. °´ Win + R
-2. ÊäÈë: regedit
-3. ÕÒµ½: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem
-4. Ë«»÷: LongPathsEnabled
-5. ¸ÄÎª: 1
-6. ÖØÆôµçÄÔ
-```
+1. ï¿½ï¿½ Win + R
+2. ï¿½ï¿½ï¿½ï¿½: regedit
+3. ï¿½Òµï¿½: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem
+4. Ë«ï¿½ï¿½: LongPathsEnabled
+## INSTALL_FIX â€” å®‰è£…ä¸Žå¸¸è§é—®é¢˜ä¿®å¤
 
-#### ²½Öè2£ºÆôÓÃGit³¤Â·¾¶
-```powershell
-git config --global core.longpaths true
-```
-
-#### ²½Öè3£ºÖØÐÂ°²×°PyQt6
-```powershell
-pip uninstall PyQt6 PyQt6-Qt6 PyQt6-sip -y
-pip install PyQt6
-pip install Pillow numpy opencv-python
-```
+é¢å‘ Windows çš„å¿«é€ŸæŽ’éšœä¸Žä¿®å¤æ¸…å•ã€‚
 
 ---
 
-### ·½·¨2£ºÊ¹ÓÃÐéÄâ»·¾³ÔÚ¶ÌÂ·¾¶
+## 1) æ— æ³•å¯¼å…¥ PyQt6ï¼ˆModuleNotFoundErrorï¼‰
 
-#### ´´½¨ÐéÄâ»·¾³£¨ÔÚCÅÌ¸ùÄ¿Â¼£©
-```powershell
-# ´´½¨ÔÚC:\py_env£¨¶ÌÂ·¾¶£©
-python -m venv C:\py_env
-
-# ¼¤»î
-C:\py_env\Scripts\activate
-
-# °²×°ÒÀÀµ
-pip install PyQt6 Pillow numpy opencv-python pyinstaller
-
-# ½øÈëÏîÄ¿Ä¿Â¼
-cd C:\GameDev\CRT_Buddy\CRT_Buddy\CRT_Buddy
-
-# ´ò°ü
-python -m PyInstaller CRT_Buddy_complete.spec
-```
+- ç¡®è®¤ VS Code ä½¿ç”¨ä»“åº“å†…çš„ .venv è§£é‡Šå™¨
+- ä½¿ç”¨è¯¥è§£é‡Šå™¨å®‰è£…ä¾èµ–ï¼š
+   - PyQt6, Pillow, numpy, opencv-python, pygame, pywin32, requests
+- éªŒè¯å¯¼å…¥ï¼šé€šè¿‡ python -c è¿è¡Œå¹¶çœ‹åˆ° IMPORT_OK
 
 ---
 
-### ·½·¨3£ºÊ¹ÓÃConda»·¾³
+## 2) å…¥å£æ··ä¹±/è¿è¡Œä¸äº†
 
-```powershell
-# °²×°Miniconda
-# ÏÂÔØ: https://docs.conda.io/en/latest/miniconda.html
-
-# ´´½¨»·¾³
-conda create -n crtbuddy python=3.11
-
-# ¼¤»î
-conda activate crtbuddy
-
-# °²×°ÒÀÀµ
-pip install PyQt6 Pillow numpy opencv-python pyinstaller
-
-# ´ò°ü
-cd C:\GameDev\CRT_Buddy\CRT_Buddy\CRT_Buddy
-python -m PyInstaller CRT_Buddy_complete.spec
-```
+- æºç å…¥å£ï¼šmain.py è°ƒç”¨ CRT_Buddy.main()
+- æ‰¹å¤„ç†å…¥å£ï¼šrun.bat / launch_v2.bat
+- ç»ˆç«¯ç›´æŽ¥ï¼špython CRT_Buddy.py
 
 ---
 
-## ?? ¿ìËÙ½â¾ö·½°¸£¨×î¼òµ¥£©
+## 3) è¿è¡Œ EXE ç¼ºå°‘ DLL
 
-Èç¹ûÄãÏëÁ¢¼´²âÊÔ£¬¿ÉÒÔÊ¹ÓÃÎÒÒÑ¾­´´½¨µÄÐéÄâ»·¾³·½°¸£º
-
-### ²½Öè1£º´´½¨¼ò¶ÌÂ·¾¶µÄÐéÄâ»·¾³
-```powershell
-# ´´½¨ÐéÄâ»·¾³
-python -m venv C:\crt
-
-# ¼¤»î
-C:\crt\Scripts\activate
-
-# ÑéÖ¤
-python --version
-```
-
-### ²½Öè2£º°²×°ËùÓÐÒÀÀµ
-```powershell
-# °²×°ºËÐÄ¿â
-pip install PyQt6==6.7.1
-pip install Pillow==11.0.0
-pip install numpy==2.2.1
-pip install opencv-python==4.10.0.84
-pip install pyinstaller==6.16.0
-```
-
-### ²½Öè3£º´ò°ü
-```powershell
-cd C:\GameDev\CRT_Buddy\CRT_Buddy\CRT_Buddy
-
-# ÇåÀíÖ®Ç°µÄ¹¹½¨
-Remove-Item -Recurse -Force build, dist -ErrorAction SilentlyContinue
-
-# Ê¹ÓÃspecÎÄ¼þ´ò°ü
-python -m PyInstaller CRT_Buddy_complete.spec
-```
-
-### ²½Öè4£º²âÊÔ
-```powershell
-# ÔËÐÐEXE
-cd dist
-.\CRT_Buddy.exe
-```
+- å®‰è£… VC++ è¿è¡Œåº“ï¼ˆx64ï¼‰ï¼š
+   https://aka.ms/vs/17/release/vc_redist.x64.exe
+- å¸¸è§ç¼ºå¤±ï¼šopencv_world*.dllã€Qt6*.dll
 
 ---
 
-## ?? ÑéÖ¤°²×°
+## 4) PATH ä¸Žç»ˆç«¯çŽ¯å¢ƒ
 
-### ²âÊÔPyQt6ÊÇ·ñÕýÈ·°²×°
-```powershell
-python -c "import PyQt6.QtWidgets; print('PyQt6 OK')"
-python -c "import PIL; print('Pillow OK')"
+- å»ºè®®åœ¨ VS Code ç»ˆç«¯ä¸­è¿è¡Œï¼Œç¡®ä¿ .venv\Scripts å·²è¢«æ¿€æ´»
+- ä¸è¦æ··ç”¨ç³»ç»Ÿ Python ä¸Ž .venv
+
+---
+
+## 5) Python ç‰ˆæœ¬
+
+- æŽ¨è 3.12/3.13
+- è‹¥æ—§ç‰ˆæœ¬ï¼ˆ3.8-3.10ï¼‰å¯èƒ½éœ€è¦é™çº§/å‡çº§éƒ¨åˆ†ä¾èµ–
+
+---
+
+## 6) EXE æ— å“åº”/è¢«æ‹¦æˆª
+
+- åœ¨å‘½ä»¤è¡Œä¸­è¿è¡Œ EXE ä»¥æŸ¥çœ‹è¾“å‡ºæ—¥å¿—
+- å…³é—­æˆ–ä¿¡ä»»æ€æ¯’è½¯ä»¶ï¼›å°† EXE åŠ å…¥ç™½åå•
+- é¿å…è·¯å¾„åŒ…å«ä¸­æ–‡æˆ–ç©ºæ ¼è¿‡å¤šï¼ˆä¸´æ—¶ç§»åŠ¨åˆ°çŸ­è·¯å¾„è¯•è¯•ï¼‰
+
+---
+
+## FAQ
+
+Q: VS Code é‡Œæç¤ºæ‰¾ä¸åˆ° PyQt6ï¼Ÿ
+A: åˆ‡æ¢åˆ° .venv è§£é‡Šå™¨å¹¶å®‰è£…ä¾èµ–ï¼Œå†æ¬¡éªŒè¯å¯¼å…¥ã€‚
+
+Q: EXE æ‰“ä¸å¼€ï¼Œè¯´ç¼ºå°‘ DLLï¼Ÿ
+A: å®‰è£… VC++ è¿è¡Œåº“ï¼ˆé“¾æŽ¥è§ä¸Šï¼‰ï¼›è‹¥ä»æŠ¥é”™è¯·æˆªå›¾å…·ä½“ DLL åç§°ã€‚
+
+Q: pip è£…å¥½äº†è¿˜æ˜¯è¿è¡Œä¸äº†ï¼Ÿ
+A: å¯èƒ½åœ¨ç³»ç»Ÿ Python å®‰è£…äº†ä¾èµ–ï¼Œä½† VS Code ç”¨çš„æ˜¯åˆ«çš„è§£é‡Šå™¨ï¼›ç»Ÿä¸€åˆ° .venvã€‚
 python -c "import numpy; print('NumPy OK')"
 python -c "import cv2; print('OpenCV OK')"
 ```
 
-Ô¤ÆÚÊä³ö£º
+Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ```
 PyQt6 OK
 Pillow OK
@@ -163,35 +112,35 @@ OpenCV OK
 
 ---
 
-## ?? ÍêÕû°²×°½Å±¾
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½Å±ï¿½
 
-´´½¨ÎÄ¼þ `install_deps.bat`£º
+ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ `install_deps.bat`ï¿½ï¿½
 
 ```batch
 @echo off
 echo ========================================
-echo CRT Buddy - ÒÀÀµ°²×°½Å±¾
+echo CRT Buddy - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½Å±ï¿½
 echo ========================================
 echo.
 
-echo [1/5] ´´½¨ÐéÄâ»·¾³...
+echo [1/5] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½...
 python -m venv C:\crt
 if errorlevel 1 (
-    echo [´íÎó] ÐéÄâ»·¾³´´½¨Ê§°Ü
+    echo [ï¿½ï¿½ï¿½ï¿½] ï¿½ï¿½ï¿½â»·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
     pause
     exit /b 1
 )
 
-echo [2/5] ¼¤»îÐéÄâ»·¾³...
+echo [2/5] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½...
 call C:\crt\Scripts\activate.bat
 
-echo [3/5] Éý¼¶pip...
+echo [3/5] ï¿½ï¿½ï¿½ï¿½pip...
 python -m pip install --upgrade pip
 
-echo [4/5] °²×°ÒÀÀµ...
+echo [4/5] ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½...
 pip install PyQt6==6.7.1 Pillow==11.0.0 numpy==2.2.1 opencv-python==4.10.0.84 pyinstaller==6.16.0
 
-echo [5/5] ÑéÖ¤°²×°...
+echo [5/5] ï¿½ï¿½Ö¤ï¿½ï¿½×°...
 python -c "import PyQt6.QtWidgets; print('PyQt6 OK')"
 python -c "import PIL; print('Pillow OK')"
 python -c "import numpy; print('NumPy OK')"
@@ -199,125 +148,125 @@ python -c "import cv2; print('OpenCV OK')"
 
 echo.
 echo ========================================
-echo °²×°Íê³É£¡
+echo ï¿½ï¿½×°ï¿½ï¿½É£ï¿½
 echo ========================================
 echo.
-echo ÏÂÒ»²½:
-echo 1. ±£³ÖÐéÄâ»·¾³¼¤»î×´Ì¬
-echo 2. ÔËÐÐ: python CRT_Buddy.py
-echo »ò
-echo 3. ÔËÐÐ: python -m PyInstaller CRT_Buddy_complete.spec
+echo ï¿½ï¿½Ò»ï¿½ï¿½:
+echo 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬
+echo 2. ï¿½ï¿½ï¿½ï¿½: python CRT_Buddy.py
+echo ï¿½ï¿½
+echo 3. ï¿½ï¿½ï¿½ï¿½: python -m PyInstaller CRT_Buddy_complete.spec
 echo.
 pause
 ```
 
 ---
 
-## ?? ½¨ÒéµÄ¹¤×÷Á÷³Ì
+## ?? ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### ¿ª·¢Ê±
+### ï¿½ï¿½ï¿½ï¿½Ê±
 ```powershell
-# 1. ¼¤»îÐéÄâ»·¾³
+# 1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½
 C:\crt\Scripts\activate
 
-# 2. ½øÈëÏîÄ¿Ä¿Â¼
+# 2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Ä¿Â¼
 cd C:\GameDev\CRT_Buddy\CRT_Buddy\CRT_Buddy
 
-# 3. ÔËÐÐ³ÌÐò
+# 3. ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½
 python CRT_Buddy.py
 
-# »òÔËÐÐmain.py
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½main.py
 python main.py
 ```
 
-### ´ò°üÊ±
+### ï¿½ï¿½ï¿½Ê±
 ```powershell
-# 1. È·±£ÐéÄâ»·¾³ÒÑ¼¤»î
+# 1. È·ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½ï¿½Ñ¼ï¿½ï¿½ï¿½
 C:\crt\Scripts\activate
 
-# 2. ½øÈëÏîÄ¿Ä¿Â¼
+# 2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Ä¿Â¼
 cd C:\GameDev\CRT_Buddy\CRT_Buddy\CRT_Buddy
 
-# 3. ÇåÀí
+# 3. ï¿½ï¿½ï¿½ï¿½
 Remove-Item -Recurse -Force build, dist -ErrorAction SilentlyContinue
 
-# 4. ´ò°ü
+# 4. ï¿½ï¿½ï¿½
 python -m PyInstaller CRT_Buddy_complete.spec
 
-# 5. ²âÊÔ
+# 5. ï¿½ï¿½ï¿½ï¿½
 cd dist
 .\CRT_Buddy.exe
 ```
 
 ---
 
-## ? ³£¼ûÎÊÌâ
+## ? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### Q: ÎªÊ²Ã´²»ÓÃÏµÍ³Python£¿
-**A**: ÏµÍ³Python°²×°ÔÚºÜÉîµÄÂ·¾¶ÏÂ£¬ÈÝÒ×Óöµ½Windows 260×Ö·ûÂ·¾¶ÏÞÖÆ¡£
+### Q: ÎªÊ²Ã´ï¿½ï¿½ï¿½ï¿½ÏµÍ³Pythonï¿½ï¿½
+**A**: ÏµÍ³Pythonï¿½ï¿½×°ï¿½Úºï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Windows 260ï¿½Ö·ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
 
-### Q: ÐéÄâ»·¾³»áÕ¼ÓÃ¶àÉÙ¿Õ¼ä£¿
-**A**: Ô¼500-800 MB£¨°üº¬ËùÓÐÒÀÀµ£©
+### Q: ï¿½ï¿½ï¿½â»·ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Ã¶ï¿½ï¿½Ù¿Õ¼ä£¿
+**A**: Ô¼500-800 MBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### Q: ¿ÉÒÔÓÃPyQt5´úÌæÂð£¿
-**A**: ²»ÍÆ¼ö¡£ÏîÄ¿×¨ÃÅÎªPyQt6Éè¼Æ£¬PyQt5¿ÉÄÜÓÐ¼æÈÝÐÔÎÊÌâ¡£
+### Q: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PyQt5ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+**A**: ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿×¨ï¿½ï¿½ÎªPyQt6ï¿½ï¿½Æ£ï¿½PyQt5ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¡£
 
-### Q: °²×°Ê§°ÜÔõÃ´°ì£¿
+### Q: ï¿½ï¿½×°Ê§ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ì£¿
 **A**: 
-1. È·±£ÒÔ¹ÜÀíÔ±È¨ÏÞÔËÐÐPowerShell
-2. ¼ì²éÍøÂçÁ¬½Ó
-3. ³¢ÊÔÊ¹ÓÃ¹úÄÚ¾µÏñ£º
+1. È·ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½Ô±È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PowerShell
+2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+3. ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¹ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½
 ```powershell
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple PyQt6
 ```
 
 ---
 
-## ?? ÍÆ¼ö½â¾ö·½°¸
+## ?? ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-**¶ÔÓÚÄãµÄÇé¿ö£¬ÎÒÇ¿ÁÒÍÆ¼ö£º**
+**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½**
 
-1. ? Ê¹ÓÃ **·½·¨1**£¨ÆôÓÃ³¤Â·¾¶Ö§³Ö£©
-   - Ò»ÀÍÓÀÒÝ
-   - ÏµÍ³¼¶±ð½â¾ö
-   - ²»ÐèÒª¹ÜÀí¶à¸öPython»·¾³
+1. ? Ê¹ï¿½ï¿½ **ï¿½ï¿½ï¿½ï¿½1**ï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Â·ï¿½ï¿½Ö§ï¿½Ö£ï¿½
+   - Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   - ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Pythonï¿½ï¿½ï¿½ï¿½
 
-2. ? È»ºóÊ¹ÓÃ **ÐéÄâ»·¾³ÔÚ¶ÌÂ·¾¶** (C:\crt)
-   - ×î¿É¿¿
-   - ²»Ó°ÏìÏµÍ³Python
-   - ÒÀÀµ¸ôÀë
+2. ? È»ï¿½ï¿½Ê¹ï¿½ï¿½ **ï¿½ï¿½ï¿½â»·ï¿½ï¿½ï¿½Ú¶ï¿½Â·ï¿½ï¿½** (C:\crt)
+   - ï¿½ï¿½É¿ï¿½
+   - ï¿½ï¿½Ó°ï¿½ï¿½ÏµÍ³Python
+   - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ---
 
-## ?? ÐèÒª°ïÖú£¿
+## ?? ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-Èç¹û°²×°ÈÔÈ»Ê§°Ü£¬ÇëÌá¹©£º
-1. Windows°æ±¾
-2. Python°æ±¾ (`python --version`)
-3. ÍêÕû´íÎóÐÅÏ¢
-4. PowerShellÊä³ö½ØÍ¼
+ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½È»Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½
+1. Windowsï¿½æ±¾
+2. Pythonï¿½æ±¾ (`python --version`)
+3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+4. PowerShellï¿½ï¿½ï¿½ï¿½ï¿½Í¼
 
 ---
 
 <div align="center">
 
-## ? Á¢¼´ÐÐ¶¯
+## ? ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
 
-Ñ¡ÔñÒ»¸ö·½·¨£¬¿ªÊ¼°²×°£¡
+Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½×°ï¿½ï¿½
 
-**ÍÆ¼öÃüÁî£¨¸´ÖÆÕ³Ìù£©£º**
+**ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½î£¨ï¿½ï¿½ï¿½ï¿½Õ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**
 
 ```powershell
-# ´´½¨ÐéÄâ»·¾³
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½
 python -m venv C:\crt
 
-# ¼¤»î
+# ï¿½ï¿½ï¿½ï¿½
 C:\crt\Scripts\activate
 
-# °²×°ÒÀÀµ
+# ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½
 pip install PyQt6 Pillow numpy opencv-python pyinstaller
 
-# ÑéÖ¤
+# ï¿½ï¿½Ö¤
 python -c "import PyQt6.QtWidgets; print('Success!')"
 ```
 

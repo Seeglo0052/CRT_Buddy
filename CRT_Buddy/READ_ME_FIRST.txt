@@ -1,69 +1,21 @@
-# ?? ÇëÏÈÔÄ¶Á£¡
+READ ME FIRST
 
-## ?? ÖØÒªÌáÊ¾
+Welcome to CRT Buddy! If you previously saw garbled characters, the docs have been cleaned to UTF-8.
+- README.md: overview, install, run
+- USAGE.md: usage and workflows
+- QUICKSTART.txt: quick steps
 
-ÄãµÄ³ÌĞòµ±Ç°**ÎŞ·¨ÔËĞĞ**£¬ÒòÎªÈ±ÉÙÒÀÀµ£¡
+How to run (any of these):
+- python start.py    # runs a dependency self-check
+- python CRT_Buddy.py
+- run/double-click run_app.bat  # one-click on Windows
 
----
+If you see ModuleNotFoundError:
+- Ensure VS Code uses the workspace .venv interpreter and install deps:
+  pip install PyQt6 Pillow numpy opencv-python pygame pywin32 requests
 
-## ? ¿ìËÙĞŞ¸´£¨5·ÖÖÓ£©
+To package:
+- pip install pyinstaller
+- python build_exe.py  # builds dist/CRT_Buddy.exe
 
-### µÚ1²½£º°²×°ÒÀÀµ
-
-**Ë«»÷ÔËĞĞÕâ¸öÎÄ¼ş£º**
-```
-auto_install.bat
-```
-
-### µÚ2²½£ºµÈ´ıÍê³É
-
-½Å±¾»á×Ô¶¯°²×°ËùÓĞĞèÒªµÄ¿â£¨3-5·ÖÖÓ£©
-
-### µÚ3²½£º²âÊÔ
-
-°²×°Íê³Éºó£¬ÔËĞĞ£º
-```
-python CRT_Buddy.py
-```
-
----
-
-## ?? ÏêÏ¸ËµÃ÷
-
-- `QUICK_FIX.md` - ¿ìËÙĞŞ¸´Ö¸ÄÏ
-- `INSTALL_FIX.md` - ÍêÕûµÄ°²×°ËµÃ÷
-- `auto_install.bat` - ×Ô¶¯°²×°½Å±¾
-
----
-
-## ?? ÎªÊ²Ã´ĞèÒªÕâ¸ö£¿
-
-ÄãµÄ¿ª·¢»·¾³È±ÉÙ£º
-- PyQt6£¨GUI¿ò¼Ü£©
-- Pillow£¨Í¼Ïñ´¦Àí£©
-- NumPy£¨ÊıÖµ¼ÆËã£©
-- OpenCV£¨Í¼ÏñÂË¾µ£©
-
-ÔËĞĞ `auto_install.bat` »á×Ô¶¯°²×°ÕâĞ©¡£
-
----
-
-## ? °²×°Íê³Éºó
-
-Äã¾Í¿ÉÒÔ£º
-- ? ÔËĞĞ³ÌĞò
-- ? ´ò°üEXE
-- ? Õı³£¿ª·¢
-
----
-
-<div align="center">
-
-## ?? ÏÖÔÚ¾Í¿ªÊ¼
-
-**Ë«»÷ÔËĞĞ:**
-```
-auto_install.bat
-```
-
-</div>
+For more help, see README.md â†’ Troubleshooting, or open an Issue.

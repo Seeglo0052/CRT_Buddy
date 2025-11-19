@@ -1,66 +1,51 @@
-# CRT Buddy - ÍêÕû´ò°üÖ¸ÄÏ
+# CRT Buddy - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 
-## ?? ÎÊÌâÕï¶Ï
+## PACKAGING_GUIDE â€” Windows ä¸‹æ‰“åŒ…æŒ‡å¼•ï¼ˆPyInstallerï¼‰
 
-Èç¹ûEXEÔËÐÐÊ±±¨´í `ModuleNotFoundError: No module named 'XXX'`£¬ËµÃ÷PyInstallerÃ»ÓÐÕýÈ·´ò°üÄ³Ð©ÒÀÀµ¡£
+æœ¬é¡¹ç›®å·²æä¾› .spec ä¸Žè„šæœ¬ï¼ŒæŽ¨èåœ¨ .venv é‡Œæ‰“åŒ…ã€‚
 
 ---
 
-## ? ½â¾ö·½°¸
+### 1) åŸºç¡€å‡†å¤‡
 
-### ·½Ê½1: Ê¹ÓÃ¸Ä½øµÄ´ò°ü½Å±¾£¨ÍÆ¼ö£©
+- å®‰è£… pyinstallerï¼ˆåœ¨ .venv ä¸­ï¼‰
+- ç¡®è®¤ä¾èµ–å·²å®‰è£…ï¼šPyQt6ã€Pillowã€numpyã€opencv-python ç­‰
 
-```bash
-python build_improved.py
-```
+---
 
-Õâ¸ö½Å±¾»á£º
-- ¼ì²éËùÓÐÒÀÀµÊÇ·ñ°²×°
-- Ê¹ÓÃÕýÈ·µÄhidden-import²ÎÊý
-- ×Ô¶¯ÊÕ¼¯ËùÓÐPyQt6ºÍPIL×ÓÄ£¿é
+### 2) ä½¿ç”¨æä¾›çš„ spec
 
-### ·½Ê½2: ÊÖ¶¯´ò°ü£¨ÍêÕûÃüÁî£©
+- æ–‡ä»¶ï¼šCRT_Buddy_complete.spec
+- å¯ç›´æŽ¥ä½¿ç”¨ï¼Œä¹Ÿå¯æ ¹æ®èµ„æºè·¯å¾„è°ƒæ•´ datas/binaries
 
-```bash
-python -m PyInstaller ^
-    --name=CRT_Buddy ^
-    --onefile ^
-    --windowed ^
-    --noconsole ^
-    --clean ^
-    --hidden-import=PyQt6 ^
-    --hidden-import=PyQt6.QtCore ^
-    --hidden-import=PyQt6.QtGui ^
-    --hidden-import=PyQt6.QtWidgets ^
-    --hidden-import=PIL ^
-    --hidden-import=PIL.Image ^
-    --hidden-import=PIL.ImageDraw ^
-    --hidden-import=PIL.ImageFont ^
-    --hidden-import=PIL.ImageFilter ^
-    --hidden-import=PIL.ImageEnhance ^
-    --hidden-import=numpy ^
-    --collect-all=PyQt6 ^
-    --collect-all=PIL ^
-    main.py
-```
+---
 
-### ·½Ê½3: Ê¹ÓÃspecÎÄ¼þ
+### 3) èµ„æºä¸Žæ’ä»¶
 
-1. ´´½¨ `CRT_Buddy_full.spec`:
+- å­—ä½“ç­‰é™æ€èµ„æºéœ€æ‰“åŒ…è¿› datasï¼ˆå¦‚ DinkieBitmapï¼‰
+- Qt æ’ä»¶ï¼ˆplatformsï¼‰é€šå¸¸ç”± PyQt6-Qt6 å¸¦å…¥ï¼Œæ³¨æ„ qwindows.dll å­˜åœ¨
+- OpenCV è¿è¡ŒæœŸå¯èƒ½éœ€è¦ opencv_world*.dllï¼ˆç”±è½®å­æä¾›ï¼‰
 
-```python
-# -*- mode: python ; coding: utf-8 -*-
+---
 
-a = Analysis(
-    ['main.py'],
-    pathex=[],
-    binaries=[],
-    datas=[],
-    hiddenimports=[
-        'PyQt6',
-        'PyQt6.QtCore',
-        'PyQt6.QtGui',
-        'PyQt6.QtWidgets',
+### 4) è„šæœ¬ä¸Žæ‰¹å¤„ç†
+
+- å‚è€ƒï¼šbuild_exe.py / build_improved.py
+- Windows æ‰¹å¤„ç†ï¼šrebuild_exe.bat / test_exe.bat
+- æŠ¥å‘Šï¼šPACKAGING_REPORT.md / FINAL_SUCCESS.md / FINAL_BUILD_SUCCESS.md ç­‰
+
+---
+
+### FAQ
+
+Q: å¯åŠ¨åŽç™½å±/çª—å£æœªåˆ›å»ºï¼Ÿ
+A: æ£€æŸ¥ Qt å¹³å°æ’ä»¶æ˜¯å¦è¢«åŒ…å«ï¼ˆplatforms/qwindows.dllï¼‰ã€‚
+
+Q: èµ„æº/å­—ä½“ä¸¢å¤±ï¼Ÿ
+A: åœ¨ spec çš„ datas ä¸­æ·»åŠ å¯¹åº”ç›®å½•æˆ–æ–‡ä»¶ã€‚
+
+Q: ç¼ºå°‘ OpenCV DLLï¼Ÿ
+A: å®‰è£… VC++ è¿è¡Œåº“ï¼›ç¡®ä¿ wheel å·²åŒ…å« opencv_world*.dllã€‚
         'PIL',
         'PIL.Image',
         'PIL.ImageDraw',
@@ -112,75 +97,75 @@ exe = EXE(
 )
 ```
 
-2. ÔËÐÐ´ò°ü:
+2. ï¿½ï¿½ï¿½Ð´ï¿½ï¿½:
 ```bash
 pyinstaller CRT_Buddy_full.spec
 ```
 
 ---
 
-## ?? ²âÊÔ´ò°ü½á¹û
+## ?? ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### ·½Ê½1: Ê¹ÓÃ²âÊÔ½Å±¾
+### ï¿½ï¿½Ê½1: Ê¹ï¿½Ã²ï¿½ï¿½Ô½Å±ï¿½
 ```bash
 python test_exe.py
 ```
 
-### ·½Ê½2: ÊÖ¶¯²âÊÔ
+### ï¿½ï¿½Ê½2: ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½
 ```bash
 cd dist
 .\CRT_Buddy.exe
 ```
 
-¼ì²é£º
-- [ ] ³ÌÐòÄÜÆô¶¯£¨ÎÞ´íÎóµ¯´°£©
-- [ ] CRT´°¿ÚÕý³£ÏÔÊ¾
-- [ ] ¿ÉÒÔÊäÈëÎÄ×Ö
-- [ ] µã»÷°´Å¥ÓÐÏìÓ¦
-- [ ] ¿ÉÒÔÍÏ×§Í¼Æ¬
+ï¿½ï¿½é£º
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ´ï¿½ï¿½óµ¯´ï¿½ï¿½ï¿½
+- [ ] CRTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½Ó¦
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×§Í¼Æ¬
 
 ---
 
-## ?? ³£¼ûÎÊÌâÅÅ²é
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½
 
-### ÎÊÌâ1: `ModuleNotFoundError: No module named 'PyQt6'`
+### ï¿½ï¿½ï¿½ï¿½1: `ModuleNotFoundError: No module named 'PyQt6'`
 
-**Ô­Òò**: PyInstallerÃ»ÓÐÕÒµ½PyQt6
+**Ô­ï¿½ï¿½**: PyInstallerÃ»ï¿½ï¿½ï¿½Òµï¿½PyQt6
 
-**½â¾ö**:
+**ï¿½ï¿½ï¿½**:
 ```bash
-# ÖØÐÂ´ò°ü£¬Ìí¼Ó --collect-all=PyQt6
+# ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ --collect-all=PyQt6
 pyinstaller --name=CRT_Buddy --onefile --windowed --collect-all=PyQt6 main.py
 ```
 
-### ÎÊÌâ2: `ModuleNotFoundError: No module named 'PIL'`
+### ï¿½ï¿½ï¿½ï¿½2: `ModuleNotFoundError: No module named 'PIL'`
 
-**Ô­Òò**: PillowÄ£¿éÎ´ÕýÈ·´ò°ü
+**Ô­ï¿½ï¿½**: PillowÄ£ï¿½ï¿½Î´ï¿½ï¿½È·ï¿½ï¿½ï¿½
 
-**½â¾ö**:
+**ï¿½ï¿½ï¿½**:
 ```bash
-# Ìí¼Ó --collect-all=PIL
+# ï¿½ï¿½ï¿½ï¿½ --collect-all=PIL
 pyinstaller --name=CRT_Buddy --onefile --windowed --collect-all=PIL main.py
 ```
 
-### ÎÊÌâ3: `ModuleNotFoundError: No module named 'cv2'`
+### ï¿½ï¿½ï¿½ï¿½3: `ModuleNotFoundError: No module named 'cv2'`
 
-**Ô­Òò**: OpenCVµ¼Èë·½Ê½ÌØÊâ
+**Ô­ï¿½ï¿½**: OpenCVï¿½ï¿½ï¿½ë·½Ê½ï¿½ï¿½ï¿½ï¿½
 
-**½â¾ö**:
+**ï¿½ï¿½ï¿½**:
 ```bash
-# ÏÈ¼ì²éopencvÊÇ·ñ°²×°
+# ï¿½È¼ï¿½ï¿½opencvï¿½Ç·ï¿½×°
 pip show opencv-python
 
-# Èç¹ûÒÑ°²×°£¬Ìí¼Óhidden-import
+# ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½hidden-import
 pyinstaller --hidden-import=cv2 ...
 ```
 
-**Ìæ´ú·½°¸** (Èç¹ûcv2ÎÞ·¨´ò°ü):
-ÐÞ¸Ä´úÂë£¬Ê¹cv2±äÎª¿ÉÑ¡£º
+**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½** (ï¿½ï¿½ï¿½cv2ï¿½Þ·ï¿½ï¿½ï¿½ï¿½):
+ï¿½Þ¸Ä´ï¿½ï¿½ë£¬Ê¹cv2ï¿½ï¿½Îªï¿½ï¿½Ñ¡ï¿½ï¿½
 
 ```python
-# ÔÚ y2k_styles.py ÖÐ
+# ï¿½ï¿½ y2k_styles.py ï¿½ï¿½
 try:
     import cv2
     HAS_CV2 = True
@@ -188,139 +173,139 @@ except ImportError:
     HAS_CV2 = False
     print("Warning: OpenCV not available, some effects disabled")
 
-# È»ºóÔÚÊ¹ÓÃcv2µÄº¯ÊýÖÐ¼ì²é
+# È»ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½cv2ï¿½Äºï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½
 def apply_chrome_effect(image):
     if not HAS_CV2:
-        # ·µ»ØÌæ´úÐ§¹û»òÔ­Í¼
+        # ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ô­Í¼
         return image
-    # ... Ô­ÓÐ´úÂë
+    # ... Ô­ï¿½Ð´ï¿½ï¿½ï¿½
 ```
 
-### ÎÊÌâ4: EXEÌå»ýÌ«´ó
+### ï¿½ï¿½ï¿½ï¿½4: EXEï¿½ï¿½ï¿½Ì«ï¿½ï¿½
 
-**µ±Ç°´óÐ¡**: ~22MB£¨°üº¬PyQt6, PIL, NumPy£©
+**ï¿½ï¿½Ç°ï¿½ï¿½Ð¡**: ~22MBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PyQt6, PIL, NumPyï¿½ï¿½
 
-**¼õÐ¡Ìå»ý**:
+**ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½**:
 ```bash
-# 1. Ê¹ÓÃÎÄ¼þ¼ÐÄ£Ê½¶ø²»ÊÇµ¥ÎÄ¼þ
+# 1. Ê¹ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½Ä¼ï¿½
 pyinstaller --name=CRT_Buddy --onedir --windowed main.py
 
-# 2. Ê¹ÓÃUPXÑ¹Ëõ
+# 2. Ê¹ï¿½ï¿½UPXÑ¹ï¿½ï¿½
 pyinstaller --name=CRT_Buddy --onefile --upx-dir=path/to/upx main.py
 
-# 3. ÅÅ³ý²»ÐèÒªµÄÄ£¿é
+# 3. ï¿½Å³ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ä£ï¿½ï¿½
 pyinstaller --exclude-module=matplotlib --exclude-module=scipy ...
 ```
 
-### ÎÊÌâ5: Æô¶¯ºÜÂý
+### ï¿½ï¿½ï¿½ï¿½5: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-**Ô­Òò**: µ¥ÎÄ¼þÄ£Ê½ÐèÒª½âÑ¹µ½ÁÙÊ±Ä¿Â¼
+**Ô­ï¿½ï¿½**: ï¿½ï¿½ï¿½Ä¼ï¿½Ä£Ê½ï¿½ï¿½Òªï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½Ê±Ä¿Â¼
 
-**½â¾ö**:
+**ï¿½ï¿½ï¿½**:
 ```bash
-# Ê¹ÓÃÎÄ¼þ¼ÐÄ£Ê½£¨Æô¶¯¸ü¿ì£©
+# Ê¹ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì£©
 pyinstaller --name=CRT_Buddy --onedir --windowed main.py
 ```
 
 ---
 
-## ?? ´ò°üÄ£Ê½¶Ô±È
+## ?? ï¿½ï¿½ï¿½Ä£Ê½ï¿½Ô±ï¿½
 
-### µ¥ÎÄ¼þÄ£Ê½ (--onefile)
+### ï¿½ï¿½ï¿½Ä¼ï¿½Ä£Ê½ (--onefile)
 ```
-ÓÅµã:
-? ·Ö·¢·½±ã£¨Ö»ÓÐÒ»¸öexe£©
-? ¿´ÆðÀ´×¨Òµ
+ï¿½Åµï¿½:
+? ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ã£¨Ö»ï¿½ï¿½Ò»ï¿½ï¿½exeï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¨Òµ
 
-È±µã:
-? Æô¶¯½ÏÂý£¨2-5Ãë£©
-? Ìå»ý½Ï´ó£¨20-30MB£©
-? Ã¿´ÎÔËÐÐ½âÑ¹µ½ÁÙÊ±Ä¿Â¼
+È±ï¿½ï¿½:
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2-5ï¿½ë£©
+? ï¿½ï¿½ï¿½ï¿½Ï´ï¿½20-30MBï¿½ï¿½
+? Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½Ê±Ä¿Â¼
 ```
 
-### ÎÄ¼þ¼ÐÄ£Ê½ (--onedir)
+### ï¿½Ä¼ï¿½ï¿½ï¿½Ä£Ê½ (--onedir)
 ```
-ÓÅµã:
-? Æô¶¯¿ìËÙ£¨<1Ãë£©
-? ×ÜÌå»ý¿ÉÄÜ¸üÐ¡
-? Ò×ÓÚµ÷ÊÔ
+ï¿½Åµï¿½:
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù£ï¿½<1ï¿½ë£©
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¸ï¿½Ð¡
+? ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½
 
-È±µã:
-? ÐèÒª·Ö·¢Õû¸öÎÄ¼þ¼Ð
-? ÎÄ¼þ¶à£¬¿´ÆðÀ´²»Õû½à
+È±ï¿½ï¿½:
+? ï¿½ï¿½Òªï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+? ï¿½Ä¼ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ```
 
 ---
 
-## ?? ÍÆ¼öµÄ×îÖÕ´ò°üÁ÷³Ì
+## ?? ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### ²½Öè1: ÇåÀí¾ÉÎÄ¼þ
+### ï¿½ï¿½ï¿½ï¿½1: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 ```bash
 Remove-Item build -Recurse -Force -ErrorAction SilentlyContinue
 Remove-Item dist -Recurse -Force -ErrorAction SilentlyContinue
 Remove-Item *.spec -Force -ErrorAction SilentlyContinue
 ```
 
-### ²½Öè2: ÔËÐÐ¸Ä½ø½Å±¾
+### ï¿½ï¿½ï¿½ï¿½2: ï¿½ï¿½ï¿½Ð¸Ä½ï¿½ï¿½Å±ï¿½
 ```bash
 python build_improved.py
 ```
 
-### ²½Öè3: ²âÊÔ
+### ï¿½ï¿½ï¿½ï¿½3: ï¿½ï¿½ï¿½ï¿½
 ```bash
 python test_exe.py
 ```
 
-### ²½Öè4: ÑéÖ¤¹¦ÄÜ
-ÊÖ¶¯²âÊÔËùÓÐ¹¦ÄÜ£º
-- [ ] ÎÄ×ÖMemeÉú³É
-- [ ] Í¼Æ¬ÉÏ´«ºÍ´¦Àí
-- [ ] Ëæ»úÉú³É
-- [ ] ÎÄ¼þ±£´æµ½output
+### ï¿½ï¿½ï¿½ï¿½4: ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
+ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½Ü£ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½Memeï¿½ï¿½ï¿½ï¿½
+- [ ] Í¼Æ¬ï¿½Ï´ï¿½ï¿½Í´ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½æµ½output
 
-### ²½Öè5: ´´½¨·¢²¼°ü
+### ï¿½ï¿½ï¿½ï¿½5: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ```bash
-# ´´½¨·¢²¼ÎÄ¼þ¼Ð
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 mkdir release
 Copy-Item dist\CRT_Buddy.exe release\
-Copy-Item dist\Ê¹ÓÃËµÃ÷.txt release\
+Copy-Item dist\Ê¹ï¿½ï¿½Ëµï¿½ï¿½.txt release\
 
-# Ñ¹Ëõ
+# Ñ¹ï¿½ï¿½
 Compress-Archive -Path release\* -DestinationPath CRT_Buddy_v1.0.zip
 ```
 
 ---
 
-## ?? ½ø½×¼¼ÇÉ
+## ?? ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½
 
-### Ìí¼ÓÍ¼±ê
+### ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
 ```bash
-# ×¼±¸Ò»¸öicon.icoÎÄ¼þ
+# ×¼ï¿½ï¿½Ò»ï¿½ï¿½icon.icoï¿½Ä¼ï¿½
 pyinstaller --icon=icon.ico ...
 ```
 
-### Ìí¼Ó°æ±¾ÐÅÏ¢
+### ï¿½ï¿½ï¿½Ó°æ±¾ï¿½ï¿½Ï¢
 ```bash
-# ´´½¨version.txt
+# ï¿½ï¿½ï¿½ï¿½version.txt
 pyinstaller --version-file=version.txt ...
 ```
 
-### ¾²Ä¬´ò°ü£¨ÎÞÊä³ö£©
+### ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ```bash
 pyinstaller --log-level=WARN ...
 ```
 
-### µ÷ÊÔÄ£Ê½´ò°ü
+### ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½
 ```bash
-# ±£Áô¿ØÖÆÌ¨´°¿Ú£¬²é¿´´íÎóÐÅÏ¢
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½Ú£ï¿½ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 pyinstaller --console ...
 ```
 
 ---
 
-## ?? ÑéÖ¤´ò°üÍêÕûÐÔ
+## ?? ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-ÔËÐÐÒÔÏÂ½Å±¾¼ì²éËùÓÐÒÀÀµ£º
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½Å±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ```python
 # check_imports.py
@@ -346,36 +331,36 @@ for module in modules:
 
 ---
 
-## ?? ×îÖÕ¼ì²éÇåµ¥
+## ?? ï¿½ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½åµ¥
 
-´ò°üÍê³ÉºóÑéÖ¤£º
+ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½ï¿½ï¿½Ö¤ï¿½ï¿½
 
-- [ ] EXEÎÄ¼þ´æÔÚÓÚdistÎÄ¼þ¼Ð
-- [ ] Ë«»÷¿ÉÒÔÆô¶¯
-- [ ] Ã»ÓÐ¿ØÖÆÌ¨´°¿ÚÉÁÏÖ
-- [ ] CRT´°¿ÚÕý³£ÏÔÊ¾
-- [ ] ËùÓÐ°´Å¥¿Éµã»÷
-- [ ] ÎÄ×ÖÉú³É¹¦ÄÜÕý³£
-- [ ] Í¼Æ¬ÉÏ´«¹¦ÄÜÕý³£
-- [ ] ÎÄ¼þ±£´æµ½outputÎÄ¼þ¼Ð
-- [ ] ÔÚÁíÒ»Ì¨µçÄÔ²âÊÔ£¨ÎÞPython»·¾³£©
+- [ ] EXEï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½distï¿½Ä¼ï¿½ï¿½ï¿½
+- [ ] Ë«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] Ã»ï¿½Ð¿ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] CRTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+- [ ] ï¿½ï¿½ï¿½Ð°ï¿½Å¥ï¿½Éµï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] Í¼Æ¬ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½æµ½outputï¿½Ä¼ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½Ò»Ì¨ï¿½ï¿½ï¿½Ô²ï¿½ï¿½Ô£ï¿½ï¿½ï¿½Pythonï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ---
 
-## ?? »ñÈ¡°ïÖú
+## ?? ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 
-Èç¹ûÈÔÓÐÎÊÌâ£º
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£º
 
-1. ²é¿´¹¹½¨ÈÕÖ¾: `build\CRT_Buddy\warn-CRT_Buddy.txt`
-2. Ê¹ÓÃµ÷ÊÔÄ£Ê½´ò°ü: `--console --debug=all`
-3. Ìá½»Issueµ½GitHub
-4. ¼ì²éPyInstallerÎÄµµ: https://pyinstaller.org
+1. ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾: `build\CRT_Buddy\warn-CRT_Buddy.txt`
+2. Ê¹ï¿½Ãµï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½: `--console --debug=all`
+3. ï¿½á½»Issueï¿½ï¿½GitHub
+4. ï¿½ï¿½ï¿½PyInstallerï¿½Äµï¿½: https://pyinstaller.org
 
 ---
 
 <div align="center">
 
-**×£´ò°üË³Àû£¡**
+**×£ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½**
 
 Made with ?? in Y2K Spirit
 

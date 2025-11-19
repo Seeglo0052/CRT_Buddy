@@ -1,185 +1,129 @@
-# CRT Buddy v1.0.0 - ReleaseËµÃ÷
+# CRT Buddy v1.0.0 â€” Release Notes
 
-## ?? »¶Ó­Ê¹ÓÃCRT Buddy£¡
-
-ÄãµÄY2K·ç¸ñ×ÀÃæ³èÎï & MemeÉú³ÉÆ÷
+Y2K Desktop Pet & Meme Generator for Windows.
 
 ---
 
-## ?? ÏÂÔØ
+## Download
 
-**Windows 64Î»**
-- ÎÄ¼şÃû: `CRT_Buddy.exe`
-- ´óĞ¡: 21 MB
-- ÏµÍ³ÒªÇó: Windows 10/11 (64Î»)
+- Binary: CRT_Buddy.exe (Windows 10/11 x64)
+- Size: ~20â€“30 MB
 
 ---
 
-## ?? ¿ìËÙ¿ªÊ¼
+## Run
 
-### 1. ÔËĞĞ³ÌĞò
-```
-Ë«»÷ CRT_Buddy.exe
-```
-
-### 2. ¿ªÊ¼´´×÷
-- **Éú³ÉÎÄ×ÖMeme**: ÊäÈëÎÄ×Ö ¡ú µã»÷ [? GENERATE MEME]
-- **´¦ÀíÍ¼Æ¬**: ÍÏ×§Í¼Æ¬µ½´°¿Ú ¡ú ×Ô¶¯Ìí¼ÓY2KÌØĞ§
-- **Ëæ»úÉú³É**: µã»÷ [? RANDOM Y2K EFFECT]
-
-### 3. ²é¿´Êä³ö
-Éú³ÉµÄÎÄ¼ş±£´æÔÚ `output/` ÎÄ¼ş¼Ğ
+1) Double-click CRT_Buddy.exe
+2) Generate:
+	- Text â†’ click GENERATE MEME
+	- Image â†’ click UPLOAD IMAGE â†’ apply effects
+	- Random â†’ click RANDOM Y2K EFFECT
+3) Results are saved in `output/`
 
 ---
 
-## ?? ¹¦ÄÜÌØĞÔ
+## Features
 
-### Y2KÌØĞ§¿â£¨6ÖÖ£©
-- ??? **CRTĞ§¹û** - É¨ÃèÏß + RGBÉ«²î
-- ?? **VHS¹ÊÕÏ** - Â¼Ïñ´øÊ§Õæ
-- ?? **È«Ï¢ÀØÉä** - ²Êºç½¥±ä
-- ?? **¶Æ¸õ½ğÊô** - ÒøÉ«ÖÊ¸Ğ
-- ?? **ÄŞºç»Ô¹â** - Ó«¹âÔöÇ¿
-- ?? **ÏñËØ»¯** - ¸´¹ÅÓÎÏ··ç¸ñ
-
-### ÎÄ×Ö·ç¸ñ£¨5ÖÖ£©
-- ½¥±äÎÄ×Ö¡¢¹ÊÕÏÎÄ×Ö¡¢ÄŞºçÎÄ×Ö¡¢¶Æ¸õÎÄ×Ö¡¢¸´¹ÅÎÄ×Ö
-
-### ×ÀÃæ³èÎï
-- ¿ÉÍÏ×§µÄCRTÏÔÊ¾Æ÷´°¿Ú
-- ¶¯Ì¬É¨ÃèÏß¶¯»­
-- ĞÄÇéÏµÍ³
-- Y2K·ç¸ñUI
+- CRT scanlines + RGB shift
+- VHS jitter/ghosting/noise
+- Holographic / Chrome / Neon glows
+- Pixelate (8/16-bit)
 
 ---
 
-## ?? Ê¹ÓÃ¼¼ÇÉ
+## FAQ
 
-### ¾­µäY2KÎÄ°¸
-```
-UNDER CONSTRUCTION ??
-WELCOME TO MY WEBSITE ?
-BEST VIEWED IN NETSCAPE ??
-Y2K AESTHETIC ?
-CYBER DREAMS 2000 ??
-```
+Q: Missing DLL or cannot start?
+A: Install Visual C++ Redistributable: https://aka.ms/vs/17/release/vc_redist.x64.exe
 
-### ²Ù×÷·½Ê½
-- **ÒÆ¶¯´°¿Ú**: Êó±ê×ó¼üÍÏ×§
-- **¹Ø±Õ³ÌĞò**: Êó±êÓÒ¼üµã»÷
-- **ÉÏ´«Í¼Æ¬**: ÍÏ×§»òµã»÷°´Å¥
-
-### Ö§³Ö¸ñÊ½
-- PNG (.png)
-- JPEG (.jpg, .jpeg)
-- GIF (.gif)
-- BMP (.bmp)
+Q: Where are the generated images?
+A: In the `output/` folder next to the EXE.
 
 ---
 
-## ?? ³£¼ûÎÊÌâ
+## Requirements
 
-### Q: WindowsÌáÊ¾"±£»¤ÁËÄãµÄµçÄÔ"£¿
-**A**: µã»÷"¸ü¶àĞÅÏ¢" ¡ú "ÈÔÒªÔËĞĞ"£¨Õı³£ÏÖÏó£©
+- Windows 10/11 (x64)
+- Recommended RAM â‰¥ 4GB
 
-### Q: ÕÒ²»µ½Éú³ÉµÄÍ¼Æ¬£¿
-**A**: ²é¿´³ÌĞòËùÔÚÄ¿Â¼µÄ `output` ÎÄ¼ş¼Ğ
+---
+# CRT Buddy v1.0.0 - ReleaseËµï¿½ï¿½
 
-### Q: ÌáÊ¾È±ÉÙDLL£¿
-**A**: °²×° [Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+## ?? ï¿½ï¿½Ó­Ê¹ï¿½ï¿½CRT Buddyï¿½ï¿½
+
+ï¿½ï¿½ï¿½Y2Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ & Memeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ---
 
-## ?? ÏµÍ³ÒªÇó
+## ?? ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§ÏµÍ³
+- [ ] ï¿½Ô¶ï¿½ï¿½ï¿½É«ï¿½ï¿½
+# CRT Buddy v1.0.0 â€” Release Notes
 
-### ×îµÍÅäÖÃ
-- Windows 10/11 (64Î»)
-- 2GB ÄÚ´æ
-- 50MB ¿ÉÓÃ¿Õ¼ä
-- ÈÎÒâÏÔ¿¨
-
-### ÍÆ¼öÅäÖÃ
-- Windows 11
-- 4GB+ ÄÚ´æ
-- 500MB ¿ÉÓÃ¿Õ¼ä
-- Ö§³ÖÓ²¼ş¼ÓËÙµÄÏÔ¿¨
+Y2K Desktop Pet & Meme Generator for Windows.
 
 ---
 
-## ?? ¸üĞÂÈÕÖ¾
+## Download ä¸‹è½½
 
-### v1.0.0 (2024-11-11)
-- ? Ê×´Î·¢²¼
-- ? ÍêÕûµÄY2KÌØĞ§ÏµÍ³
-- ? ×ÀÃæ³èÎï¹¦ÄÜ
-- ? MemeÉú³ÉÒıÇæ
-- ? ¶ÀÁ¢EXE´ò°ü
+- Binary: CRT_Buddy.exe (Windows 10/11 x64)
+- Size: ~20â€“30 MB
 
 ---
 
-## ?? ÒÑÖªÎÊÌâ
+## Run è¿è¡Œ
 
-Ä¿Ç°ÎŞÒÑÖªÑÏÖØÎÊÌâ¡£
-
-Èç¹ûÓöµ½ÎÊÌâ£¬ÇëÔÚ [GitHub Issues](https://github.com/Seeglo0052/CRT_Buddy/issues) ±¨¸æ¡£
-
----
-
-## ?? Â·ÏßÍ¼
-
-### v1.1 ¼Æ»®
-- [ ] Ìí¼ÓÒôĞ§ÏµÍ³
-- [ ] GIF¶¯»­µ¼³ö
-- [ ] ¸ü¶àY2KÌØĞ§
-- [ ] ×Ô¶¨ÒåÉ«°å
-
-### v2.0 Ô¸¾°
-- [ ] AIÎÄ°¸Éú³É
-- [ ] ÅúÁ¿´¦ÀíÄ£Ê½
-- [ ] ÔÚÏßÄ£°å¿â
-- [ ] ÉçÇø·ÖÏí¹¦ÄÜ
+1) åŒå‡»è¿è¡Œ CRT_Buddy.exe
+2) ç”Ÿæˆï¼š
+	- æ–‡å­— â†’ ç‚¹å‡» GENERATE MEME
+	- å›¾ç‰‡ â†’ ç‚¹å‡» UPLOAD IMAGE â†’ åº”ç”¨æ•ˆæœ
+	- éšæœº â†’ ç‚¹å‡» RANDOM Y2K EFFECT
+3) è¾“å‡ºç»“æœåœ¨ `output/` ç›®å½•
 
 ---
 
-## ?? ÖÂĞ»
+## Features åŠŸèƒ½
 
-¸ĞĞ»ËùÓĞÖ§³ÖY2KÃÀÑ§¸´ĞËµÄÅóÓÑÃÇ£¡
-
-### Áé¸ĞÀ´Ô´
-- Ç§ìûÄêÔçÆÚµÄÍøÒ³Éè¼Æ
-- GeocitiesÊ±´úµÄ¸öÈËÖ÷Ò³
-- ×ÀÃæ³èÎïÎÄ»¯
-- Vaporwave & WebcoreÃÀÑ§
+- CRT æ‰«æçº¿ + RGB åç§»
+- VHS æŠ–åŠ¨/æ‹–å½±/å™ªç‚¹
+- Holographic / Chrome / Neon é«˜å…‰è´¨æ„Ÿ
+- Pixelate åƒç´ åŒ–ï¼ˆ8/16-bitï¼‰
 
 ---
 
-## ?? ¿ªÔ´ĞÅÏ¢
+## FAQ å¸¸è§é—®é¢˜
 
-- **Ğí¿ÉÖ¤**: MIT License
-- **Ô´´úÂë**: [GitHub](https://github.com/Seeglo0052/CRT_Buddy)
-- **ÎÊÌâ·´À¡**: [Issues](https://github.com/Seeglo0052/CRT_Buddy/issues)
-- **¹¦ÄÜ½¨Òé**: [Discussions](https://github.com/Seeglo0052/CRT_Buddy/discussions)
+Q: è¿è¡Œæç¤ºç¼ºå°‘ DLL æˆ–æ— æ³•å¯åŠ¨ï¼Ÿ
+A: å®‰è£… Visual C++ Redistributable: https://aka.ms/vs/17/release/vc_redist.x64.exe
 
----
-
-## ?? ·ÖÏíÄãµÄ×÷Æ·
-
-Ê¹ÓÃÍÆ¼ö±êÇ©·ÖÏíÄãµÄY2K´´×÷£º
-```
-#CRTBuddy #Y2KAesthetic #Y2K #2000s
-#RetroVibes #NostalgicInternet #VaporwaveArt
-```
+Q: ç”Ÿæˆåæ‰¾ä¸åˆ°å›¾ç‰‡ï¼Ÿ
+A: è¯·åœ¨ä¸ EXE åŒçº§çš„ `output/` ç›®å½•æŸ¥çœ‹ã€‚
 
 ---
 
-<div align="center">
+## Requirements ç¯å¢ƒ
 
-## ? ÏíÊÜY2KÖ®ÂÃ£¡?
+- Windows 10/11 (x64)
+- å»ºè®®å†…å­˜ â‰¥ 4GB
 
-**Made with ?? in Y2K Spirit**
+---
 
-[?? ÏÂÔØ×îĞÂ°æ±¾](https://github.com/Seeglo0052/CRT_Buddy/releases) | 
-[?? ÍêÕûÎÄµµ](https://github.com/Seeglo0052/CRT_Buddy) | 
-[?? ÉçÇøÌÖÂÛ](https://github.com/Seeglo0052/CRT_Buddy/discussions)
+## Changelog ç‰ˆæœ¬å†å²
 
-</div>
+v1.0.0
+- é¦–ä¸ªå¯ç”¨ç‰ˆæœ¬ï¼ŒåŒ…å« CRT/VHS/Neon/Chrome/Pixelate æ•ˆæœ
+- æ–‡æœ¬ã€å›¾ç‰‡ã€éšæœºä¸‰ç§ç”Ÿæˆæ¨¡å¼
+- Windows EXE å‘è¡Œ
+
+---
+
+## Links é“¾æ¥
+
+- Project: https://github.com/Seeglo0052/CRT_Buddy
+- Issues: https://github.com/Seeglo0052/CRT_Buddy/issues
+- Discussions: https://github.com/Seeglo0052/CRT_Buddy/discussions
+
+---
+
+Made with care for Y2K lovers.
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½

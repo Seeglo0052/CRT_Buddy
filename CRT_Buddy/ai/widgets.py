@@ -199,32 +199,73 @@ class AISettingsWidget(QWidget):
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
         layout = QVBoxLayout(self)
+
+        # Core settings
         self.api_key = QLineEdit()
         self.base_url = QLineEdit()
+        self.base_url_preset = QComboBox()
+        self.base_url_preset.addItems(["custom", "openai", "deepseek"])
         self.chat_model = QLineEdit("gpt-4o-mini")
         self.image_model = QLineEdit("gpt-image-1")
+
+        # Chat provider (openai | deepseek)
+        self.chat_provider = QComboBox()
+        self.chat_provider.addItems(["openai", "deepseek"])
+
+        # Image provider (openai | stability)
+        self.image_provider = QComboBox()
+        self.image_provider.addItems(["openai", "stability"])
+
+        # Stability fields
+        self.stability_api_key = QLineEdit()
+        self.stability_base_url = QLineEdit("https://api.stability.ai")
+        self.stability_engine = QLineEdit("stable-diffusion-v1-6")
+
+        # Buttons & status
         self.save_btn = QPushButton("Save Settings")
         self.test_btn = QPushButton("Test Connection")
         self.status = QLabel("")
 
+        # Layout wiring
         layout.addWidget(QLabel("API Key"))
         layout.addWidget(self.api_key)
         layout.addWidget(QLabel("Base URL (OpenAI-compatible)"))
         layout.addWidget(self.base_url)
+        layout.addWidget(QLabel("Base URL Preset"))
+        layout.addWidget(self.base_url_preset)
+        layout.addWidget(QLabel("Chat Provider"))
+        layout.addWidget(self.chat_provider)
         layout.addWidget(QLabel("Chat Model"))
         layout.addWidget(self.chat_model)
+        layout.addWidget(QLabel("Image Provider"))
+        layout.addWidget(self.image_provider)
         layout.addWidget(QLabel("Image Model"))
         layout.addWidget(self.image_model)
-
+        layout.addWidget(QLabel("Stability API Key"))
+        layout.addWidget(self.stability_api_key)
+        layout.addWidget(QLabel("Stability Base URL"))
+        layout.addWidget(self.stability_base_url)
+        layout.addWidget(QLabel("Stability Engine"))
+        layout.addWidget(self.stability_engine)
         row = QHBoxLayout()
         row.addWidget(self.save_btn)
         row.addWidget(self.test_btn)
         layout.addLayout(row)
         layout.addWidget(self.status)
 
+        # Signals
         self.save_btn.clicked.connect(self.on_save)
         self.test_btn.clicked.connect(self.on_test)
+        self.image_provider.currentTextChanged.connect(self._toggle_provider_fields)
+        self.chat_provider.currentTextChanged.connect(self._apply_chat_provider_defaults)
+        self.base_url_preset.currentTextChanged.connect(self._on_base_url_preset_changed)
+        self.base_url.textChanged.connect(self._on_base_url_text_changed)
+
+        # Init
         self._load()
+        self._toggle_provider_fields(self.image_provider.currentText())
+        self._apply_chat_provider_defaults(self.chat_provider.currentText())
+        self._sync_preset_with_base_url()
 
     def _cfg_path(self) -> str:
         # write into CRT_Buddy/config.ini
@@ -244,6 +285,12 @@ class AISettingsWidget(QWidget):
                 self.base_url.setText(cfg.get("AI", "base_url", fallback=""))
                 self.chat_model.setText(cfg.get("AI", "chat_model", fallback=self.chat_model.text()))
                 self.image_model.setText(cfg.get("AI", "image_model", fallback=self.image_model.text()))
+                self.image_provider.setCurrentText(cfg.get("AI", "image_provider", fallback="openai"))
+                self.chat_provider.setCurrentText(cfg.get("AI", "chat_provider", fallback=self.chat_provider.currentText()))
+                self.base_url_preset.setCurrentText(cfg.get("AI", "base_url_preset", fallback=self.base_url_preset.currentText()))
+                self.stability_api_key.setText(cfg.get("AI", "stability_api_key", fallback=""))
+                self.stability_base_url.setText(cfg.get("AI", "stability_base_url", fallback=self.stability_base_url.text()))
+                self.stability_engine.setText(cfg.get("AI", "stability_engine", fallback=self.stability_engine.text()))
         except Exception:
             pass
 
@@ -260,36 +307,123 @@ class AISettingsWidget(QWidget):
         cfg.set("AI", "base_url", self.base_url.text().strip())
         cfg.set("AI", "chat_model", self.chat_model.text().strip())
         cfg.set("AI", "image_model", self.image_model.text().strip())
+        cfg.set("AI", "image_provider", self.image_provider.currentText().strip())
+        cfg.set("AI", "chat_provider", self.chat_provider.currentText().strip())
+        cfg.set("AI", "base_url_preset", self.base_url_preset.currentText().strip())
+        cfg.set("AI", "stability_api_key", self.stability_api_key.text().strip())
+        cfg.set("AI", "stability_base_url", self.stability_base_url.text().strip())
+        cfg.set("AI", "stability_engine", self.stability_engine.text().strip())
         with open(path, "w", encoding="utf-8") as f:
             cfg.write(f)
         self.status.setText(f"Saved to {path}")
 
     def on_test(self):
-        key = self.api_key.text().strip()
-        base = self.base_url.text().strip().rstrip("/") or "https://api.openai.com/v1"
-        if not key:
-            self.status.setText("Please enter API Key first.")
-            return
+        provider = self.image_provider.currentText().strip().lower()
         self.status.setText("Testing...")
-        try:
-            resp = requests.get(f"{base}/models", headers={"Authorization": f"Bearer {key}"}, timeout=15)
-            if resp.status_code == 200:
-                try:
-                    js = resp.json()
-                    count = len(js.get("data", []))
-                    self.status.setText(f"Success: reachable (models: {count})")
-                except Exception:
-                    self.status.setText("Success: HTTP 200")
-            elif resp.status_code == 401:
-                self.status.setText("Unauthorized (401): API key invalid or lacks access.")
-            elif resp.status_code == 403:
-                self.status.setText("Forbidden (403): Check account/permissions.")
-            elif resp.status_code == 404:
-                self.status.setText("Not Found (404): Check Base URL.")
-            else:
-                self.status.setText(f"HTTP {resp.status_code}: {resp.text[:120]}")
-        except requests.exceptions.RequestException as e:
-            self.status.setText(f"Network error: {e}")
+        if provider == "stability":
+            key = (self.stability_api_key.text().strip() or self.api_key.text().strip())
+            base = self.stability_base_url.text().strip().rstrip("/") or "https://api.stability.ai"
+            if not key:
+                self.status.setText("Enter Stability API Key.")
+                return
+            try:
+                resp = requests.get(f"{base}/v1/engines/list", headers={"Authorization": f"Bearer {key}"}, timeout=15)
+                if resp.status_code == 200:
+                    try:
+                        js = resp.json()
+                        count = len(js) if isinstance(js, list) else len(js.get("engines", []))
+                        self.status.setText(f"Success: reachable (engines: {count})")
+                    except Exception:
+                        self.status.setText("Success: HTTP 200")
+                elif resp.status_code == 401:
+                    self.status.setText("Unauthorized (401): API key invalid or lacks access.")
+                elif resp.status_code == 403:
+                    self.status.setText("Forbidden (403): Check account/permissions.")
+                elif resp.status_code == 404:
+                    self.status.setText("Not Found (404): Check Base URL.")
+                else:
+                    self.status.setText(f"HTTP {resp.status_code}: {resp.text[:120]}")
+            except requests.exceptions.RequestException as e:
+                self.status.setText(f"Network error: {e}")
+        else:
+            key = self.api_key.text().strip()
+            base = self.base_url.text().strip().rstrip("/") or "https://api.openai.com/v1"
+            if not key:
+                self.status.setText("Please enter API Key first.")
+                return
+            try:
+                resp = requests.get(f"{base}/models", headers={"Authorization": f"Bearer {key}"}, timeout=15)
+                if resp.status_code == 200:
+                    try:
+                        js = resp.json()
+                        count = len(js.get("data", []))
+                        self.status.setText(f"Success: reachable (models: {count})")
+                    except Exception:
+                        self.status.setText("Success: HTTP 200")
+                elif resp.status_code == 401:
+                    self.status.setText("Unauthorized (401): API key invalid or lacks access.")
+                elif resp.status_code == 403:
+                    self.status.setText("Forbidden (403): Check account/permissions.")
+                elif resp.status_code == 404:
+                    self.status.setText("Not Found (404): Check Base URL.")
+                else:
+                    self.status.setText(f"HTTP {resp.status_code}: {resp.text[:120]}")
+            except requests.exceptions.RequestException as e:
+                self.status.setText(f"Network error: {e}")
+
+    def _toggle_provider_fields(self, provider: str):
+        p = provider.strip().lower()
+        is_stability = p == "stability"
+        # For usability, show Stability fields only when needed
+        self.stability_api_key.setEnabled(is_stability)
+        self.stability_base_url.setEnabled(is_stability)
+        self.stability_engine.setEnabled(is_stability)
+
+    def _apply_chat_provider_defaults(self, provider: str):
+        p = provider.strip().lower()
+        if p == "deepseek":
+            # Only set if user hasn't customized
+            if not self.base_url.text().strip():
+                self.base_url.setText("https://api.deepseek.com/v1")
+            if self.chat_model.text().strip() in ("", "gpt-4o-mini", "gpt-4", "gpt-4o", "gpt-3.5-turbo"):
+                self.chat_model.setText("deepseek-chat")
+            self.base_url_preset.setCurrentText("deepseek")
+        else:  # openai default
+            if not self.base_url.text().strip() or "deepseek" in self.base_url.text():
+                self.base_url.setText("https://api.openai.com/v1")
+            if self.chat_model.text().strip() == "deepseek-chat":
+                self.chat_model.setText("gpt-4o-mini")
+            self.base_url_preset.setCurrentText("openai")
+        self._sync_preset_with_base_url()
+
+    def _on_base_url_preset_changed(self, preset: str):
+        p = preset.strip().lower()
+        if p == "openai":
+            self.base_url.setText("https://api.openai.com/v1")
+            if self.chat_provider.currentText().lower() == "openai" and self.chat_model.text().strip() == "deepseek-chat":
+                self.chat_model.setText("gpt-4o-mini")
+        elif p == "deepseek":
+            self.base_url.setText("https://api.deepseek.com/v1")
+            if self.chat_provider.currentText().lower() == "deepseek" and self.chat_model.text().strip() in ("", "gpt-4o-mini", "gpt-4", "gpt-4o", "gpt-3.5-turbo"):
+                self.chat_model.setText("deepseek-chat")
+        # custom: do nothing
+        self._sync_preset_with_base_url()
+
+    def _on_base_url_text_changed(self, _text: str):
+        # If user edits base_url manually, sync preset to custom unless exact match
+        self._sync_preset_with_base_url()
+
+    def _sync_preset_with_base_url(self):
+        url = self.base_url.text().strip().rstrip("/")
+        if url == "https://api.openai.com/v1":
+            if self.base_url_preset.currentText() != "openai":
+                self.base_url_preset.setCurrentText("openai")
+        elif url == "https://api.deepseek.com/v1":
+            if self.base_url_preset.currentText() != "deepseek":
+                self.base_url_preset.setCurrentText("deepseek")
+        else:
+            if self.base_url_preset.currentText() != "custom":
+                self.base_url_preset.setCurrentText("custom")
 
 
 if __name__ == "__main__":

@@ -13,6 +13,9 @@ from PyQt6.QtGui import QIcon
 from core.pet_window import CRTBuddyWindow
 from generators.meme_engine import MemeEngine
 
+# Maximum allowed length for user-entered text to avoid layout/performance issues
+MAX_TEXT_LEN = 200
+
 
 class CRTBuddyApp:
     """Main application class for CRT Buddy."""
@@ -62,6 +65,10 @@ class CRTBuddyApp:
         try:
             # Get user input text
             text = self.window.get_input_text()
+            if text and len(text.strip()) > MAX_TEXT_LEN:
+                self.window.set_status(f"TEXT TOO LONG (>{MAX_TEXT_LEN} chars)")
+                self.window.set_mood("idle")
+                return
             # Validate image first
             try:
                 _ = self.meme_engine.validate_image(image_path)  # returns PIL.Image but we re-open in generate
@@ -104,6 +111,9 @@ class CRTBuddyApp:
         
         if not text:
             self.window.set_status("Please enter some text first!")
+            return
+        if len(text) > MAX_TEXT_LEN:
+            self.window.set_status(f"TEXT TOO LONG (>{MAX_TEXT_LEN} chars)")
             return
         
         self.window.set_mood("processing")

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 CRT Buddy - Main Application v6.0
 Y2K Desktop Pet and Meme Generator with Input Visualization
@@ -158,9 +159,9 @@ class CRTBuddyApp:
         self.window.show()
         return self.app.exec()
 
-Keeps backward compatibility for users who run `python main.py`.
-Actual application code lives in `CRT_Buddy.py` (function `main`).
-"""
+
+# Keeps backward compatibility for users who run 'python main.py'.
+# Actual application code lives in CRT_Buddy.py (function main).
 
 from CRT_Buddy import main as run
 

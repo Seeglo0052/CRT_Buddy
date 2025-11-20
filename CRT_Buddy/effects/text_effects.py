@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 CRT Buddy - Text Effects
 Y2K style text rendering effects

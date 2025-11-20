@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 CRT Buddy - Pet Window v5.0
 Y2K Desktop PC style with horizontal layout, pixel font and metallic buttons
@@ -63,14 +64,14 @@ class CRTBuddyWindow(QWidget):
                     font_families = QFontDatabase.applicationFontFamilies(font_id)
                     if font_families:
                         self.pixel_font_family = font_families[0]
-                        print(f"? Loaded pixel font: {self.pixel_font_family} from {abs_path}")
+                        print(f"✓ Loaded pixel font: {self.pixel_font_family} from {abs_path}")
                         return
         
         # FORCE pixel font - no fallback!
         self.pixel_font_family = "DinkieBitmap 9px"
-        print("? WARNING: Pixel font file not found! Using font name anyway.")
-        print(f"? Searched paths: {font_paths}")
-        print("? If you see wrong fonts, check DinkieBitmap-v1.5.0-KeDingKeMao/ttf/ folder!")
+        print("[INFO] WARNING: Pixel font file not found! Using font name anyway.")
+        print(f"[INFO] Searched paths: {font_paths}")
+        print("[INFO] If you see wrong fonts, check DinkieBitmap-v1.5.0-KeDingKeMao/ttf/ folder!")
         
     def init_ui(self):
         """Initialize user interface - Y2K desktop PC style"""

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 CRT Buddy - Pet Window v6.0
 Y2K Desktop PC style with INPUT VISUALIZATION and keystroke tracking

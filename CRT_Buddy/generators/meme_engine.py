@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 CRT Buddy - Meme Generator Engine
 Y2K style Meme generation engine

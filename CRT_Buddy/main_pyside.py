@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 CRT Buddy - Main Application (PySide6 Compatible)
 Y2K Desktop Pet and Meme Generator

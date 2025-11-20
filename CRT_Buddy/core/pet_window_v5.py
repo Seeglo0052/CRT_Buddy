@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 CRT Buddy - Pet Window v5.0
 Y2K Desktop PC style with bar buttons and round power button
@@ -86,20 +87,20 @@ class CRTBuddyWindow(QWidget):
         
         # Buttons - Y2K desktop PC style
         # Generate button (long bar)
-        self.generate_btn = QPushButton("¡ñ GENERATE")
+        self.generate_btn = QPushButton("ï¿½ï¿½ GENERATE")
         self.generate_btn.setMinimumHeight(38)
         self.generate_btn.setStyleSheet(self.get_bar_button_style("#FF0080", "#FF66B3"))
         layout.addWidget(self.generate_btn)
         
         # Image button (long bar)
-        self.upload_btn = QPushButton("¡ñ IMAGE")
+        self.upload_btn = QPushButton("ï¿½ï¿½ IMAGE")
         self.upload_btn.setMinimumHeight(38)
         self.upload_btn.setStyleSheet(self.get_bar_button_style("#00CCFF", "#66E0FF"))
         self.upload_btn.clicked.connect(self.upload_image)
         layout.addWidget(self.upload_btn)
         
         # Random button (long bar)
-        self.effect_btn = QPushButton("¡ñ RANDOM")
+        self.effect_btn = QPushButton("ï¿½ï¿½ RANDOM")
         self.effect_btn.setMinimumHeight(38)
         self.effect_btn.setStyleSheet(self.get_bar_button_style("#FFD700", "#FFE766"))
         layout.addWidget(self.effect_btn)
@@ -110,7 +111,7 @@ class CRTBuddyWindow(QWidget):
         close_container = QHBoxLayout()
         close_container.addStretch()
         
-        self.close_btn = QPushButton("¡Á")
+        self.close_btn = QPushButton("ï¿½ï¿½")
         self.close_btn.setFixedSize(42, 42)
         self.close_btn.setStyleSheet(self.get_round_button_style())
         self.close_btn.clicked.connect(self.close)

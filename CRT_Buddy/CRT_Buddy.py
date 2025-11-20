@@ -1,4 +1,4 @@
-# -*- coding: latin-1 -*-
+# -*- coding: utf-8 -*-
 """CRT Buddy - Y2K Desktop Pet & Meme Generator
 
 Encoding sanitized: original file contained invalid UTF-8 bytes causing
@@ -184,7 +184,7 @@ def main():
     print("  CRT BUDDY - Y2K Desktop Pet")
     print("  Y2K Desktop Pet & Meme Generator")
     print("=" * 50)
-    print("\n? Starting CRT Buddy...\n")
+    print("\n✓ Starting CRT Buddy...\n")
     
     app = CRTBuddyApp()
     sys.exit(app.run())

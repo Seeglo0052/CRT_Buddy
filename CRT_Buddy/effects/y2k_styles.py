@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 CRT Buddy - Y2K Style Effects
 Y2K style image filters and effects

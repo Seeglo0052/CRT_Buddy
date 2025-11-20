@@ -158,18 +158,12 @@ class CRTBuddyApp:
         self.window.show()
         return self.app.exec()
 
+Keeps backward compatibility for users who run `python main.py`.
+Actual application code lives in `CRT_Buddy.py` (function `main`).
+"""
 
-def main():
-    """Main function"""
-    print("=" * 50)
-    print("  CRT BUDDY - Y2K Desktop Pet")
-    print("  Y2K Desktop Pet & Meme Generator")
-    print("=" * 50)
-    print("\nStarting CRT Buddy...\n")
-    
-    app = CRTBuddyApp()
-    sys.exit(app.run())
+from CRT_Buddy import main as run
 
 
 if __name__ == "__main__":
-    main()
+    run()

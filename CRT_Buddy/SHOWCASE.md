@@ -1,272 +1,151 @@
-# ?? CRT Buddy - ¹¦ÄÜÕ¹Ê¾
+# ?? CRT Buddy - ï¿½ï¿½ï¿½ï¿½Õ¹Ê¾
 
-## ?? Ð§¹ûÔ¤ÀÀ
+## ?? Ð§ï¿½ï¿½Ô¤ï¿½ï¿½
 
-### ×ÀÃæ³èÎï´°¿Ú
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï´°ï¿½ï¿½
 ```
-©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
-©¦  ? CRT BUDDY ?                 ©¦
-©¦                                  ©¦
-©¦  ? READY TO GENERATE Y2K VIBES  ©¦
-©¦                                  ©¦
-©¦  ©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´  ©¦
-©¦  ©¦ Type your message or     ©¦  ©¦
-©¦  ©¦ drag an image here...    ©¦  ©¦
-©¦  ©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼  ©¦
-©¦                                  ©¦
-©¦  [ ? GENERATE MEME ? ]        ©¦
-©¦  [ ?? UPLOAD IMAGE ?? ]        ©¦
-©¦  [ ? RANDOM Y2K EFFECT ? ]   ©¦
-©¦                                  ©¦
-©¦  Drag me anywhere! ? Right-click©¦
-©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½  ? CRT BUDDY ?                 ï¿½ï¿½
+# CRT Buddy Showcase å±•ç¤º
+
+ç²¾é€‰åŠŸèƒ½ä¸Žæ•ˆæžœå±•ç¤ºï¼Œå¸®åŠ©ä½ å¿«é€Ÿç†è§£ CRT Buddy çš„è§†è§‰é£Žæ ¼ä¸Žè¾“å‡ºç»“æžœã€‚
+
+---
+
+## UI Overview ç•Œé¢æ¦‚è§ˆ
+
+å…¸åž‹ä¸»ç•Œé¢ï¼ˆç¤ºæ„ï¼‰ï¼š
+
+```
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ CRT BUDDY â€” READY TO GENERATE Y2K VIBES       â”‚
+â”‚                                               â”‚
+â”‚  [ Type your message or drag an image here ]  â”‚
+â”‚                                               â”‚
+â”‚  [ GENERATE MEME ]  [ UPLOAD IMAGE ]  [ RANDOM]
+â”‚                                               â”‚
+â”‚  Drag me anywhere Â· Right-click for menu      â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
 
-## ?? ºËÐÄ¹¦ÄÜÕ¹Ê¾
+## Text Styles æ–‡å­—æ ·å¼ç¤ºä¾‹
 
-### 1. ÎÄ×ÖÌØÐ§ÏµÍ³
+- Gradient æ¸å˜æ–‡å­—ï¼šé«˜å…‰ + 3D é˜´å½±
+- Glitch æ•…éšœé£Žæ ¼ï¼šRGB åˆ†ç¦» + æŠ–åŠ¨
+- Neon éœ“è™¹ï¼šå‘å…‰è½®å»“ + å†…é˜´å½±
+- Chrome é•€é“¬ï¼šé‡‘å±žé«˜å…‰åå°„ï¼Œé€‚åˆ LOGO/æ ‡é¢˜
+- Retro å¤å¤ï¼šåƒç´ åŒ–è¾¹ç¼˜ + æ—§ç½‘æ„Ÿ
 
-#### ½¥±äÎÄ×Ö (Gradient Text)
-```
-ÌØµã£º
-- ¶àÉ«½¥±ä±³¾°
-- ÇàÉ«Ó«¹âÎÄ×Ö
-- 3DÒõÓ°Ð§¹û
-- ÊÊºÏ£º±êÌâ¡¢±êÓï
-```
+å¯åœ¨ `effects/text_effects.py` ä¸­æŸ¥çœ‹å®žçŽ°ç»†èŠ‚ã€‚
 
-#### ¹ÊÕÏÎÄ×Ö (Glitch Text)
-```
-ÌØµã£º
-- RGBÉ«²Ê·ÖÀë
-- Ëæ»ú¸ÉÈÅÏß
-- Èü²©Åó¿Ë·ç¸ñ
-- ÊÊºÏ£º¿áìÅ±êÌâ¡¢¾¯¸æÎÄ×Ö
-```
+---
 
-#### ÄÞºçÎÄ×Ö (Neon Text)
-```
-ÌØµã£º
-- ¶à²ã»Ô¹â
-- ·Û×ÏÉ«µ÷
-- Ò¹µêÕÐÅÆ¸Ð
-- ÊÊºÏ£ºÅÉ¶Ôº£±¨¡¢Ò¹µê·ç¸ñ
-```
+## Image Effects å›¾ç‰‡æ•ˆæžœç¤ºä¾‹
 
-#### ¶Æ¸õÎÄ×Ö (Chrome Text)
-```
-ÌØµã£º
-- ½ðÊô¹âÔó
-- ÒøÉ«½¥±ä
-- Á¢ÌåÐ§¹û
-- ÊÊºÏ£ºLogo¡¢Æ·ÅÆ±êÊ¶
-```
+- CRTï¼šæ‰«æçº¿ + è½»å¾® RGB åç§»ï¼Œæ˜¾åƒç®¡è´¨æ„Ÿ
+- VHSï¼šæŠ–åŠ¨/æ‹–å½±/å™ªç‚¹ï¼Œå½•åƒå¸¦é£Žå‘³
+- Holographic/Chrome/Neonï¼šå…¨æ¯/é•€é“¬/éœ“è™¹é«˜å…‰
+- Pixelateï¼šå¼ºåƒç´ åŒ–ï¼ˆ8/16-bit é£Žæ ¼ï¼‰
 
-#### ¸´¹ÅÎÄ×Ö (Retro Text)
+å®žçŽ°è§ `effects/y2k_styles.py` ä¸Ž `generators/meme_engine.py`ã€‚
+
+---
+
+## Example Prompts æ–‡æ¡ˆçµæ„Ÿ
+
+- WELCOME TO MY WEBSITE
+- UNDER CONSTRUCTION
+- BEST VIEWED IN NETSCAPE
+- POWERED BY GEOCITIES
+- CYBER DREAMS 2000
+
+---
+
+## Export è¾“å‡º
+
+- è¾“å‡ºç›®å½•ï¼š`output/`
+- æ–‡ä»¶å‘½åï¼š`y2k_text_*.png` / `y2k_image_*.png` / `y2k_random_*.png`
+
+---
+
+å¦‚éœ€æäº¤æˆªå›¾æˆ–æ¡ˆä¾‹ï¼Œæ¬¢è¿Žåœ¨ä»“åº“ Discussions/Issues ä¸­è¡¥å……åˆ†äº«ã€‚
+
+---
+
+## ?? ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½
+
+```markdown
+# CRT Buddy â€” Showcase
+
+Curated features and outputs to quickly grasp the visual style and results of CRT Buddy.
+
+---
+
+## UI Overview
+
+Example main window (illustrative):
+
 ```
-ÌØµã£º
-- ²Êºç×ÖÄ¸
-- ÐÇ¿Õ±³¾°
-- Ã¿¸ö×ÖÄ¸²»Í¬ÑÕÉ«
-- ÊÊºÏ£º¸öÈËÍøÕ¾¡¢ºØ¿¨
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ CRT BUDDY â€” READY TO GENERATE Y2K VIBES               â”‚
+â”‚                                                        â”‚
+â”‚  [ Type your message or drag an image here ]           â”‚
+â”‚                                                        â”‚
+â”‚  [ GENERATE MEME ]  [ UPLOAD IMAGE ]  [ RANDOM ]       â”‚
+â”‚                                                        â”‚
+â”‚  Drag me anywhere Â· Right-click for menu               â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
 
-### 2. Í¼ÏñÌØÐ§ÏµÍ³
+## Text Styles (examples)
 
-#### ??? CRTÏÔÊ¾Æ÷Ð§¹û
-```yaml
-Ð§¹û×é³É:
-  - Ë®Æ½É¨ÃèÏß£¨¼ä¸ô3-4ÏñËØ£©
-  - RGBÉ«²î£¨ºìÉ«ÓÒÒÆ£¬À¶É«×óÒÆ£©
-  - ÇáÎ¢»Ô¹â
-  
-ÊÊÓÃ³¡¾°:
-  - ¸´¹ÅÕÕÆ¬
-  - ÆÁÄ»½ØÍ¼
-  - ÓÎÏ·»­Ãæ
-  
-Y2KÖ¸Êý: ?????
-```
-
-#### ?? VHSÂ¼Ïñ´ø¹ÊÕÏ
-```yaml
-Ð§¹û×é³É:
-  - Ëæ»úË®Æ½Ìõ´øÎ»ÒÆ
-  - É«²ÊÍ¨µÀÊ§Õæ
-  - ÔëµãÔöÇ¿
-  
-ÊÊÓÃ³¡¾°:
-  - ¼ÒÍ¥Â¼Ïñ·ç¸ñ
-  - »³¾ÉÊÓÆµ½ØÍ¼
-  - Lo-fiÃÀÑ§
-  
-Y2KÖ¸Êý: ?????
-```
-
-#### ?? È«Ï¢ÀØÉäÐ§¹û
-```yaml
-Ð§¹û×é³É:
-  - ²Êºç½¥±äµþ¼Ó
-  - ½ðÊô¹âÔóÔöÇ¿
-  - ¸ß¶Ô±È¶È
-  
-ÊÊÓÃ³¡¾°:
-  - CD·âÃæÉè¼Æ
-  - ÌùÖ½Ð§¹û
-  - °ü×°Éè¼Æ
-  
-Y2KÖ¸Êý: ?????
-```
-
-#### ?? ¶Æ¸õ½ðÊôÐ§¹û
-```yaml
-Ð§¹û×é³É:
-  - »Ò¶ÈÓ³Éä
-  - ÒøÉ«É«²ÊÓ³Éä
-  - ¸ß¹â´¦Àí
-  
-ÊÊÓÃ³¡¾°:
-  - LogoÉè¼Æ
-  - ½ðÊôÖÊ¸Ð
-  - ¿Æ¼¼¸ÐÍ¼Æ¬
-  
-Y2KÖ¸Êý: ????
-```
-
-#### ?? ÄÞºç»Ô¹âÐ§¹û
-```yaml
-Ð§¹û×é³É:
-  - ±¥ºÍ¶ÈÌáÉý200%
-  - ¸ßË¹Ä£ºý»Ô¹â
-  - ÁÁ¶ÈÔöÇ¿
-  
-ÊÊÓÃ³¡¾°:
-  - Ò¹¾°ÕÕÆ¬
-  - ÅÉ¶ÔÕÕÆ¬
-  - Ó«¹âÐ§¹û
-  
-Y2KÖ¸Êý: ????
-```
-
-#### ?? ÏñËØ»¯Ð§¹û
-```yaml
-Ð§¹û×é³É:
-  - 8-16ÏñËØ¿é
-  - ÁÚ½ü²åÖµ
-  - ¸´¹ÅÓÎÏ··ç¸ñ
-  
-ÊÊÓÃ³¡¾°:
-  - Í·ÏñÂíÈü¿Ë
-  - ¸´¹ÅÓÎÏ·¸Ð
-  - ÒþË½±£»¤
-  
-Y2KÖ¸Êý: ???
-```
+- Gradient: glossy highlight + subtle 3D shadow
+- Glitch: RGB channel split + jitter
+- Neon: glow ring + inner shadow
+- Chrome: metallic reflection; great for logos/headlines
+- Retro: pixelated edge with old-web vibes
 
 ---
 
-### 3. ×°ÊÎÔªËØÏµÍ³
+## Effects on Images
 
-#### Y2KÌùÖ½¿â
-```
-·ûºÅÀà£º
-? ? ?? ?? ? ? ? ??
-
-µç×ÓÀà£º
-?? ?? ?? ??? ?? ?? ??
-
-×ÔÈ»Àà£º
-?? ?? ?? ??
-
-¿Æ¼¼Àà£º
-?? ?? ??
-```
-
-#### ±ß¿òÑùÊ½
-```
-1. Ó«¹â±ß¿ò£¨ÂÌ/·Û/Çà/»Æ£©
-2. ½¥±ä±ß¿ò
-3. Ë«²ã±ß¿ò
-4. ½ÇÂä×°ÊÎ£¨·½¿é/ÐÇÐÇ£©
-```
-
-#### ÎÄ×Öµþ¼Ó
-```
-Î»ÖÃ£º
-- ¶¥²¿Ìõ£¨ºÚÉ«°ëÍ¸Ã÷±³¾°£©
-- µ×²¿Ìõ£¨ºÚÉ«°ëÍ¸Ã÷±³¾°£©
-
-ÑÕÉ«£º
-- ¶¥²¿£ºÇàÉ« (#00ffff)
-- µ×²¿£º·Ûºì (#ff00ff)
-
-Ð§¹û£º
-- ºÚÉ«ÒõÓ°
-- Ó«¹âÖ÷ÎÄ×Ö
-```
+- CRT scanlines + RGB shift
+- VHS jitter/ghosting/static noise
+- Pixelate (8/16-bit)
+- Holographic, chrome, neon overlays
 
 ---
 
-## ?? ÅäÉ«·½°¸
+## Sample Prompts
 
-### ¾­µäY2KÉ«°å
-```css
-/* Ö÷É«µ÷ */
-Ó«¹â·Û: #ff00ff
-µç×ÓÇà: #00ffff
-ÄûÃÊ»Æ: #ffff00
-¾ØÕóÂÌ: #00ff00
-
-/* ¸¨ÖúÉ« */
-Éî¿ÕºÚ: #000033
-ÒøÉ«: #cccccc
-½ðÉ«: #ffcc00
-×ÏÉ«: #8800ff
-
-/* ±³¾°É« */
-Éî»Ò: #1e1e23
-ÖÐ»Ò: #64646e
-Ç³»Ò: #a0a0aa
-```
-
-### ½¥±ä×éºÏ
-```
-1. ·ÛÇà½¥±ä: #ff00ff ¡ú #00ffff
-2. »ÆÂÌ½¥±ä: #ffff00 ¡ú #00ff00
-3. ²Êºç½¥±ä: ºì¡ú³È¡ú»Æ¡úÂÌ¡úÀ¶¡ú×Ï
-4. ½ðÊô½¥±ä: #666 ¡ú #fff ¡ú #666
-```
+- WELCOME TO MY WEBSITE
+- UNDER CONSTRUCTION
+- BEST VIEWED IN NETSCAPE
+- POWERED BY GEOCITIES
 
 ---
 
-## ?? ×ÖÌåÍÆ¼ö
+## Outputs
 
-### ÏµÍ³×ÖÌå£¨×Ô¶¯Ê¹ÓÃ£©
-```
-Windows:
-- Arial (Ä¬ÈÏ)
-- Courier New (´úÂë·ç¸ñ)
-- Comic Sans MS (¸´¹Å¸Ð)
-- Impact (±êÌâ)
-
-±¸ÓÃ:
-- ÏµÍ³Ä¬ÈÏ×ÖÌå
+- Text â†’ `output/y2k_text_*.png`
+- Image â†’ `output/y2k_image_*.png`
+- Random â†’ `output/y2k_random_*.png`
 ```
 
-### ÍÆ¼öÍâ²¿×ÖÌå£¨¿ÉÑ¡£©
+### ï¿½Æ¼ï¿½ï¿½â²¿ï¿½ï¿½ï¿½å£¨ï¿½ï¿½Ñ¡ï¿½ï¿½
 ```
-Y2K·ç¸ñ×ÖÌå£º
-1. Visitor (ÏñËØ·ç¸ñ)
-2. Orbitron (¿Æ¼¼¸Ð)
-3. Audiowide (µç×Ó¸Ð)
-4. Press Start 2P (ÓÎÏ··ç¸ñ)
-5. VT323 (ÖÕ¶Ë·ç¸ñ)
+Y2Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å£º
+1. Visitor (ï¿½ï¿½ï¿½Ø·ï¿½ï¿½)
+2. Orbitron (ï¿½Æ¼ï¿½ï¿½ï¿½)
+3. Audiowide (ï¿½ï¿½ï¿½Ó¸ï¿½)
+4. Press Start 2P (ï¿½ï¿½Ï·ï¿½ï¿½ï¿½)
+5. VT323 (ï¿½Õ¶Ë·ï¿½ï¿½)
 
-ÏÂÔØÍøÕ¾:
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾:
 - Google Fonts
 - DaFont
 - 1001 Fonts
@@ -274,203 +153,203 @@ Y2K·ç¸ñ×ÖÌå£º
 
 ---
 
-## ?? ¼¼Êõ²ÎÊý
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### Í¼Ïñ´¦Àí
+### Í¼ï¿½ï¿½ï¿½ï¿½
 ```yaml
-×î´óÍ¼Ïñ³ß´ç: 800x800 px
-ÎÄ×ÖÍ¼ÏñÄ¬ÈÏ: 800x400 px
-Êä³ö¸ñÊ½: PNG (ÎÞËð)
-É«²Ê¿Õ¼ä: RGB
-Î»Éî¶È: 8-bit per channel
+ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ß´ï¿½: 800x800 px
+ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ä¬ï¿½ï¿½: 800x400 px
+ï¿½ï¿½ï¿½ï¿½ï¿½Ê½: PNG (ï¿½ï¿½ï¿½ï¿½)
+É«ï¿½Ê¿Õ¼ï¿½: RGB
+Î»ï¿½ï¿½ï¿½: 8-bit per channel
 
-ÌØÐ§²ÎÊý:
-  É¨ÃèÏß¼ä¸ô: 3-4 px
-  É«²îÆ«ÒÆ: 3 px
-  ¹ÊÕÏÌõ´ø: 5-30 px
-  ÏñËØ¿é´óÐ¡: 6-12 px
-  »Ô¹â°ë¾¶: 15 px
-  ±ß¿ò¿í¶È: 10 px
+ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½:
+  É¨ï¿½ï¿½ï¿½ß¼ï¿½ï¿½: 3-4 px
+  É«ï¿½ï¿½Æ«ï¿½ï¿½: 3 px
+  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: 5-30 px
+  ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½Ð¡: 6-12 px
+  ï¿½Ô¹ï¿½ë¾¶: 15 px
+  ï¿½ß¿ï¿½ï¿½ï¿½ï¿½: 10 px
 ```
 
-### ÐÔÄÜÖ¸±ê
+### ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 ```yaml
-ÎÄ×ÖÉú³É: <1Ãë
-Í¼ÏñÌØÐ§: 1-3Ãë
-Í¼Ïñ±£´æ: <1Ãë
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: <1ï¿½ï¿½
+Í¼ï¿½ï¿½ï¿½ï¿½Ð§: 1-3ï¿½ï¿½
+Í¼ï¿½ñ±£´ï¿½: <1ï¿½ï¿½
 
-ÄÚ´æÕ¼ÓÃ: ~100-200 MB
-CPUÕ¼ÓÃ: ÖÐµÈ£¨´¦ÀíÊ±£©
+ï¿½Ú´ï¿½Õ¼ï¿½ï¿½: ~100-200 MB
+CPUÕ¼ï¿½ï¿½: ï¿½ÐµÈ£ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
-Ö§³ÖÍ¼Æ¬´óÐ¡: ×î´ó4000x4000
-ÍÆ¼öÍ¼Æ¬´óÐ¡: 500-2000 px
+Ö§ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ð¡: ï¿½ï¿½ï¿½4000x4000
+ï¿½Æ¼ï¿½Í¼Æ¬ï¿½ï¿½Ð¡: 500-2000 px
 ```
 
 ---
 
-## ?? Ê¹ÓÃ³¡¾°
+## ?? Ê¹ï¿½Ã³ï¿½ï¿½ï¿½
 
-### ¸öÈËÊ¹ÓÃ
+### ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
 ```
-? Éç½»Ã½ÌåÍ·Ïñ
-? ÅóÓÑÈ¦/InstagramÌû×Ó
-? ±íÇé°üÖÆ×÷
-? µç×ÓºØ¿¨
-? ×ÀÃæ±ÚÖ½
-```
-
-### ´´×÷Ê¹ÓÃ
-```
-? Y2K·ç¸ñÉè¼Æ
-? ¸´¹ÅÍøÕ¾ÔªËØ
-? VaporwaveÒÕÊõ
-? ÒôÀÖ×¨¼­·âÃæ
-? »î¶¯º£±¨
+? ï¿½ç½»Ã½ï¿½ï¿½Í·ï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½È¦/Instagramï¿½ï¿½ï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+? ï¿½ï¿½ï¿½ÓºØ¿ï¿½
+? ï¿½ï¿½ï¿½ï¿½ï¿½Ö½
 ```
 
-### ÉÌÒµÊ¹ÓÃ
+### ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
 ```
-? Æ·ÅÆY2KÓªÏú
-? ¸´¹ÅÖ÷Ìâ»î¶¯
-? Éç½»Ã½ÌåÄÚÈÝ
-? °ü×°Éè¼Æ²Î¿¼
-? ¸ÅÄîÉè¼Æ
-```
-
----
-
-## ?? ´´ÒâÁé¸Ð
-
-### ¾­µäY2KÔªËØ×éºÏ
-```
-×éºÏ1: CRTÐ§¹û + "UNDER CONSTRUCTION"
-¡ú ÍêÃÀµÄ¸´¹ÅÍøÕ¾ÔªËØ
-
-×éºÏ2: ÄÞºç»Ô¹â + ÅÉ¶ÔÕÕÆ¬
-¡ú 90Äê´úÒ¹µê·ÕÎ§
-
-×éºÏ3: VHS¹ÊÕÏ + ¼ÒÍ¥ÕÕÆ¬
-¡ú »³¾É¼ÒÍ¥Â¼Ïñ´ø
-
-×éºÏ4: È«Ï¢Ð§¹û + Logo
-¡ú CD·âÃæ/ÌùÖ½Éè¼Æ
-
-×éºÏ5: ¶Æ¸õÎÄ×Ö + ¿Æ¼¼´Ê»ã
-¡ú Èü²©Åó¿Ë±êÌâ
+? Y2Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾Ôªï¿½ï¿½
+? Vaporwaveï¿½ï¿½ï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½×¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+? ï¿½î¶¯ï¿½ï¿½ï¿½ï¿½
 ```
 
-### MemeÄ£°å´´Òâ
+### ï¿½ï¿½ÒµÊ¹ï¿½ï¿½
 ```
-Ä£°å1: Drake¸ñÊ½
-- ÉÏÍ¼: ÆÕÍ¨ÕÕÆ¬£¨¾Ü¾øÊÖÊÆ£©
-- ÏÂÍ¼: Y2KÌØÐ§ÕÕÆ¬£¨µãÔÞÊÖÊÆ£©
-
-Ä£°å2: ¶Ô±È¸ñÊ½
-- ×ó±ß: "2023"£¨ÏÖ´ú¼òÔ¼£©
-- ÓÒ±ß: "2000"£¨Y2KÌØÐ§£©
-
-Ä£°å3: Ë¼Î¬À©Õ¹
-- Ð¡ÄÔ: ÆÕÍ¨Éè¼Æ
-- ·¢¹âÄÔ: Y2KÃÀÑ§
-
-Ä£°å4: Ê±¼äÏß
-- Õ¹Ê¾²»Í¬Y2KÌØÐ§µÄÑÝ±ä
+? Æ·ï¿½ï¿½Y2KÓªï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î¶¯
+? ï¿½ç½»Ã½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+? ï¿½ï¿½×°ï¿½ï¿½Æ²Î¿ï¿½
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ```
 
 ---
 
-## ?? Î´À´¹¦ÄÜÔ¤¸æ
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### V2.0 ¼Æ»®
+### ï¿½ï¿½ï¿½ï¿½Y2KÔªï¿½ï¿½ï¿½ï¿½ï¿½
 ```
-? ÐÂÌØÐ§:
-   - Ë®²¨ÎÆÐ§¹û
-   - ²£Á§ËéÁÑ
-   - Êý×ÖÓê£¨Matrix·ç¸ñ£©
-   - ¼¤¹âÍø¸ñ±³¾°
+ï¿½ï¿½ï¿½1: CRTÐ§ï¿½ï¿½ + "UNDER CONSTRUCTION"
+ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾Ôªï¿½ï¿½
 
-?? ÐÂ¹¦ÄÜ:
-   - GIF¶¯»­µ¼³ö
-   - ÅúÁ¿´¦ÀíÄ£Ê½
-   - ×Ô¶¨ÒåÉ«°å
-   - Ä£°å±£´æ
+ï¿½ï¿½ï¿½2: ï¿½Þºï¿½Ô¹ï¿½ + ï¿½É¶ï¿½ï¿½ï¿½Æ¬
+ï¿½ï¿½ 90ï¿½ï¿½ï¿½Ò¹ï¿½ï¿½ï¿½Î§
 
-?? ÒôÐ§:
+ï¿½ï¿½ï¿½3: VHSï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½Í¥ï¿½ï¿½Æ¬
+ï¿½ï¿½ ï¿½ï¿½ï¿½É¼ï¿½Í¥Â¼ï¿½ï¿½ï¿½
+
+ï¿½ï¿½ï¿½4: È«Ï¢Ð§ï¿½ï¿½ + Logo
+ï¿½ï¿½ CDï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+
+ï¿½ï¿½ï¿½5: ï¿½Æ¸ï¿½ï¿½ï¿½ï¿½ï¿½ + ï¿½Æ¼ï¿½ï¿½Ê»ï¿½
+ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½
+```
+
+### MemeÄ£ï¿½å´´ï¿½ï¿½
+```
+Ä£ï¿½ï¿½1: Drakeï¿½ï¿½Ê½
+- ï¿½ï¿½Í¼: ï¿½ï¿½Í¨ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½Ü¾ï¿½ï¿½ï¿½ï¿½Æ£ï¿½
+- ï¿½ï¿½Í¼: Y2Kï¿½ï¿½Ð§ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½
+
+Ä£ï¿½ï¿½2: ï¿½Ô±È¸ï¿½Ê½
+- ï¿½ï¿½ï¿½: "2023"ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½
+- ï¿½Ò±ï¿½: "2000"ï¿½ï¿½Y2Kï¿½ï¿½Ð§ï¿½ï¿½
+
+Ä£ï¿½ï¿½3: Ë¼Î¬ï¿½ï¿½Õ¹
+- Ð¡ï¿½ï¿½: ï¿½ï¿½Í¨ï¿½ï¿½ï¿½
+- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: Y2Kï¿½ï¿½Ñ§
+
+Ä£ï¿½ï¿½4: Ê±ï¿½ï¿½ï¿½ï¿½
+- Õ¹Ê¾ï¿½ï¿½Í¬Y2Kï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ý±ï¿½
+```
+
+---
+
+## ?? Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½
+
+### V2.0 ï¿½Æ»ï¿½
+```
+? ï¿½ï¿½ï¿½ï¿½Ð§:
+   - Ë®ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½ï¿½ê£¨Matrixï¿½ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ±³¾ï¿½
+
+?? ï¿½Â¹ï¿½ï¿½ï¿½:
+   - GIFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+   - ï¿½Ô¶ï¿½ï¿½ï¿½É«ï¿½ï¿½
+   - Ä£ï¿½å±£ï¿½ï¿½
+
+?? ï¿½ï¿½Ð§:
    - ICQ "Uh oh!"
-   - WindowsÆô¶¯Òô
-   - ²¦ºÅÒô
-   - °´¼üÒôÐ§
+   - Windowsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§
 ```
 
-### V3.0 Ô¸¾°
+### V3.0 Ô¸ï¿½ï¿½
 ```
-?? AI¼¯³É:
-   - AIÉú³ÉY2KÎÄ°¸
-   - AIÍ¼ÏñÔöÇ¿
-   - ·ç¸ñÍÆ¼öÏµÍ³
+?? AIï¿½ï¿½ï¿½ï¿½:
+   - AIï¿½ï¿½ï¿½ï¿½Y2Kï¿½Ä°ï¿½
+   - AIÍ¼ï¿½ï¿½ï¿½ï¿½Ç¿
+   - ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ÏµÍ³
 
-?? ÔÚÏß¹¦ÄÜ:
-   - ÔÆ¶ËÄ£°å¿â
-   - ÉçÇø·ÖÏí
-   - ÔÚÏßÐ­×÷
+?? ï¿½ï¿½ï¿½ß¹ï¿½ï¿½ï¿½:
+   - ï¿½Æ¶ï¿½Ä£ï¿½ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+   - ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½
 
-?? ×¨Òµ¹¦ÄÜ:
-   - Í¼²ãÏµÍ³
-   - ¸ü¶à×Ô¶¨ÒåÑ¡Ïî
-   - ÊÓÆµ´¦Àí
+?? ×¨Òµï¿½ï¿½ï¿½ï¿½:
+   - Í¼ï¿½ï¿½ÏµÍ³
+   - ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
+   - ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½
 ```
 
 ---
 
-## ?? ×î¼ÑÊµ¼ù
+## ?? ï¿½ï¿½ï¿½Êµï¿½ï¿½
 
-### »ñµÃ×î¼ÑÐ§¹ûµÄ¼¼ÇÉ
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 
-1?? **Ñ¡ÔñºÏÊÊµÄÔ´Í¼Æ¬**
+1?? **Ñ¡ï¿½ï¿½ï¿½ï¿½Êµï¿½Ô´Í¼Æ¬**
 ```
-? ¸ß·Ö±æÂÊ£¨500pxÒÔÉÏ£©
-? ÇåÎúµÄÖ÷Ìå
-? ¶Ô±È¶ÈÁ¼ºÃ
-? ¹ý¶ÈÑ¹ËõµÄÍ¼Æ¬
-? Ì«°µ»òÌ«ÁÁ
-```
-
-2?? **ÎÄ×ÖÉè¼ÆÔ­Ôò**
-```
-? ¼ò¶ÌÓÐÁ¦£¨3-5¸öµ¥´Ê£©
-? È«´óÐ´¸üÓÐ³å»÷Á¦
-? Ê¹ÓÃY2KÁ÷ÐÐÓï
-? Ì«³¤µÄ¾ä×Ó
-? ¸´ÔÓµÄ´Ê»ã
+? ï¿½ß·Ö±ï¿½ï¿½Ê£ï¿½500pxï¿½ï¿½ï¿½Ï£ï¿½
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+? ï¿½Ô±È¶ï¿½ï¿½ï¿½ï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+? Ì«ï¿½ï¿½ï¿½ï¿½Ì«ï¿½ï¿½
 ```
 
-3?? **ÌØÐ§Ñ¡Ôñ**
+2?? **ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½**
 ```
-ÕÕÆ¬ÀàÐÍ ¡ú ÍÆ¼öÌØÐ§
-ÈËÏñÕÕÆ¬ ¡ú ÄÞºç»Ô¹â/CRT
-·ç¾°ÕÕÆ¬ ¡ú È«Ï¢/VHS
-ÎÄ×ÖÄÚÈÝ ¡ú ¶Æ¸õ/¹ÊÕÏ
-LogoÉè¼Æ ¡ú ¶Æ¸õ/½¥±ä
+? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3-5ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½
+? È«ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½ï¿½
+? Ê¹ï¿½ï¿½Y2Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+? Ì«ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
+? ï¿½ï¿½ï¿½ÓµÄ´Ê»ï¿½
 ```
 
-4?? **ÑÕÉ«´îÅä**
+3?? **ï¿½ï¿½Ð§Ñ¡ï¿½ï¿½**
 ```
-·ÛÉ« + ÇàÉ« = ¾­µäY2K
-»ÆÉ« + ×ÏÉ« = ¶Ô±ÈÇ¿ÁÒ
-ÂÌÉ« + ºÚÉ« = ¾ØÕó·ç¸ñ
-ÒøÉ« + À¶É« = ¿Æ¼¼¸Ð
+ï¿½ï¿½Æ¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Æ¼ï¿½ï¿½ï¿½Ð§
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¬ ï¿½ï¿½ ï¿½Þºï¿½Ô¹ï¿½/CRT
+ï¿½ç¾°ï¿½ï¿½Æ¬ ï¿½ï¿½ È«Ï¢/VHS
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Æ¸ï¿½/ï¿½ï¿½ï¿½ï¿½
+Logoï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Æ¸ï¿½/ï¿½ï¿½ï¿½ï¿½
+```
+
+4?? **ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½**
+```
+ï¿½ï¿½É« + ï¿½ï¿½É« = ï¿½ï¿½ï¿½ï¿½Y2K
+ï¿½ï¿½É« + ï¿½ï¿½É« = ï¿½Ô±ï¿½Ç¿ï¿½ï¿½
+ï¿½ï¿½É« + ï¿½ï¿½É« = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½É« + ï¿½ï¿½É« = ï¿½Æ¼ï¿½ï¿½ï¿½
 ```
 
 ---
 
 <div align="center">
 
-## ?? ¿ªÊ¼´´×÷ÄãµÄY2K½Ü×÷£¡
+## ?? ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Y2Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-**CRT Buddy ÈÃÃ¿¸öÈË¶¼ÄÜ³ÉÎªY2KÒÕÊõ¼Ò**
+**CRT Buddy ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Ë¶ï¿½ï¿½Ü³ï¿½ÎªY2Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**
 
-[ÏÂÔØ](https://github.com/yourusername/CRT_Buddy) ? 
-[½Ì³Ì](USAGE.md) ? 
-[·´À¡](https://github.com/yourusername/CRT_Buddy/issues)
+[ï¿½ï¿½ï¿½ï¿½](https://github.com/yourusername/CRT_Buddy) ? 
+[ï¿½Ì³ï¿½](USAGE.md) ? 
+[ï¿½ï¿½ï¿½ï¿½](https://github.com/yourusername/CRT_Buddy/issues)
 
 </div>

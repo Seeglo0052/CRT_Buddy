@@ -1,345 +1,117 @@
-# CRT Buddy - ¿ìËÙÊ¹ÓÃÖ¸ÄÏ
+# CRT Buddy - ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ö¸ï¿½ï¿½
+# CRT Buddy Usage Guide ä½¿ç”¨è¯´æ˜Ž
 
-## ?? ¿ìËÙ¿ªÊ¼
+æœ¬é¡µä»‹ç»å¦‚ä½•å¯åŠ¨å’Œä½¿ç”¨ CRT Buddy ç”Ÿæˆ Y2K é£Žæ ¼çš„æ–‡å­—/å›¾ç‰‡ Memeã€‚
 
-### ·½·¨ 1: Ê¹ÓÃÆô¶¯½Å±¾£¨ÍÆ¼ö£©
-```bash
-# WindowsÓÃ»§
-Ë«»÷ run.bat
+---
 
-# »òÕßÊ¹ÓÃÃüÁîÐÐ
+## Run å¯åŠ¨æ–¹å¼
+
+æ–¹å¼ Aï¼ˆæŽ¨èï¼Œå…ˆåšä¾èµ–æ£€æŸ¥ï¼‰
+```powershell
+```markdown
+# CRT Buddy â€” Usage Guide
+
+This page shows how to start and use CRT Buddy to create Y2K-style text/image memes.
+
+---
+
+## Run
+
+Recommended (performs a dependency self-check first):
+```powershell
 python start.py
 ```
 
-### ·½·¨ 2: Ö±½ÓÔËÐÐ
-```bash
+Direct run:
+```powershell
 python CRT_Buddy.py
 ```
 
----
-
-## ?? ÏêÏ¸Ê¹ÓÃ½Ì³Ì
-
-### 1?? Éú³ÉÎÄ×ÖMeme
-
-**²½Öè£º**
-1. ÔÚÊäÈë¿òÊäÈëÄãÏëÒªµÄÎÄ×Ö£¨ÀýÈç£º"Y2K VIBES ONLY"£©
-2. µã»÷ `? GENERATE MEME` °´Å¥
-3. µÈ´ý¼¸Ãë£¬Meme»á×Ô¶¯±£´æµ½ `output/` ÎÄ¼þ¼Ð
-4. ×´Ì¬À¸»áÏÔÊ¾£º"? SAVED: y2k_text_1.png"
-
-**Ê¾ÀýÎÄ×Ö£º**
-- "WELCOME TO MY WEBSITE"
-- "UNDER CONSTRUCTION"
-- "BEST VIEWED IN NETSCAPE"
-- "POWERED BY GEOCITIES"
-- ÈÎºÎÄãÏëÒªµÄÎÄ×Ö£¡
+On Windows you can also double-click `run_app.bat`.
 
 ---
 
-### 2?? ¸øÍ¼Æ¬Ìí¼ÓY2KÌØÐ§
+## Workflows
 
-**·½Ê½A - ÍÏ×§ÉÏ´«£º**
-1. ÕÒµ½ÄãÏëÒª´¦ÀíµÄÍ¼Æ¬ÎÄ¼þ
-2. Ö±½ÓÍÏ×§µ½CRT´°¿ÚÉÏ
-3. £¨¿ÉÑ¡£©ÔÚÊäÈë¿òÊäÈëÎÄ×Ö×÷Îª±êÌâ
-4. ×Ô¶¯Ó¦ÓÃËæ»úY2KÌØÐ§²¢±£´æ
+### 1) Text â†’ Meme
+1. Type a phrase (e.g., "Y2K VIBES ONLY")
+2. Click GENERATE MEME
+3. Check `output/` for the saved image (e.g., y2k_text_1.png)
 
-**·½Ê½B - °´Å¥ÉÏ´«£º**
-1. µã»÷ `?? UPLOAD IMAGE` °´Å¥
-2. ÔÚµ¯³ö´°¿ÚÑ¡ÔñÍ¼Æ¬
-3. £¨¿ÉÑ¡£©ÊäÈëÎÄ×Ö
-4. ×Ô¶¯´¦Àí²¢±£´æ
+Suggested prompts:
+- WELCOME TO MY WEBSITE
+- UNDER CONSTRUCTION
+- BEST VIEWED IN NETSCAPE
+- POWERED BY GEOCITIES
 
-**Ö§³ÖµÄÍ¼Æ¬¸ñÊ½£º**
-- PNG (.png)
-- JPEG (.jpg, .jpeg)
-- GIF (.gif)
-- BMP (.bmp)
+### 2) Image â†’ Y2K Effects
+Flow A (drag & drop)
+1. Drag an image into the window
+2. Apply CRT/VHS/Neon effects
+3. Save to `output/` (e.g., y2k_image_1.png)
 
----
+Flow B (upload)
+1. Click UPLOAD IMAGE and pick a file
+2. Apply effects
+3. Save to `output/`
 
-### 3?? Ëæ»úY2KÄ§·¨
-
-**²½Öè£º**
-1. µã»÷ `? RANDOM Y2K EFFECT` °´Å¥
-2. ÏµÍ³»á×Ô¶¯Éú³ÉÒ»¸öËæ»úµÄY2K·ç¸ñMeme
-3. ÎÄ×ÖºÍÌØÐ§¶¼ÊÇËæ»úÑ¡ÔñµÄ£¡
-
-**ÊÊºÏ³¡¾°£º**
-- ÐèÒªÁé¸ÐÊ±
-- ÏëÒª¿ìËÙÉú³ÉY2KÄÚÈÝ
-- Ì½Ë÷²»Í¬µÄ·ç¸ñ×éºÏ
+### 3) Random â†’ Surprise
+1. Click RANDOM Y2K EFFECT
+2. Save to `output/` (e.g., y2k_random_1.png)
 
 ---
 
-## ?? ÌØÐ§ËµÃ÷
+## Tips
 
-### ¿ÉÓÃµÄY2KÌØÐ§£º
-
-#### ??? CRTÐ§¹û
-- **ÌØµã£º** Ä£ÄâÀÏÊ½ÏÔÊ¾Æ÷
-- **Ð§¹û£º** É¨ÃèÏß + RGBÉ«²î
-- **·ç¸ñ£º** ¸´¹Åµç×ÓÉè±¸¸Ð
-
-#### ?? VHS¹ÊÕÏÒÕÊõ
-- **ÌØµã£º** Â¼Ïñ´øËð»µÐ§¹û
-- **Ð§¹û£º** Ë®Æ½Ìõ´øÎ»ÒÆ + É«²ÊÊ§Õæ
-- **·ç¸ñ£º** 90Äê´úÂ¼Ïñ´øÃÀÑ§
-
-#### ?? È«Ï¢ÀØÉä
-- **ÌØµã£º** ²Êºç½¥±äÐ§¹û
-- **Ð§¹û£º** ¶àÉ«½¥±ä + ½ðÊô¹âÔó
-- **·ç¸ñ£º** CD·âÃæ¡¢ÌùÖ½·ç¸ñ
-
-#### ?? ¶Æ¸õ½ðÊô
-- **ÌØµã£º** ÒøÉ«½ðÊôÖÊ¸Ð
-- **Ð§¹û£º** »Ò¶ÈÓ³Éä + ¸ß¹â
-- **·ç¸ñ£º** Y2K½ðÊôÃÀÑ§
-
-#### ?? ÄÞºç»Ô¹â
-- **ÌØµã£º** Ó«¹âÒ¹µêÐ§¹û
-- **Ð§¹û£º** ±¥ºÍ¶ÈÔöÇ¿ + Èá¹â
-- **·ç¸ñ£º** ÄÞºçµÆÕÐÅÆ
-
-#### ?? ÏñËØ»¯
-- **ÌØµã£º** ¸´¹ÅÓÎÏ··ç¸ñ
-- **Ð§¹û£º** ÂíÈü¿ËÏñËØ
-- **·ç¸ñ£º** 8-bit/16-bitÓÎÏ·
+- Use short phrases for bolder Y2K styling
+- Try contrasting colors for retro vibes
+- Drag the pet window anywhere; right-click for menu
 
 ---
 
-## ?? ÎÄ×Ö·ç¸ñËµÃ÷
+## Troubleshooting
 
-### ½¥±äÎÄ×Ö
-- ²ÊÉ«½¥±ä±³¾°
-- ÇàÉ«Ö÷ÎÄ×Ö
-- ºÚÉ«ÒõÓ°
+- If the app doesnâ€™t start, ensure dependencies are installed in the workspace `.venv`
+- For EXE builds that fail due to missing DLLs, install Visual C++ Redistributable (see README)
+- Output images are saved next to the script/EXE in the `output/` folder
+## Effects æ•ˆæžœç®€ä»‹
+- CRT: æ‰«æçº¿ + RGB åç§»
+- VHS: æŠ–åŠ¨/æ‹–å½±/å™ªç‚¹
+- Holographic/Chrome/Neon: å…¨æ¯/é•€é“¬/éœ“è™¹è´¨æ„Ÿ
+- Pixelate: åƒç´ åŒ–ï¼ˆ8/16-bit é£Žæ ¼ï¼‰
 
-### ¹ÊÕÏÎÄ×Ö
-- RGBÈýÉ«·ÖÀë
-- Ëæ»ú¸ÉÈÅÏß
-- Èü²©Åó¿Ë·ç¸ñ
-
-### ÄÞºçÎÄ×Ö
-- ¶à²ã»Ô¹âÐ§¹û
-- ·Ûºì/×ÏÉ«µ÷
-- Ò¹µêÕÐÅÆ¸Ð
-
-### ¶Æ¸õÎÄ×Ö
-- ½ðÊôÖÊ¸Ð
-- ¶à²ã½¥±ä
-- Á¢Ìå¸Ð
-
-### ¸´¹ÅÎÄ×Ö
-- ²ÊºçÉ«Ã¿¸ö×ÖÄ¸
-- ÐÇÐÇ±³¾°
-- ¾­µäY2K·ç¸ñ
+æ•ˆæžœå®žçŽ°è§ `effects/` ä¸Ž `generators/meme_engine.py`ã€‚
 
 ---
 
-## ?? Ê¹ÓÃ¼¼ÇÉ
+## Tips å°è´´å£«
 
-### ¼¼ÇÉ 1: ×éºÏÊ¹ÓÃ
-```
-ÊäÈë£º"CYBER DREAMS 2000"
-ÉÏ´«£ºÄãµÄ×ÔÅÄÕÕÆ¬
-½á¹û£º´øÓÐY2K·ç¸ñ±êÌâµÄ×ÔÅÄMeme
-```
-
-### ¼¼ÇÉ 2: ÅúÁ¿Éú³É
-```
-1. ÊäÈë²»Í¬µÄÎÄ×Ö
-2. ¶à´Îµã»÷GENERATE
-3. ¿ìËÙÉú³É¶à¸ö²»Í¬·ç¸ñµÄMeme
-```
-
-### ¼¼ÇÉ 3: ÊµÑé²»Í¬ÌØÐ§
-```
-ÉÏ´«Í¬Ò»ÕÅÍ¼Æ¬¶à´Î
-Ã¿´Î¶¼»áÓ¦ÓÃ²»Í¬µÄËæ»úÌØÐ§
-¶Ô±ÈÑ¡Ôñ×îÏ²»¶µÄ°æ±¾
-```
-
-### ¼¼ÇÉ 4: ¾­µäY2KÎÄ°¸
-Ê¹ÓÃÕâÐ©¾­µäÍøÂçÓÃÓï£º
-- "UNDER CONSTRUCTION ??"
-- "BEST VIEWED IN 1024x768"
-- "WELCOME TO MY HOMEPAGE"
-- "YOU ARE VISITOR #999999"
-- "EMAIL ME!"
-- "SIGN MY GUESTBOOK"
+- è¾“å‡ºæ–‡ä»¶ä¿å­˜åœ¨ `output/`ï¼ŒæŒ‰ç±»åž‹ä¸Žç¼–å·è‡ªåŠ¨é€’å¢žå‘½åã€‚
+- å»ºè®®å›¾ç‰‡å®½åº¦ä¸å°äºŽ 800pxï¼›æ–‡å­— Meme é»˜è®¤ç”»å¸ƒçº¦ 800x400ã€‚
+- VS Code è¿è¡Œè¯·ç¡®è®¤é€‰æ‹© `.venv` è§£é‡Šå™¨å¹¶å·²å®‰è£…ä¾èµ–ã€‚
 
 ---
 
-## ?? Êä³öÎÄ¼þ
+## Troubleshooting é€ŸæŸ¥
 
-### ÎÄ¼þÃüÃû¹æÔò
-- ÎÄ×ÖMeme: `y2k_text_1.png`, `y2k_text_2.png`, ...
-- Í¼Æ¬Meme: `y2k_image_1.png`, `y2k_image_2.png`, ...
-- Ëæ»úMeme: `y2k_random_1.png`, `y2k_random_2.png`, ...
+Q: è¿è¡Œæ—¶æŠ¥ ModuleNotFoundErrorï¼ˆå¦‚ PyQt6ï¼‰
+A: åˆ‡æ¢åˆ° `.venv` è§£é‡Šå™¨å¹¶å®‰è£…ä¾èµ–ï¼š`pip install PyQt6 Pillow numpy opencv-python pygame pywin32 requests`
 
-### ±£´æÎ»ÖÃ
-ËùÓÐÉú³ÉµÄÎÄ¼þ±£´æÔÚ£º`output/` ÎÄ¼þ¼Ð
+Q: çª—å£ä¸æ˜¾ç¤º/é»‘å±
+A: å…³é—­æ®‹ç•™è¿›ç¨‹ï¼Œé‡è£… PyQt6ï¼Œæˆ–ä½¿ç”¨ `run_app.bat`ã€‚
 
-### ÎÄ¼þ¸ñÊ½
-- ¸ñÊ½£ºPNG£¨Ö§³ÖÍ¸Ã÷¶È£©
-- ÖÊÁ¿£ºÎÞËðÑ¹Ëõ
-- ÊÊºÏ£ºÉç½»Ã½Ìå·ÖÏí¡¢´òÓ¡¡¢ÔÙ±à¼­
+Q: è¾“å‡ºæ²¡æœ‰å‡ºçŽ°
+A: æ£€æŸ¥ `output/` æ˜¯å¦å­˜åœ¨ï¼Œæ²¡æœ‰åˆ™æ‰‹åŠ¨åˆ›å»ºæˆ–æ£€æŸ¥å†™å…¥æƒé™ã€‚
 
 ---
 
-## ?? ´°¿Ú²Ù×÷
+## Build EXE æ‰“åŒ…ï¼ˆå¯é€‰ï¼‰
 
-### ÒÆ¶¯´°¿Ú
-- **·½·¨£º** Êó±ê×ó¼ü°´×¡´°¿ÚÈÎÒâÎ»ÖÃÍÏ×§
-- **ÌáÊ¾£º** ¿ÉÒÔ·ÅÔÚÆÁÄ»ÈÎÒâ½ÇÂä
-- **ÌØÐÔ£º** ´°¿ÚÊ¼ÖÕÖÃ¶¥£¬²»»á±»ÆäËû´°¿ÚÕÚµ²
-
-### ¹Ø±Õ³ÌÐò
-- **·½·¨1£º** Êó±êÓÒ¼üµã»÷´°¿Ú
-- **·½·¨2£º** Alt+F4£¨Windows¿ì½Ý¼ü£©
-
-### ´°¿Ú×´Ì¬
-- **ÏÐÖÃ ?£º** µÈ´ýÊäÈë
-- **¿ªÐÄ ?£º** ²Ù×÷³É¹¦
-- **Ë¼¿¼ ?£º** ÕýÔÚ´¦Àí
-- **´¦Àí ?£º** Éú³ÉÖÐ
-
----
-
-## ?? ³£¼ûÎÊÌâ
-
-### Q: ÎªÊ²Ã´µã»÷°´Å¥Ã»·´Ó¦£¿
-**A:** 
-1. ¼ì²éÊÇ·ñÊäÈëÁËÎÄ×Ö£¨ÎÄ×ÖMemeÐèÒª£©
-2. µÈ´ý¼¸Ãë£¬´¦ÀíÐèÒªÊ±¼ä
-3. ²é¿´×´Ì¬À¸µÄÌáÊ¾ÐÅÏ¢
-
-### Q: ÕÒ²»µ½Éú³ÉµÄÎÄ¼þ£¿
-**A:**
-1. ¼ì²é³ÌÐòËùÔÚÄ¿Â¼µÄ `output/` ÎÄ¼þ¼Ð
-2. ÍêÕûÂ·¾¶£º`ÄãµÄ³ÌÐòÄ¿Â¼/output/`
-3. ×´Ì¬À¸»áÏÔÊ¾ÎÄ¼þÃû
-
-### Q: Í¼Æ¬ÍÏ×§²»ÉÏÈ¥£¿
-**A:**
-1. È·±£ÎÄ¼þ¸ñÊ½ÕýÈ·£¨PNG/JPG/GIF/BMP£©
-2. ³¢ÊÔÊ¹ÓÃ"UPLOAD IMAGE"°´Å¥
-3. ¼ì²éÎÄ¼þÊÇ·ñËð»µ
-
-### Q: Éú³ÉµÄÍ¼Æ¬Ì«Ð¡/Ì«´ó£¿
-**A:**
-- Í¼Æ¬»á×Ô¶¯µ÷Õûµ½×î´ó800px
-- ÎÄ×ÖMeme¹Ì¶¨Îª800x400
-- ±£³ÖÔ­Ê¼±ÈÀý£¬²»»á±äÐÎ
-
-### Q: ¿ÉÒÔ×Ô¶¨ÒåÑÕÉ«Âð£¿
-**A:**
-- µ±Ç°°æ±¾Ê¹ÓÃËæ»úÑÕÉ«
-- ¾­µäY2KÉ«£º·Ûºì¡¢ÇàÉ«¡¢»ÆÉ«¡¢ÂÌÉ«
-- Î´À´°æ±¾»áÌí¼Ó×Ô¶¨Òå¹¦ÄÜ
-
-### Q: ÌØÐ§¿ÉÒÔµþ¼ÓÂð£¿
-**A:**
-- Ã¿´ÎÉú³ÉÊ¹ÓÃÒ»¸öÖ÷ÌØÐ§
-- ¿ÉÄÜËæ»úÌí¼ÓÉ¨ÃèÏß»ò±ß¿ò
-- ¶à´Î´¦ÀíÍ¬Ò»Í¼Æ¬¿ÉÒÔ³¢ÊÔ²»Í¬Ð§¹û
-
----
-
-## ?? ´´ÒâÍæ·¨
-
-### 1. ÖÆ×÷Y2KÍ·Ïñ
-```
-1. ÉÏ´«ÄãµÄÍ·Ïñ
-2. Éú³É¶à¸ö°æ±¾
-3. Ñ¡Ôñ×î¿áµÄ×÷ÎªÉç½»Ã½ÌåÍ·Ïñ
-```
-
-### 2. ¸´¹ÅÍøÕ¾ÔªËØ
-```
-Éú³É"UNDER CONSTRUCTION"Í¼Æ¬
-ÓÃÓÚÄãµÄ¸´¹Å·ç¸ñÍøÕ¾Éè¼Æ
-```
-
-### 3. MemeÉú³ÉÆ÷
-```
-ÊäÈë¸ãÐ¦ÎÄ×Ö
-¿ìËÙÉú³ÉY2K·ç¸ñµÄMemeÍ¼
-·ÖÏíµ½Éç½»Ã½Ìå
-```
-
-### 4. ºØ¿¨ÖÆ×÷
-```
-ÊäÈë×£¸£Óï
-Ó¦ÓÃY2KÌØÐ§
-ÖÆ×÷¶ÀÌØµÄµç×ÓºØ¿¨
-```
-
-### 5. Æ·ÅÆÉè¼Æ
-```
-ÊäÈëÆ·ÅÆ±êÓï
-Éú³ÉY2K·ç¸ñlogo
-ÓÃÓÚ¸´¹ÅÖ÷Ìâ»î¶¯
-```
-
----
-
-## ?? ·ÖÏí½¨Òé
-
-### ÊÊºÏµÄÉç½»Æ½Ì¨£º
-- ? Instagram£¨Y2KÃÀÑ§ºÜÁ÷ÐÐ£©
-- ? Twitter/X£¨MemeÎÄ»¯£©
-- ? TikTok£¨ÅäºÏY2KÒôÀÖ£©
-- ? Discord£¨×÷Îª±íÇé°ü£©
-- ? ¸öÈË²©¿Í/ÍøÕ¾
-
-### ÍÆ¼ö±êÇ©£º
-```
-#Y2K #Y2KAesthetic #2000s #RetroVibes
-#NostalgicInternet #CRTMonitor #Vaporwave
-#Y2KFashion #MillennialAesthetic
-```
-
----
-
-## ?? ½ø½×Ê¹ÓÃ
-
-### ÅäÖÃÎÄ¼þ
-±à¼­ `config.ini` ¿ÉÒÔ×Ô¶¨Òå£º
-- ´°¿Ú´óÐ¡
-- Ä¬ÈÏÑÕÉ«
-- ÌØÐ§Ç¿¶È
-- Êä³ö¸ñÊ½
-
-### ´ò°ü·ÖÏí
-```bash
-# ´ò°üÎª¶ÀÁ¢EXE£¨²»ÐèÒªPython»·¾³£©
+```powershell
+pip install pyinstaller
 python build_exe.py
-
-# ·ÖÏí¸øÅóÓÑ
-dist/CRT_Buddy.exe
 ```
 
----
-
-## ?? ÏíÊÜY2KÖ®ÂÃ£¡
-
-CRT BuddyÊÇÄãµÄ»³¾ÉÊ±¹â»ú£¬ÈÃÎÒÃÇÒ»Æð»Øµ½Ç§ìûÄêµÄÊý×ÖÎÚÍÐ°î£¡
-
-**¼Ç×¡£º**
-- ?? Óµ±§Ó«¹âÉ«
-- ? ÏíÊÜ¹ÊÕÏÃÀÑ§
-- ?? »³Äî²¦ºÅÊ±´ú
-- ?? ´´ÔìY2KÄ§·¨
-
----
-
-<div align="center">
-
-**Made with ?? in Y2K Spirit**
-
-ÓÐÎÊÌâ£¿[Ìá½»Issue](https://github.com/yourusername/CRT_Buddy/issues)
-
-</div>
+æˆå“ä½äºŽ `dist/CRT_Buddy.exe`ã€‚
+- **ï¿½ï¿½ï¿½** CDï¿½ï¿½ï¿½æ¡¢ï¿½ï¿½Ö½ï¿½ï¿½ï¿½

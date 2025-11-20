@@ -1,295 +1,291 @@
-# ?? CRT Buddy v2.0 - È«ÐÂ½çÃæÉý¼¶£¡
+# CRT Buddy v2.0 â€” Upgrade Notes
 
-## ? ÖØ´ó¸Ä½ø
+## Overview
 
-### 1. ?? ¿É°®µÄ¼ªÏéÎï½ÇÉ«
+### 1. New Shell Colors & Themes
 
-**CRTÏÔÊ¾Æ÷ÔìÐÍµÄ¼ªÏéÎï£¡**
-- ?? Í·²¿ÊÇÒ»¸öÃÔÄãCRTÏÔÊ¾Æ÷
-- ?? **ÑÛ¾¦»á¸ú×ÙÄãµÄÊó±êÒÆ¶¯£¡**
-- ?? ¸ù¾ÝÐÄÇé¸Ä±ä±íÇé£¨¿ªÐÄ/´¦ÀíÖÐ/¿ÕÏÐ£©
-- ?? **»á×Ô¶¯Õ£ÑÛ£¡**£¨Ã¿3-5ÃëÒ»´Î£©
-- ?? Í·¶¥ÓÐÉÁË¸µÄÌìÏßÇò
+CRT monitor-style shell:
+- Top shell and full CRT frame
+- Real-time eye/mouth motion with easing
+- Multiple shell colorways (blue/teal/purple)
+- Auto blink cadence (every 3â€“5s)
+- Subtle shell flicker
 
-**ÑÛ¾¦¸ú×ÙÐ§¹û£º**
-- ÒÆ¶¯Êó±ê£¬¼ªÏéÎïµÄÑÛ¾¦»á¸ú×Å¿´
-- Ê¹ÓÃÊýÑ§¼ÆËãÊÓÏß·½Ïò
-- Æ½»¬µÄÑÛÇòÒÆ¶¯¶¯»­
+Mascot motion:
+- Mouse-relative position with soft follow
+- Easing-based interpolation
+- Damped movement for smoothness
 
-### 2. ??? ÕæÊµµÄCRTÏÔÊ¾Æ÷Íâ¹Û
+### 2. Authentic CRT Frame Details
 
-**ÍêÕûµÄÏÔÊ¾Æ÷ÔìÐÍ£º**
-- Ã×»ÆÉ«/»ÒÉ«ËÜÁÏÍâ¿Ç£¨¸´¹Å¸Ð£©
-- Æ·ÅÆ±êÇ© "CRT BUDDY?"
-- ¶¥²¿Í¨·ç²Û
-- ÉîÉ«ËÜÁÏÆÁÄ»±ß¿ò
-- ²£Á§ÆÁÄ»Ð§¹û£¨´ø»¡¶È£©
-- ÆÁÄ»·´¹â¸ß¹âÐ§¹û
+Front frame additions:
+- Beige/colored shell options with vents
+- Branding badge "CRT BUDDY"
+- Side vents
+- Colored bezel
+- Curved screen effect with reflection
+- Scanline glow
 
-**µ×²¿Ï¸½Ú£º**
-- ?? **µçÔ´LEDÖ¸Ê¾µÆ**£¨ÂÌÉ«£¬´øºôÎüÐ§¹û£©
-- "POWER"±êÇ©
+Bottom details:
+- Power LED indicator (on-state color)
+- "POWER" label
 
-### 3. ?? ÔöÇ¿µÄÊÓ¾õÐ§¹û
+### 3. Visual Enhancements
 
-**ÆÁÄ»Ð§¹û£º**
-- ¾¶Ïò½¥±äµÄÆÁÄ»·¢¹â
-- ²£Á§·´Éä¸ß¹â
-- É¨ÃèÏß¶¯»­£¨¸ü¿ì¸üÃ÷ÏÔ£©
-- ¾²Ì¬ÔëµãÐ§¹û£¨¸üÕæÊµ£©
-- ÒÆ¶¯É¨ÃèÏß£¨Ó«¹âÂÌ£©
+Screen effects:
+- Subtle vignette
+- Static noise grain
+- Animated scanline sweeps
+- Flicker for realism
+- Phosphor trail effect
 
-**°´Å¥¸Ä½ø£º**
-- ½¥±ä±³¾°
-- ÐüÍ£Ð§¹û
-- °´ÏÂÐ§¹û
-- ¸ü´óµÄÍ¼±ê
-- ¸üÐÑÄ¿µÄÑÕÉ«
+Buttons:
+- Hover states
+- Press states
+- Clear iconography
+- Solid accent colors
 
-### 4. ?? ÐÄÇéÏµÍ³
+### 4. Status System
 
-¼ªÏéÎï»á¸ù¾Ý²Ù×÷¸Ä±ä±íÇé£º
+State-driven messages:
 
-| ÐÄÇé | ±íÇé | ´¥·¢Ê±»ú |
-|------|------|----------|
-| **idle** | ¡ª_¡ª | ¿ÕÏÐ×´Ì¬ |
-| **happy** | ^_^ | Éú³É³É¹¦ |
-| **processing** | @_@ | ´¦ÀíÖÐ |
-
----
-
-## ?? ½»»¥¹¦ÄÜ
-
-### ÑÛ¾¦¸ú×Ù
-- ÔÚ´°¿ÚÄÚÒÆ¶¯Êó±ê
-- ¼ªÏéÎïµÄÑÛ¾¦»á¸úËæÊó±êÎ»ÖÃ
-- ÊµÊ±¼ÆËãÊÓÏß·½Ïò
-- Æ½»¬µÄÑÛÇòÒÆ¶¯
-
-### ×Ô¶¯Õ£ÑÛ
-- Ã¿3-5Ãë×Ô¶¯Õ£Ò»´ÎÑÛ
-- Õ£ÑÛ¶¯»­³ÖÐøÔ¼150ms
-- ÈÃ¼ªÏéÎï¸üÓÐÉúÃüÁ¦
-
-### ¶¯»­Ð§¹û
-- É¨ÃèÏß´ÓÉÏµ½ÏÂÒÆ¶¯
-- µçÔ´LEDºôÎüµÆÐ§¹û
-- ÌìÏßÇòÉÁË¸
-- ¾²Ì¬ÔëµãÉÁË¸
+| state       | face | when         |
+|-------------|------|--------------|
+| idle        | -_-  | standing by  |
+| happy       | ^_^  | success      |
+| processing  | @_@  | in progress  |
 
 ---
 
-## ?? ³ß´çµ÷Õû
+## Implementation Notes
 
-´°¿Ú³ß´çÔö´óµ½£º
-- ¿í¶È£º500px£¨Ô­400px£©
-- ¸ß¶È£º650px£¨Ô­500px£©
-- ¸ü¶à¿Õ¼ä¸ø¼ªÏéÎïºÍCRTÍâ¿Ç
+### Eye tracking
+- Track mouse position relative to window
+- Compute relative vector to eye center
+- Apply easing for motion
+- Dampen for smooth stop
 
----
+### Blink cadence
+- Blink every 3â€“5 seconds
+- Close duration ~150ms
+- Randomized jitter
 
-## ?? ÅäÉ«·½°¸
-
-### ¼ªÏéÎï
-- Í·²¿£ºÀ¶É«½¥±ä£¨#64C8FF ¡ú #3264C8£©
-- ÆÁÄ»£ºÉîÀ¶ºÚÉ«
-- ÑÛ¾¦£ºÓ«¹âÂÌ£¨#00FF00£©
-- ×ì°Í£ºÓ«¹âÂÌ
-- ÌìÏßÇò£ºÓ«¹â·Û£¨#FF00FF£©
-
-### CRTÍâ¿Ç
-- Íâ¿Ç£ºÃ×»ÆÉ«£¨#B4B4A0 ¡ú #8C8C78£©
-- ÆÁÄ»±ß¿ò£ºÉî»ÒÉ«£¨#282823 ¡ú #141412£©
-- ²£Á§ÆÁÄ»£ºÉîÂÌºÚÉ«½¥±ä
-
-### °´Å¥
-- Éú³É£ºÇàÉ«£¨#00FFFF£©
-- ÉÏ´«£º»ÆÉ«£¨#FFFF00£©
-- Ëæ»ú£º·ÛÉ«£¨#FF00FF£©
+### Screen effects
+- Scanline sweep moves slowly
+- Power LED toggles with state
+- Subtle flicker noise
+- Timed flashing
 
 ---
 
-## ?? ¼¼ÊõÏ¸½Ú
+## Size/Layout
 
-### ÑÛ¾¦¸ú×ÙËã·¨
+Window enlarged to:
+- Width: 500px (from 400px)
+- Height: 650px (from 500px)
+- More space for CRT shell
+
+---
+
+## Colors
+
+Primary (blue theme):
+- Shell gradient: #64C8FF â†’ #3264C8
+- Bezel: darker blue
+- Eye glow: #00FF00
+- Idle glow: soft white
+- Accent glow: #FF00FF
+
+CRT theme:
+- Beige shell: #B4B4A0 â†’ #8C8C78
+- Bezel/dark trim: #282823 â†’ #141412
+- Curved glass reflection lines
+
+Buttons:
+- Generate: #00FFFF
+- Image:    #FFFF00
+- Random:   #FF00FF
+
+---
+
+## Algorithm (eye follow)
 ```python
-# ¼ÆËãÊó±êµ½¼ªÏéÎïµÄ·½Ïò
 dx = mouse_x - mascot_x
 dy = mouse_y - mascot_y
-distance = sqrt(dx? + dy?)
+distance = math.hypot(dx, dy)
 
-# ¹éÒ»»¯²¢Ëõ·Å
+# ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 eye_offset_x = (dx / distance) * 8
 eye_offset_y = (dy / distance) * 8
 ```
 
-### ¶¯»­ÏµÍ³
-- **Ö÷¼ÆÊ±Æ÷**: 50ms£¨20 FPS£©
-- **É¨ÃèÏß**: Ã¿Ö¡ÒÆ¶¯3ÏñËØ
-- **Õ£ÑÛ**: 60-100Ö¡´¥·¢Ò»´Î
-- **LEDºôÎü**: sin²¨¼ÆËãÁÁ¶È
+### ï¿½ï¿½ï¿½ï¿½ÏµÍ³
+- **ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½**: 50msï¿½ï¿½20 FPSï¿½ï¿½
+- **É¨ï¿½ï¿½ï¿½ï¿½**: Ã¿Ö¡ï¿½Æ¶ï¿½3ï¿½ï¿½ï¿½ï¿½
+- **Õ£ï¿½ï¿½**: 60-100Ö¡ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+- **LEDï¿½ï¿½ï¿½ï¿½**: sinï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### äÖÈ¾²ã´Î
-1. CRTÍâ¿Ç£¨×îµ×²ã£©
-2. ÆÁÄ»²£Á§
-3. ¼ªÏéÎï½ÇÉ«
-4. É¨ÃèÏßÐ§¹û
-5. µçÔ´LED£¨×î¶¥²ã£©
-
----
-
-## ?? Ê¹ÓÃÌåÑé
-
-### Æô¶¯Ð§¹û
-1. ³ÌÐòÆô¶¯
-2. ¼ªÏéÎï³öÏÖÔÚ´°¿Ú¶¥²¿
-3. ÑÛ¾¦¿ªÊ¼¸ú×ÙÊó±ê
-4. ×Ô¶¯¿ªÊ¼Õ£ÑÛ
-5. ¸÷ÖÖ¶¯»­Ð§¹ûÆô¶¯
-
-### »¥¶¯ÌåÑé
-- **ÒÆ¶¯Êó±ê** ¡ú ¼ªÏéÎïÑÛ¾¦¸úËæ
-- **ÊäÈëÎÄ×Ö** ¡ú ¼ªÏéÎï¿´×ÅÄã
-- **µã»÷Éú³É** ¡ú ¼ªÏéÎï±ä³É´¦Àí×´Ì¬£¨@_@£©
-- **Éú³É³É¹¦** ¡ú ¼ªÏéÎï¿ªÐÄ£¨^_^£©
+### ï¿½ï¿½È¾ï¿½ï¿½ï¿½
+1. CRTï¿½ï¿½Ç£ï¿½ï¿½ï¿½×²ã£©
+2. ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½
+3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+4. É¨ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+5. ï¿½ï¿½Ô´LEDï¿½ï¿½ï¿½î¶¥ï¿½ã£©
 
 ---
 
-## ?? ÐÔÄÜÊý¾Ý
+## ?? Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+### ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+1. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½
+3. ï¿½Û¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+4. ï¿½Ô¶ï¿½ï¿½ï¿½Ê¼Õ£ï¿½ï¿½
+5. ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- **ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½** ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½
+- **ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½** ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿´ï¿½ï¿½ï¿½ï¿½
+- **ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½** ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É´ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½@_@ï¿½ï¿½
+- **ï¿½ï¿½ï¿½É³É¹ï¿½** ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿ªï¿½Ä£ï¿½^_^ï¿½ï¿½
+
+---
+
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ```yaml
-´°¿Ú´óÐ¡: 500x650 ÏñËØ
-Ö¡ÂÊ: 20 FPS
-ÄÚ´æÕ¼ÓÃ: ~180 MB
-CPUÕ¼ÓÃ: µÍ£¨2-5%£©
+ï¿½ï¿½ï¿½Ú´ï¿½Ð¡: 500x650 ï¿½ï¿½ï¿½ï¿½
+Ö¡ï¿½ï¿½: 20 FPS
+ï¿½Ú´ï¿½Õ¼ï¿½ï¿½: ~180 MB
+CPUÕ¼ï¿½ï¿½: ï¿½Í£ï¿½2-5%ï¿½ï¿½
 
-¶¯»­ÔªËØ:
-  - É¨ÃèÏßÒÆ¶¯
-  - ÑÛ¾¦¸ú×Ù
-  - ×Ô¶¯Õ£ÑÛ
-  - LEDºôÎü
-  - ÌìÏßÉÁË¸
-  - ¾²Ì¬Ôëµã
+ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½:
+  - É¨ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
+  - ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½
+  - ï¿½Ô¶ï¿½Õ£ï¿½ï¿½
+  - LEDï¿½ï¿½ï¿½ï¿½
+  - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¸
+  - ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½
 ```
 
 ---
 
-## ?? ÊÓ¾õÌØÉ«
+## ?? ï¿½Ó¾ï¿½ï¿½ï¿½É«
 
-### ¸´¹ÅCRTÃÀÑ§
-- ? Ã×»ÆÉ«ËÜÁÏÍâ¿Ç£¨90Äê´ú¾­µä£©
-- ? »¡ÐÎ²£Á§ÆÁÄ»
-- ? Ó«¹âÂÌÉ¨ÃèÏß
-- ? ¾²Ì¬Ôëµã
-- ? ÆÁÄ»·´¹â
+### ï¿½ï¿½ï¿½ï¿½CRTï¿½ï¿½Ñ§
+- ? ï¿½×»ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç£ï¿½90ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä£©
+- ? ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½ï¿½ï¿½Ä»
+- ? Ó«ï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½
+- ? ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½
+- ? ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½
 
-### Y2K·ç¸ñ
-- ? Ó«¹âÉ«²Ê£¨ÂÌ¡¢·Û¡¢Çà¡¢»Æ£©
-- ? ÊýÂë¸Ð×ÖÌå£¨Courier New£©
-- ? ½¥±ä°´Å¥
-- ? ·¢¹âÐ§¹û
-- ? Èü²©Åó¿Ë·ÕÎ§
-
----
-
-## ?? ¶Ô±È¾É°æ±¾
-
-### v1.0£¨¾É°æ£©
-```
-- ¼òµ¥µÄÍ¸Ã÷´°¿Ú
-- Ö»ÓÐÑÕÎÄ×Ö±íÇé
-- »ù´¡É¨ÃèÏß
-- ÎÞ¼ªÏéÎï½ÇÉ«
-- ´°¿Ú 400x500
-```
-
-### v2.0£¨ÐÂ°æ£©?
-```
-+ ÍêÕûµÄCRTÏÔÊ¾Æ÷Íâ¹Û
-+ ¿É°®µÄ¼ªÏéÎï½ÇÉ«
-+ ÑÛ¾¦¸ú×ÙÊó±ê
-+ ×Ô¶¯Õ£ÑÛ¶¯»­
-+ ÐÄÇé±íÇéÏµÍ³
-+ µçÔ´LEDÖ¸Ê¾µÆ
-+ ÔöÇ¿µÄÊÓ¾õÐ§¹û
-+ ¸ü´óµÄ´°¿Ú£¨500x650£©
-+ ¸üÕæÊµµÄCRTÖÊ¸Ð
-```
+### Y2Kï¿½ï¿½ï¿½
+- ? Ó«ï¿½ï¿½É«ï¿½Ê£ï¿½ï¿½Ì¡ï¿½ï¿½Û¡ï¿½ï¿½à¡¢ï¿½Æ£ï¿½
+- ? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å£¨Courier Newï¿½ï¿½
+- ? ï¿½ï¿½ï¿½ä°´Å¥
+- ? ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+- ? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½Î§
 
 ---
 
-## ?? ¶¯»­Çåµ¥
+## ?? ï¿½Ô±È¾É°æ±¾
 
-| ¶¯»­ | ËÙ¶È | Ð§¹û |
+### v1.0ï¿½ï¿½ï¿½É°æ£©
+```
+- ï¿½òµ¥µï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½
+- ï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½
+- ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
+- ï¿½ï¿½ï¿½ï¿½ 400x500
+```
+
+### v2.0ï¿½ï¿½ï¿½Â°æ£©?
+```
++ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CRTï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½
++ ï¿½É°ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
++ ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
++ ï¿½Ô¶ï¿½Õ£ï¿½Û¶ï¿½ï¿½ï¿½
++ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³
++ ï¿½ï¿½Ô´LEDÖ¸Ê¾ï¿½ï¿½
++ ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½Ó¾ï¿½Ð§ï¿½ï¿½
++ ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½Ú£ï¿½500x650ï¿½ï¿½
++ ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½CRTï¿½Ê¸ï¿½
+```
+
+---
+
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½åµ¥
+
+| ï¿½ï¿½ï¿½ï¿½ | ï¿½Ù¶ï¿½ | Ð§ï¿½ï¿½ |
 |------|------|------|
-| **É¨ÃèÏß** | 3px/Ö¡ | ´ÓÉÏµ½ÏÂÑ­»· |
-| **ÑÛ¾¦¸ú×Ù** | ÊµÊ± | ¸úËæÊó±êÎ»ÖÃ |
-| **×Ô¶¯Õ£ÑÛ** | 3-5Ãë | ±ÕÑÛ150ms |
-| **LEDºôÎü** | sin²¨ | ÁÁ¶È±ä»¯ |
-| **ÌìÏßÉÁË¸** | sin²¨ | Ó«¹â·ÛÉÁË¸ |
-| **¾²Ì¬Ôëµã** | Ëæ»ú | 30¸öµã/Ö¡ |
+| **É¨ï¿½ï¿½ï¿½ï¿½** | 3px/Ö¡ | ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ |
+| **ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½** | ÊµÊ± | ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ |
+| **ï¿½Ô¶ï¿½Õ£ï¿½ï¿½** | 3-5ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½150ms |
+| **LEDï¿½ï¿½ï¿½ï¿½** | sinï¿½ï¿½ | ï¿½ï¿½ï¿½È±ä»¯ |
+| **ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¸** | sinï¿½ï¿½ | Ó«ï¿½ï¿½ï¿½ï¿½ï¿½Ë¸ |
+| **ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½** | ï¿½ï¿½ï¿½ | 30ï¿½ï¿½ï¿½ï¿½/Ö¡ |
 
 ---
 
-## ?? ÒÑÖªÌØÐÔ
+## ?? ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½
 
-### QtÑùÊ½¾¯¸æ
+### Qtï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
 ```
 Unknown property text-shadow
 Unknown property box-shadow
 ```
-- **Ô­Òò**: Qt²»Ö§³ÖCSSµÄÒõÓ°ÊôÐÔ
-- **Ó°Ïì**: ÎÞ£¬½ö¿ØÖÆÌ¨¾¯¸æ
-- **½â¾ö**: ¿ÉÒÔºöÂÔ£¬²»Ó°Ïì¹¦ÄÜ
+- **Ô­ï¿½ï¿½**: Qtï¿½ï¿½Ö§ï¿½ï¿½CSSï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½
+- **Ó°ï¿½ï¿½**: ï¿½Þ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½
+- **ï¿½ï¿½ï¿½**: ï¿½ï¿½ï¿½Ôºï¿½ï¿½Ô£ï¿½ï¿½ï¿½Ó°ï¿½ì¹¦ï¿½ï¿½
 
 ---
 
-## ?? ÏÂÒ»²½¿ÉÄÜµÄ¸Ä½ø
+## ?? ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ÜµÄ¸Ä½ï¿½
 
-### ¸ü¶à¶¯»­
-- [ ] ¼ªÏéÎïÉíÌåÇáÎ¢Ò¡°Ú
-- [ ] Êó±êÐüÍ£Ê±·´Ó¦
-- [ ] µã»÷Ê±ÌøÔ¾¶¯»­
-- [ ] ´ý»ú¶¯»­£¨×óÓÒ¿´£©
+### ï¿½ï¿½ï¿½à¶¯ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¢Ò¡ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ê±ï¿½ï¿½Ó¦
+- [ ] ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ô¾ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½
 
-### ¸ü¶à±íÇé
-- [ ] ¾ªÑÈ (o_o)
-- [ ] À§»ó (?_??)
-- [ ] ÉúÆø (>_<)
-- [ ] Ë¯¾õ (-.-)zzz
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½ï¿½ (o_o)
+- [ ] ï¿½ï¿½ï¿½ï¿½ (?_??)
+- [ ] ï¿½ï¿½ï¿½ï¿½ (>_<)
+- [ ] Ë¯ï¿½ï¿½ (-.-)zzz
 
-### »¥¶¯¹¦ÄÜ
-- [ ] ¿ÉÒÔµã»÷¼ªÏéÎï
-- [ ] ÍÏ×§Ê±¼ªÏéÎï·´Ó¦
-- [ ] ÓïÒôÌáÊ¾
-- [ ] Á£×ÓÐ§¹û
+### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+- [ ] ï¿½ï¿½×§Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï·´Ó¦
+- [ ] ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+- [ ] ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
 
 ---
 
 <div align="center">
 
-## ? CRT Buddy v2.0 - È«ÐÂÉý¼¶£¡?
+## ? CRT Buddy v2.0 - È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
 
-### Ö÷ÒªÌØÉ«
+### ï¿½ï¿½Òªï¿½ï¿½É«
 
 ```
-?? ÑÛ¾¦¸ú×ÙÊó±êµÄ¼ªÏéÎï
-??? ÕæÊµµÄCRTÏÔÊ¾Æ÷Íâ¹Û  
-?? ÖÇÄÜÐÄÇéÏµÍ³
-?? ÔöÇ¿µÄÊÓ¾õÐ§¹û
-?? ºôÎüµçÔ´LED
-?? ÉÁË¸ÌìÏßÇò
+?? ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+??? ï¿½ï¿½Êµï¿½ï¿½CRTï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½  
+?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³
+?? ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½Ó¾ï¿½Ð§ï¿½ï¿½
+?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´LED
+?? ï¿½ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ```
 
 ---
 
-**ÏÖÔÚ¾ÍÔËÐÐ¿´¿´Ð§¹û°É£¡**
+**ï¿½ï¿½ï¿½Ú¾ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½É£ï¿½**
 
 ```bash
 python main.py
 ```
 
-**ÒÆ¶¯ÄãµÄÊó±ê£¬¿´¼ªÏéÎïµÄÑÛ¾¦¸ú×ÅÄã£¡**
+**ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¡**
 
 ---
 

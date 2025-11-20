@@ -1,4 +1,6 @@
-# ??? CRT Buddy - ÄãµÄ×ÀÃæÇ§ìûÄê»ï°é
+or
+
+# CRT Buddy â€” Y2K Desktop Pet & Meme Generator
 
 <div align="center">
 
@@ -6,221 +8,118 @@
 ![Python](https://img.shields.io/badge/python-3.8+-00ffff)
 ![License](https://img.shields.io/badge/license-MIT-00ff00)
 
-**Y2K·ç¸ñ×ÀÃæ³èÎï & MemeÉú³ÉÆ÷**
-
-? ÈÃCRTÏÔÊ¾Æ÷ÊØ»¤ÄãµÄ×ÀÃæ£¬Éú³É¸´¹ÅÇ§ìûÄê·ç¸ñµÄMeme ?
+Tiny Y2K desktop pet and meme generator. Apply CRT scanlines, VHS jitter, holographic/chrome/neon glow, pixelation and more to text or images, then save to the output folder.
 
 </div>
 
 ---
 
-## ?? ¹¦ÄÜÌØĞÔ
+## Features
 
-### ?? ×ÀÃæ³èÎï
-- ? **¿ÉÍÏ×§CRTÏÔÊ¾Æ÷**´°¿Ú£¬·ÅÖÃÔÚÆÁÄ»ÈÎÒâÎ»ÖÃ
-- ? **Í¸Ã÷±³¾°**£¬Ê¼ÖÕÖÃ¶¥ÏÔÊ¾
-- ? **¶¯Ì¬É¨ÃèÏßĞ§¹û**£¬Ä£ÄâÕæÊµCRTÏÔÊ¾Æ÷
-- ? **ĞÄÇéÏµÍ³**£ºÏĞÖÃ¡¢¿ªĞÄ¡¢Ë¼¿¼¡¢´¦ÀíÖĞ
-- ? **ÄŞºçÉÁË¸¶¯»­**£¬´¿ÕıY2KÃÀÑ§
-
-### ?? Y2KÌØĞ§¿â
-Ö§³Ö¶àÖÖÇ§ìûÄê·ç¸ñÍ¼ÏñÂË¾µ£º
-- ??? **CRTĞ§¹û** - É¨ÃèÏß + RGBÉ«²î
-- ?? **VHS¹ÊÕÏÒÕÊõ** - Ë®Æ½Î»ÒÆ + É«²ÊÊ§Õæ
-- ?? **È«Ï¢ÀØÉä** - ²Êºç½¥±ä + ½ğÊô¹âÔó
-- ?? **¶Æ¸õĞ§¹û** - ÒøÉ«½ğÊôÖÊ¸Ğ
-- ?? **ÄŞºç»Ô¹â** - Ó«¹âÔöÇ¿ + Èá¹â
-- ?? **ÏñËØ»¯** - ¸´¹ÅÓÎÏ··ç¸ñ
-
-### ?? MemeÉú³ÉÄ£Ê½
-
-#### 1. ÎÄ×ÖÄ£Ê½
-ÊäÈëÎÄ×Ö ¡ú ×Ô¶¯Éú³ÉY2K·ç¸ñ±êÓï
-- ½¥±äÎÄ×Ö
-- ¹ÊÕÏÒÕÊõÎÄ×Ö
-- ÄŞºçµÆÎÄ×Ö
-- ¶Æ¸õ½ğÊôÎÄ×Ö
-- ¸´¹Å²ÊºçÎÄ×Ö
-
-#### 2. Í¼Æ¬Ä£Ê½
-ÍÏ×§Í¼Æ¬ ¡ú Ó¦ÓÃY2KÂË¾µ + Ìí¼ÓÎÄ×Ö
-- ×Ô¶¯Ó¦ÓÃËæ»úÌØĞ§
-- Ìí¼ÓY2KÌùÖ½£¨??????£©
-- Ö§³ÖÎÄ×Öµş¼Ó
-
-#### 3. Ëæ»úÄ£Ê½
-Ò»¼üÉú³ÉÍêÈ«Ëæ»úµÄY2K Meme
-- Ëæ»úÑ¡Ôñ¾­µäY2KÎÄ°¸
-- Ëæ»úÌØĞ§×éºÏ
+- Floating, frameless, always-on-top â€œdesktop petâ€ window
+- Y2K effects: CRT, VHS, holographic/chrome/neon, pixelate, and more
+- Text/Image/Random meme generation flows
+- Bundled pixel font: DinkieBitmap (9px, 7px)
+- Simple save flow with auto-incrementing filenames in `output/`
 
 ---
 
-## ?? ¿ìËÙ¿ªÊ¼
+## Install
 
-### °²×°ÒÀÀµ
-
-```bash
-pip install -r requirements.txt
+```
+pip install PyQt6 Pillow numpy opencv-python pygame pywin32 requests
 ```
 
-### ÔËĞĞ³ÌĞò
+---
 
-```bash
+## Run
+
+Open `CRT_Buddy/CRT_Buddy/CRT_Buddy.py` in VS Code, select the correct interpreter (.venv), and click â€œRun Python Fileâ€.
+
+Or use the command line:
+
+```powershell
+cd "C:\Users\Administrator\Desktop\SD5913(CREATIVE PROGRAMMING FOR DESIGNERS AND ARTISTS)\FP\CRT_Buddy\CRT_Buddy"
 python CRT_Buddy.py
+# Or: python start.py (runs dependency check first)
+# Or: double-click/run run_app.bat (one-click launch)
 ```
 
----
-
-## ?? Ê¹ÓÃÖ¸ÄÏ
-
-### »ù±¾²Ù×÷
-1. **ÍÏ×§ÒÆ¶¯**£ºÊó±ê×ó¼üÍÏ×§CRT´°¿Ú
-2. **¹Ø±Õ³ÌĞò**£ºÊó±êÓÒ¼üµã»÷´°¿Ú
-3. **ÎÄ×ÖÊäÈë**£ºÔÚÊäÈë¿òÊäÈëÏëÒªµÄMemeÎÄ×Ö
-4. **Í¼Æ¬ÉÏ´«**£º
-   - ·½Ê½1£ºµã»÷ `?? UPLOAD IMAGE` °´Å¥
-   - ·½Ê½2£ºÖ±½ÓÍÏ×§Í¼Æ¬µ½´°¿Ú
-
-### Éú³ÉMeme
-- **? GENERATE MEME** - ¸ù¾İÊäÈëÎÄ×ÖÉú³ÉY2K·ç¸ñMeme
-- **?? UPLOAD IMAGE** - ÉÏ´«Í¼Æ¬²¢Ó¦ÓÃÌØĞ§
-- **? RANDOM Y2K EFFECT** - Éú³ÉÍêÈ«Ëæ»úµÄY2K Meme
-
-### Êä³öÎ»ÖÃ
-ËùÓĞÉú³ÉµÄMeme±£´æÔÚ `output/` ÎÄ¼ş¼ĞÖĞ
+On first launch, if you see â€œStarting CRT Buddyâ€¦â€ and the pixel font loads, setup is successful.
 
 ---
 
-## ?? ´ò°üÎªEXE
+## Usage
 
-Ê¹ÓÃPyInstaller´ò°üÎª¶ÀÁ¢¿ÉÖ´ĞĞÎÄ¼ş£º
+Main interface offers three generation modes:
 
-```bash
-# °²×°PyInstaller
-pip install pyinstaller
+1) Text Meme Generation
+   - Type a phrase like â€œY2K VIBES ONLYâ€ in the text box, click GENERATE MEME
 
-# ´ò°ü£¨µ¥ÎÄ¼şÄ£Ê½£©
-pyinstaller --name="CRT_Buddy" ^
-            --onefile ^
-            --windowed ^
-            --icon=icon.ico ^
-            CRT_Buddy.py
+2) Image Meme Generation
+   - Click UPLOAD IMAGE to select PNG/JPG/GIF/BMP
+   - Apply Y2K effects and save
 
-# »òÕßÊ¹ÓÃÌá¹©µÄ´ò°ü½Å±¾
-python build_exe.py
-```
+3) Random Effect Generation
+   - Click RANDOM Y2K EFFECT to generate and save
 
-´ò°üºóµÄÎÄ¼şÎ»ÓÚ `dist/CRT_Buddy.exe`
+Output files are saved in the `output/` directory, named incrementally (e.g., y2k_text_1.png, y2k_image_1.png, y2k_random_1.png).
 
 ---
 
-## ?? Y2K¾­µäÔªËØ
+## Effects (Quick Overview)
 
-### ÊÓ¾õ·ç¸ñ
-- ?? **Ó«¹âÉ«µ÷°å**£º·Ûºì¡¢ÇàÉ«¡¢»ÆÉ«¡¢ÂÌÉ«
-- ? **½ğÊô½¥±ä**£º¶Æ¸õ¡¢È«Ï¢¡¢ÀØÉäĞ§¹û
-- ?? **CRTÏÔÊ¾Æ÷**£ºÉ¨ÃèÏß¡¢É«²î¡¢»Ô¹â
-- ?? **¹ÊÕÏÒÕÊõ**£ºÏñËØÎ»ÒÆ¡¢RGB·ÖÀë
+- CRT: Scanlines + RGB offset, simulates CRT tube
+- VHS: Jitter/noise/ghosting, tape flavor
+- Holographic/Chrome/Neon: Holographic/chrome/neon text and highlights
+- Pixelate: Pixelation and grid effects
 
-### ÎÄ»¯·ûºÅ
-- ?? ¹âÅÌÊ±´ú£¨CD-ROM¡¢DVD£©
-- ?? ÔçÆÚ»¥ÁªÍø£¨Geocities¡¢Netscape£©
-- ?? VHSÂ¼Ïñ´øÃÀÑ§
-- ?? Èü²©Åó¿ËÔªËØ
-- ? ĞÇĞÇ¡¢ÉÁ¹â¡¢×°ÊÎÔªËØ
+Visual effect code is in `effects/` and `generators/meme_engine.py`.
 
 ---
 
-## ??? ¼¼ÊõÕ»
-
-- **PyQt6** - ×ÀÃæGUI¿ò¼Ü
-- **Pillow** - Í¼Ïñ´¦Àí
-- **NumPy** - ÊıÖµ¼ÆËã
-- **OpenCV** - ¸ß¼¶Í¼ÏñÂË¾µ
-- **Pygame** - ÒôĞ§ÏµÍ³£¨¼Æ»®ÖĞ£©
-
----
-
-## ?? ÏîÄ¿½á¹¹
+## Project Structure
 
 ```
 CRT_Buddy/
-©À©¤©¤ CRT_Buddy.py              # Ö÷³ÌĞòÈë¿Ú
-©À©¤©¤ requirements.txt          # ÒÀÀµÁĞ±í
-©À©¤©¤ build_exe.py             # ´ò°ü½Å±¾
-©À©¤©¤ README.md                # ÏîÄ¿ËµÃ÷
-©À©¤©¤ core/                    # ºËĞÄÄ£¿é
-©¦   ©À©¤©¤ __init__.py
-©¦   ©¸©¤©¤ pet_window.py        # ×ÀÃæ³èÎï´°¿Ú
-©À©¤©¤ effects/                 # ÌØĞ§Ä£¿é
-©¦   ©À©¤©¤ __init__.py
-©¦   ©À©¤©¤ y2k_styles.py        # Y2KÍ¼ÏñÂË¾µ
-©¦   ©¸©¤©¤ text_effects.py      # ÎÄ×ÖÌØĞ§
-©À©¤©¤ generators/              # Éú³ÉÆ÷Ä£¿é
-©¦   ©À©¤©¤ __init__.py
-©¦   ©¸©¤©¤ meme_engine.py       # MemeÉú³ÉÒıÇæ
-©¸©¤©¤ output/                  # Êä³öÄ¿Â¼£¨×Ô¶¯´´½¨£©
+   CRT_Buddy.py        # main entry
+   start.py            # dependency check + launcher
+   run_app.bat         # one-click Windows launcher
+   core/               # main window, pixel font, UI logic
+   effects/            # Y2K visual effects
+   generators/         # text/image/random generation engine
+   output/             # output directory
 ```
 
 ---
 
-## ?? Î´À´¼Æ»®
+## Build EXE (Optional)
 
-### V2.0 ¹¦ÄÜ
-- [ ] Ìí¼ÓY2KÒôĞ§°ü£¨ICQÌáÊ¾Òô¡¢²¦ºÅÒô£©
-- [ ] GIF¶¯Í¼µ¼³ö£¨ÉÁË¸ÎÄ×Ö¡¢Ğı×ªÔªËØ£©
-- [ ] ¸ü¶àÔ¤ÉèMemeÄ£°å
-- [ ] AIÎÄ°¸Éú³É¼¯³É£¨OpenAI/Claude£©
-- [ ] Éç½»Ã½ÌåÒ»¼ü·ÖÏí
-- [ ] ×Ô¶¨ÒåÌùÖ½¿â
-- [ ] ±£´æÊÕ²Ø¼Ğ¹¦ÄÜ
+Build a standalone executable with PyInstaller:
 
-### V3.0 ¹¦ÄÜ
-- [ ] ¶àÓïÑÔÖ§³Ö
-- [ ] ²å¼şÏµÍ³
-- [ ] ÔÚÏßÄ£°åÉÌµê
-- [ ] Ğ­×÷Ä£Ê½
-
----
-
-## ?? ¹±Ï×Ö¸ÄÏ
-
-»¶Ó­Ìá½»IssueºÍPull Request£¡
-
-### ¿ª·¢»·¾³ÉèÖÃ
-```bash
-git clone https://github.com/yourusername/CRT_Buddy.git
-cd CRT_Buddy
-pip install -r requirements.txt
-python CRT_Buddy.py
+```powershell
+pip install pyinstaller
+pyinstaller --name "CRT_Buddy" --onefile --windowed CRT_Buddy.py
+# Or use the script:
+python build_exe.py
 ```
 
----
-
-## ?? Ğí¿ÉÖ¤
-
-MIT License - ×ÔÓÉÊ¹ÓÃ¡¢ĞŞ¸Ä¡¢·Ö·¢
+The executable will be in `dist/CRT_Buddy.exe`.
 
 ---
 
-## ?? ÖÂĞ»
+## Troubleshooting
 
-Áé¸ĞÀ´Ô´ÓÚ£º
-- Ç§ìûÄêÔçÆÚµÄÍøÒ³Éè¼Æ
-- GeocitiesÊ±´úµÄ¸öÈËÍøÕ¾
-- Y2KÃÀÑ§¸´ĞËÔË¶¯
-- ×ÀÃæ³èÎïÎÄ»¯£¨Bonzi BuddyµÈ£©
+- ModuleNotFoundError: Make sure VS Code uses the workspace `.venv` and install dependencies there.
+- Qt plugin/window issues: Reinstall PyQt6, or use `run_app.bat` to launch.
+- Font not loading: Check that `DinkieBitmap-v*/ttf/DinkieBitmap-9px.ttf` exists.
+- Missing DLLs in EXE: Install Visual C++ Redistributable: https://aka.ms/vs/17/release/vc_redist.x64.exe
+- Canâ€™t find results: Check the `output/` folder next to your script or EXE.
 
 ---
 
-<div align="center">
+## License & Credits
 
-**? Made with ?? for Y2K Lovers ?**
+MIT License. Pixel font: DinkieBitmap (see `DinkieBitmap-v*/EULA.txt`).
 
-Èç¹ûÏ²»¶Õâ¸öÏîÄ¿£¬Çë¸ø¸öStar ?
-
-[±¨¸æBug](https://github.com/yourusername/CRT_Buddy/issues) ? 
-[¹¦ÄÜ½¨Òé](https://github.com/yourusername/CRT_Buddy/issues) ? 
-[¼ÓÈëÌÖÂÛ](https://github.com/yourusername/CRT_Buddy/discussions)
-
-</div>
+Inspiration: early web, Geocities/Netscape aesthetics, CRT/arcade culture, Bonzi Buddy-era mascots.

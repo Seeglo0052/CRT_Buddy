@@ -1,262 +1,142 @@
-# ?? CRT Buddy v5.0 - ºáÏò²¼¾ÖÍê³É£¡
+# CRT Buddy v5.0 - Horizontal Layout Milestone
 
-## ? ×îÐÂ¸Ä½ø
+## Overview
 
-### ?? ºáÏò²¼¾Ö
-**Ö®Ç°**: ×ÝÏò²¼¾Ö (320x440)
-**ÏÖÔÚ**: ºáÏò²¼¾Ö (480x280) ?
+This milestone introduces a new horizontal layout for CRT Buddy, optimizing the user interface for wide screens and improving usability.
 
-### ²¼¾ÖÉè¼Æ
-```
-©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
-©¦ [CRT BUDDY]                            ??  ©¦ ¡û ¶¥²¿Æ·ÅÆÀ¸
-©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©Ð©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È
-©¦              ©¦  [CRT BUDDY v5.0]            ©¦
-©¦              ©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È
-©¦   ¨X¨T¨T¨T¨T¨T¨T¨T¨T¨[ ©¦  [ÊäÈëÎÄ±¾¿ò]                ©¦
-©¦   ¨U        ¨U ©¦                              ©¦
-©¦   ¨U  ??   ¨U ©¦  [GENERATE]                  ©¦
-©¦   ¨U ??? ??? ¨U ©¦  [IMAGE]                     ©¦
-©¦   ¨U  ^_^   ¨U ©¦  [RANDOM]                    ©¦
-©¦   ¨U        ¨U ©¦                              ©¦
-©¦   ¨^¨T¨T¨T¨T¨T¨T¨T¨T¨a ©¦         [OFF]                ©¦
-©¦   CRTÆÁÄ»    ©¦         µçÔ´°´Å¥             ©¦
-©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©Ø©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
-©¦          µ×²¿Í¨·ç²Û                          ©¦
-©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
-```
+## Key Changes
 
----
+- Layout changed from vertical (320x440) to horizontal (480x280).
+- Enhanced button arrangement for easier access.
+- Improved CRT screen rendering and effects.
 
-## ?? ÐÂÉè¼ÆÌØµã
+## UI Structure
 
-### ×ó²à - CRTÆÁÄ»Çø
-```yaml
-³ß´ç: 220 x 250 px
-ÄÚÈÝ:
-  - ÉîÉ«±ß¿ò
-  - À¶É«CRTÆÁÄ»
-  - ¼ªÏéÎï£¨¸ü´ó£©
-  - É¨ÃèÏß¶¯»­
-  - ²£Á§·´¹â
-```
+### Main Window
+- CRT screen area: 220 x 250 px
+- Features:
+  - Colored border
+  - CRT-style display
+  - Scanline effects
+  - Status indicators
 
-### ÓÒ²à - ¿ØÖÆÃæ°å
-```yaml
-ÔªËØ:
-  - ×´Ì¬ÏÔÊ¾£¨¶¥²¿£©
-  - ÊäÈëÎÄ±¾¿ò
-  - 3¸ö¹¦ÄÜ°´Å¥£¨³¤ÌõÐÎ£©
-  - 1¸öµçÔ´°´Å¥£¨Ô²ÐÎ£©
+### Sidebar
+- Status display
+- Text input
+- Three main function buttons:
+  - GENERATE
+  - IMAGE
+  - RANDOM
+- Power button (OFF)
 
-°´Å¥:
-  GENERATE - ·ÛÉ«½ðÊô
-  IMAGE    - ÇàÉ«½ðÊô
-  RANDOM   - ½ðÉ«½ðÊô
-  OFF      - Òø»ÒÉ«½ðÊô
-```
+## Button Styles
 
----
+- GENERATE: Pink gradient (#FF0080 to #FF66B3)
+- IMAGE: Blue gradient (#00CCFF to #66E0FF)
+- RANDOM: Gold gradient (#FFD700 to #FFE766)
+- OFF: Red gradient (#FF3333 to #CC0000)
 
-## ?? ¹Ø±Õ°´Å¥¸Ä½ø
+## CRT Screen Details
 
-### Ö®Ç°µÄÎÊÌâ
-- ? ·ûºÅÏÔÊ¾´íÎó
-- ? Ì«Ð¡
+- Glass effect: #FF00FF
+- LED indicator: #00FFC8
 
-### ÏÖÔÚµÄÉè¼Æ
-```yaml
-ÑùÊ½: Ô²ÐÎ½ðÊô°´Å¥
-³ß´ç: 50x50 px
-ÑÕÉ«: Òø»ÒÉ«¾¶Ïò½¥±ä
-ÎÄ×Ö: "OFF" (ºìÉ«)
-Ð§¹û: 3DÁ¢Ìå±ß¿ò
-```
+## Layout Code Example
 
-### ÊÓ¾õÐ§¹û
-```
-Õý³£:
-  ¨X¨T¨T¨T¨T¨T¨T¨T¨[
-  ¨U  OFF  ¨U  ¡û Òø»Ò½ðÊô
-  ¨^¨T¨T¨T¨T¨T¨T¨T¨a     ºìÉ«ÎÄ×Ö
-
-ÐüÍ£:
-  ¨X¨T¨T¨T¨T¨T¨T¨T¨[
-  ¨U  OFF  ¨U  ¡û ¸üÁÁ
-  ¨^¨T¨T¨T¨T¨T¨T¨T¨a     
-
-°´ÏÂ:
-  ¨X¨T¨T¨T¨T¨T¨T¨T¨[
-  ¨U  OFF  ¨U  ¡û ±ä°µ + ±ß¿ò·´×ª
-  ¨^¨T¨T¨T¨T¨T¨T¨T¨a
-```
-
----
-
-## ?? ³ß´ç¶Ô±È
-
-### °æ±¾ÑÝ½ø
-```
-v1.0: 400x500  (ÊúÏò)
-v2.0: 500x650  (ÊúÏò - ×î´ó)
-v3.0: 380x480  (ÊúÏò)
-v4.0: 320x400  (ÊúÏò - ×î½ô´Õ)
-v5.0: 480x280  (ºáÏò) ? µ±Ç°°æ±¾
-```
-
-### ºáÏòÓÅÊÆ
-```
-? ¸üÊÊºÏ¿íÆÁÏÔÊ¾Æ÷
-? ×óÓÒ·ÖÇøÇåÎú
-? CRTÆÁÄ»¸ü´ó
-? °´Å¥ÅÅÁÐ¸üÊæÊÊ
-? ¸üÏñÕæÊµÌ¨Ê½»úÃæ°å
-```
-
----
-
-## ?? Y2KÌ¨Ê½»ú·ç¸ñ
-
-### Éè¼ÆÁé¸Ð
-```
-©°©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©´
-©¦  ÕæÊµÌ¨Ê½»úÇ°Ãæ°å            ©¦
-©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È
-©¦  [CD-ROMÇý¶¯Æ÷]              ©¦
-©¦  [ÈíÅÌÇý¶¯Æ÷]                ©¦
-©¦  [³¤ÌõÐÎ°´Å¥]                ©¦
-©¦  [³¤ÌõÐÎ°´Å¥]                ©¦
-©¦       [Ô²ÐÎµçÔ´]             ©¦
-©¸©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¼
-```
-
-### ÊµÏÖÐ§¹û
-```
-? ×ó²à - CRTÏÔÊ¾ÆÁ£¨Ïñ¼àÊÓÆ÷£©
-? ÓÒ²à - ¿ØÖÆÃæ°å£¨ÏñÖ÷»ú£©
-? ³¤Ìõ°´Å¥ - 3D½ðÊôÐ§¹û
-? Ô²ÐÎµçÔ´ - Òø»Ò½ðÊô
-? µ×²¿ - Í¨·ç²Û
-```
-
----
-
-## ?? ÅäÉ«·½°¸
-
-### ½ðÊô°´Å¥
-```yaml
-GENERATE:
-  »ùÉ«: #FF0080 ¡ú #FF66B3 (·ÛÉ«)
-  ½ðÊô¿ò: »ÒÉ«½¥±ä
-
-IMAGE:
-  »ùÉ«: #00CCFF ¡ú #66E0FF (ÇàÉ«)
-  ½ðÊô¿ò: »ÒÉ«½¥±ä
-
-RANDOM:
-  »ùÉ«: #FFD700 ¡ú #FFE766 (½ðÉ«)
-  ½ðÊô¿ò: »ÒÉ«½¥±ä
-
-OFF:
-  »ùÉ«: Òø»ÒÉ«¾¶Ïò½¥±ä
-  ÎÄ×Ö: #FF3333 (ºìÉ«)
-  ÐüÍ£: #FF6666
-  °´ÏÂ: #CC0000
-```
-
-### CRTÆÁÄ»
-```yaml
-ÆÁÄ»: À¶É«¾¶Ïò½¥±ä
-¼ªÏéÎï: ÇàÉ«·¢¹â
-ÌìÏßÇò: Ó«¹â·Û #FF00FF
-LED: ÇàÂÌÉ« #00FFC8
-```
-
----
-
-## ?? ¼¼ÊõÏ¸½Ú
-
-### ²¼¾Ö½á¹¹
 ```python
-QHBoxLayout (Ö÷²¼¾Ö)
-©À©¤©¤ QWidget (×ó²à - ¹Ì¶¨220px)
-©¦   ©¸©¤©¤ CRTÆÁÄ» + ¼ªÏéÎï (»æÖÆ)
-©¦
-©¸©¤©¤ QVBoxLayout (ÓÒ²à)
-    ©À©¤©¤ ×´Ì¬À¸
-    ©À©¤©¤ ÊäÈë¿ò
-    ©À©¤©¤ °´Å¥1 (GENERATE)
-    ©À©¤©¤ °´Å¥2 (IMAGE)
-    ©À©¤©¤ °´Å¥3 (RANDOM)
-    ©¸©¤©¤ µçÔ´°´Å¥ (OFF)
+QHBoxLayout (main layout)
+    QWidget (left panel - fixed 220px)
+        CRT screen + effects
+    QVBoxLayout (sidebar)
+        Status display
+        Text input
+        Button 1 (GENERATE)
+        Button 2 (IMAGE)
+        Button 3 (RANDOM)
+        Power button (OFF)
 ```
 
-### °´Å¥ÑùÊ½
-```css
-/* ³¤Ìõ°´Å¥ - ºáÏò½¥±ä */
-background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-  stop:0 »ÒÉ«,
-  stop:0.4 ²ÊÉ«1,
-  stop:0.6 ²ÊÉ«2,
-  stop:1 »ÒÉ«);
+## CSS Example for Buttons
 
-/* Ô²ÐÎ°´Å¥ - ¾¶Ïò½¥±ä */
+```css
+/* Main function buttons - horizontal gradient */
+background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+  stop:0 #FF0080,
+  stop:0.4 #FF66B3,
+  stop:0.6 #FF66B3);
+```
+
+## Version History
+
+- v1.0: 400x500 (vertical)
+- v2.0: 500x650 (vertical - wide)
+- v3.0: 380x480 (vertical)
+- v4.0: 320x400 (vertical - compact)
+- v5.0: 480x280 (horizontal)
+
+## Notes
+
+- This milestone focuses on usability and visual clarity for horizontal layouts.
+- All interface elements are now optimized for wide screens.
+  stop:1 ï¿½ï¿½É«);
+
+/* Ô²ï¿½Î°ï¿½Å¥ - ï¿½ï¿½ï¿½ò½¥±ï¿½ */
 background: qradialgradient(
   cx:0.5, cy:0.5, radius:0.8,
-  stop:0 ÁÁ»Ò,
-  stop:0.5 ÖÐ»Ò,
-  stop:1 °µ»Ò);
+  stop:0 ï¿½ï¿½ï¿½ï¿½,
+  stop:0.5 ï¿½Ð»ï¿½,
+  stop:1 ï¿½ï¿½ï¿½ï¿½);
 ```
 
 ---
 
-## ?? Ê¹ÓÃ·½·¨
+## ?? Ê¹ï¿½Ã·ï¿½ï¿½ï¿½
 
-### Æô¶¯
+### ï¿½ï¿½ï¿½ï¿½
 ```bash
 python main.py
 ```
 
-### ¹¦ÄÜ
-1. **ÒÆ¶¯´°¿Ú** - ÍÏ¶¯ÈÎÒâÎ»ÖÃ
-2. **ÊäÈëÎÄ×Ö** - ÓÒ²àÊäÈë¿ò
-3. **Éú³ÉMeme**:
-   - GENERATE - Éú³ÉÎÄ×ÖMeme
-   - IMAGE - ÉÏ´«Í¼Æ¬
-   - RANDOM - Ëæ»úÉú³É
-4. **¹Ø±Õ³ÌÐò** - µã»÷OFF°´Å¥
+### ï¿½ï¿½ï¿½ï¿½
+1. **ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½** - ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+2. **ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½** - ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+3. **ï¿½ï¿½ï¿½ï¿½Meme**:
+   - GENERATE - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Meme
+   - IMAGE - ï¿½Ï´ï¿½Í¼Æ¬
+   - RANDOM - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+4. **ï¿½Ø±Õ³ï¿½ï¿½ï¿½** - ï¿½ï¿½ï¿½OFFï¿½ï¿½Å¥
 
-### ÑÛ¾¦¸ú×Ù
-- ÒÆ¶¯Êó±êµ½ÆÁÄ»ÈÎÒâÎ»ÖÃ
-- ×ó²à¼ªÏéÎïÑÛ¾¦»á¸úËæ
-
----
-
-## ?? Y2KÃÀÑ§ÔªËØ
-
-```
-? ÂÁÖÆ½ðÊôÍâ¿Ç
-? ºáÏòÌ¨Ê½»ú²¼¾Ö
-? ³¤ÌõÐÎ°´Å¥£¨3DÐ§¹û£©
-? Ô²ÐÎµçÔ´°´Å¥
-? CRTÀ¶É«ÆÁÄ»
-? Í¨·ç²Û
-? µçÔ´LED
-? Æ·ÅÆ±êÊ¶
-```
+### ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½
+- ï¿½Æ¶ï¿½ï¿½ï¿½êµ½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
+- ï¿½ï¿½à¼ªï¿½ï¿½ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ---
 
-## ?? ºáÏò vs ×ÝÏò
+## ?? Y2Kï¿½ï¿½Ñ§Ôªï¿½ï¿½
 
-| ÌØÐÔ | ×ÝÏò (v4.0) | ºáÏò (v5.0) |
+```
+? ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½Ì¨Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+? ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½Å¥ï¿½ï¿½3DÐ§ï¿½ï¿½ï¿½ï¿½
+? Ô²ï¿½Îµï¿½Ô´ï¿½ï¿½Å¥
+? CRTï¿½ï¿½É«ï¿½ï¿½Ä»
+? Í¨ï¿½ï¿½ï¿½
+? ï¿½ï¿½Ô´LED
+? Æ·ï¿½Æ±ï¿½Ê¶
+```
+
+---
+
+## ?? ï¿½ï¿½ï¿½ï¿½ vs ï¿½ï¿½ï¿½ï¿½
+
+| ï¿½ï¿½ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½ (v4.0) | ï¿½ï¿½ï¿½ï¿½ (v5.0) |
 |------|------------|------------|
-| ³ß´ç | 320x400 | 480x280 |
-| CRTÆÁÄ» | Ð¡ | ´ó ? |
-| °´Å¥²¼¾Ö | ¶Ñµþ | ÊúÏòÅÅÁÐ ? |
-| ¹Ø±Õ°´Å¥ | ÎÄ×Ö´íÎó | ½ðÊôOFF ? |
-| ÊÓ¾õ·ÖÇø | ²»Ã÷ÏÔ | ÇåÎú ? |
-| Ì¨Ê½»ú¸Ð | Ò»°ã | Ç¿ ? |
+| ï¿½ß´ï¿½ | 320x400 | 480x280 |
+| CRTï¿½ï¿½Ä» | Ð¡ | ï¿½ï¿½ ? |
+| ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ | ï¿½Ñµï¿½ | ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ? |
+| ï¿½Ø±Õ°ï¿½Å¥ | ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½OFF ? |
+| ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½ ? |
+| Ì¨Ê½ï¿½ï¿½ï¿½ï¿½ | Ò»ï¿½ï¿½ | Ç¿ ? |
 
 ---
 
@@ -264,32 +144,32 @@ python main.py
 
 ## ? CRT Buddy v5.0 ?
 
-### Y2KºáÏòÌ¨Ê½»ú·ç¸ñ
+### Y2Kï¿½ï¿½ï¿½ï¿½Ì¨Ê½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ```
-?? ×ó²àCRTÆÁÄ» + ?? ÓÒ²à¿ØÖÆÃæ°å
-?? ½ðÊô³¤Ìõ°´Å¥ + ? ÒøÉ«µçÔ´¼ü
-??? È«ÆÁÑÛ¾¦¸ú×Ù + ?? ÂÁÖÆÍâ¿Ç
-```
-
----
-
-**¸üÏñÕæÊµµÄY2KÌ¨Ê½»ú£¡**
-
-```
-ºáÏò²¼¾Ö = Ì¨Ê½»ú¸Ð ??????
+?? ï¿½ï¿½ï¿½CRTï¿½ï¿½Ä» + ?? ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ + ? ï¿½ï¿½É«ï¿½ï¿½Ô´ï¿½ï¿½
+??? È«ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½ï¿½ï¿½ + ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ```
 
 ---
 
-**Á¢¼´ÔËÐÐ¿´¿´ÐÂ²¼¾Ö£¡**
+**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Y2KÌ¨Ê½ï¿½ï¿½ï¿½ï¿½**
+
+```
+ï¿½ï¿½ï¿½ò²¼¾ï¿½ = Ì¨Ê½ï¿½ï¿½ï¿½ï¿½ ??????
+```
+
+---
+
+**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½Â²ï¿½ï¿½Ö£ï¿½**
 
 ```bash
 python main.py
 ```
 
-**ÒÆ¶¯Êó±ê£¬¿´¼ªÏéÎïÑÛ¾¦¸úËæ£¡**
-**µã»÷OFF°´Å¥¹Ø±Õ³ÌÐò£¡**
+**ï¿½Æ¶ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½ï¿½æ£¡**
+**ï¿½ï¿½ï¿½OFFï¿½ï¿½Å¥ï¿½Ø±Õ³ï¿½ï¿½ï¿½**
 
 ---
 
@@ -297,6 +177,6 @@ python main.py
 
 ?????????
 
-**ÕæÊµµÄÌ¨Ê½»úÌåÑé£¡**
+**ï¿½ï¿½Êµï¿½ï¿½Ì¨Ê½ï¿½ï¿½ï¿½ï¿½ï¿½é£¡**
 
 </div>

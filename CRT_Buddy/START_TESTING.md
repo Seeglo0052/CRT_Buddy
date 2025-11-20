@@ -1,341 +1,109 @@
-# ?? CRT Buddy - ´ò°üÍê³É£¡Á¢¼´²âÊÔÖ¸ÄÏ
+# ?? CRT Buddy - ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
 
-## ? ´ò°ü×´Ì¬£º100% ³É¹¦
+## ? ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½100% ï¿½É¹ï¿½
 
-ÄãµÄCRT BuddyÒÑ¾­³É¹¦´ò°üÎª¶ÀÁ¢µÄWindows¿ÉÖ´ĞĞÎÄ¼ş£¡
+ï¿½ï¿½ï¿½CRT Buddyï¿½Ñ¾ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Windowsï¿½ï¿½Ö´ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 
 ---
 
-## ?? Á¢¼´²âÊÔ£¨3ÖÖ·½Ê½£©
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½3ï¿½Ö·ï¿½Ê½ï¿½ï¿½
 
-### ·½Ê½1: Ê¹ÓÃ¿ìËÙ²âÊÔ½Å±¾£¨ÍÆ¼ö£©
+### ï¿½ï¿½Ê½1: Ê¹ï¿½Ã¿ï¿½ï¿½Ù²ï¿½ï¿½Ô½Å±ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
 ```
-Ë«»÷ÔËĞĞ: quick_test.bat
+Ë«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: quick_test.bat
 
-¹¦ÄÜ:
-- ×Ô¶¯¼ì²éEXEÎÄ¼ş
-- ÏÔÊ¾ÎÄ¼şĞÅÏ¢
-- Ò»¼üÆô¶¯³ÌĞò
-- ²é¿´Ê¹ÓÃËµÃ÷
-- ´ò¿ªoutputÎÄ¼ş¼Ğ
-```
+ï¿½ï¿½ï¿½ï¿½:
+# CRT Buddy â€” Start Testing
 
-### ·½Ê½2: Ö±½ÓÔËĞĞEXE
-```
-Ë«»÷: dist\CRT_Buddy.exe
-```
+English-only testing and packaging checklist (Windows).
 
-### ·½Ê½3: ÃüÁîĞĞ²âÊÔ
+---
+
+## Quick Smoke
+
+1) Run quick_test.bat (if present)
+	- Verify EXE launches
+	- Buttons clickable
+	- Text generation saves to output/
+	- Pixel font loads
+
+2) Direct run dist\CRT_Buddy.exe (if built)
+
+3) Terminal run (source)
 ```powershell
-cd C:\GameDev\CRT_Buddy\CRT_Buddy\CRT_Buddy\dist
-.\CRT_Buddy.exe
+python start.py
+python CRT_Buddy.py
 ```
 
 ---
 
-## ?? ÎÄ¼şĞÅÏ¢
+## Build meta
 
-```
-ÎÄ¼şÃû: CRT_Buddy.exe
-´óĞ¡: 95.68 MB
-Î»ÖÃ: dist\CRT_Buddy.exe
-´ò°ü·½Ê½: PyInstaller (specÎÄ¼ş)
-°üº¬: ÍêÕûPyQt6 + ËùÓĞÒÀÀµ
-```
+- Artifact: CRT_Buddy.exe (PyInstaller)
+- Deps: PyQt6, Pillow, NumPy, OpenCV
 
 ---
 
-## ? ²âÊÔÇåµ¥
+## Manual checks
 
-ÔËĞĞ³ÌĞòºó£¬ÇëÑéÖ¤ÒÔÏÂ¹¦ÄÜ£º
-
-### »ù´¡²âÊÔ (5·ÖÖÓ)
-- [ ] ³ÌĞòÄÜÕı³£Æô¶¯
-- [ ] CRT´°¿ÚÕıÈ·ÏÔÊ¾
-- [ ] É¨ÃèÏß¶¯»­Á÷³©
-- [ ] ¿ÉÒÔÍÏ×§ÒÆ¶¯´°¿Ú
-- [ ] ÓÒ¼ü¿ÉÒÔ¹Ø±Õ³ÌĞò
-
-### ¹¦ÄÜ²âÊÔ (10·ÖÖÓ)
-- [ ] ÊäÈëÎÄ×Ö²¢Éú³ÉMeme
-- [ ] ÍÏ×§Í¼Æ¬µ½´°¿Ú
-- [ ] µã»÷ÉÏ´«°´Å¥Ñ¡ÔñÍ¼Æ¬
-- [ ] µã»÷Ëæ»úÉú³É°´Å¥
-- [ ] ¼ì²éoutputÎÄ¼ş¼Ğ
-- [ ] È·ÈÏÉú³ÉµÄÍ¼Æ¬¿ÉÒÔ´ò¿ª
-
-### ÌåÑé²âÊÔ (5·ÖÖÓ)
-- [ ] ½çÃæÃÀ¹Û
-- [ ] ²Ù×÷Á÷³©
-- [ ] ÌáÊ¾ĞÅÏ¢ÇåÎú
-- [ ] Éú³ÉËÙ¶ÈºÏÀí
+- [ ] Window shows without crash
+- [ ] Text â†’ saved to output/
+- [ ] Image â†’ import/apply/save OK
+- [ ] Random â†’ generated and saved
+- [ ] Menu/drag/always-on-top OK
 
 ---
 
-## ?? ²âÊÔ³¡¾°
+## Repro steps (examples)
 
-### ³¡¾°1: ÎÄ×ÖMemeÉú³É
-```
-1. Æô¶¯³ÌĞò
-2. ÔÚÊäÈë¿òÊäÈë: "Y2K VIBES ONLY"
-3. µã»÷ [? GENERATE MEME]
-4. µÈ´ı2-3Ãë
-5. ²é¿´ output\y2k_text_1.png
-```
+Text â†’ Meme:
+1. Type â€œY2K VIBES ONLYâ€
+2. Click GENERATE MEME
+3. View output\y2k_text_1.png
 
-### ³¡¾°2: Í¼Æ¬ÌØĞ§´¦Àí
-```
-1. ×¼±¸Ò»ÕÅÍ¼Æ¬ (ÈÎÒâ¸ñÊ½)
-2. ÍÏ×§µ½CRT´°¿Ú
-3. (¿ÉÑ¡) ÊäÈë±êÌâÎÄ×Ö
-4. ×Ô¶¯´¦Àí²¢±£´æ
-5. ²é¿´ output\y2k_image_1.png
-```
+Image â†’ Effect:
+1. Drag or upload PNG/JPG
+2. Apply CRT effect
+3. Save to output\y2k_image_1.png
 
-### ³¡¾°3: Ëæ»úÉú³É
-```
-1. µã»÷ [? RANDOM Y2K EFFECT]
-2. ³ÌĞò×Ô¶¯Éú³ÉËæ»úMeme
-3. ²é¿´ output\y2k_random_1.png
-```
+Random â†’ Effect:
+1. Click RANDOM Y2K EFFECT
+2. Save to output\y2k_random_1.png
 
 ---
 
-## ?? ¿ÉÄÜÓöµ½µÄÎÊÌâ
+## EXE issues
 
-### ÎÊÌâ1: Windows°²È«¾¯¸æ
-```
-ÌáÊ¾: "Windows±£»¤ÁËÄãµÄµçÄÔ"
+Missing DLL â†’ install VC++ runtime:
+https://aka.ms/vs/17/release/vc_redist.x64.exe
 
-½â¾ö:
-1. µã»÷"¸ü¶àĞÅÏ¢"
-2. µã»÷"ÈÔÒªÔËĞĞ"
-3. ÕâÊÇÕı³£µÄ£¨³ÌĞòÎŞÊı×ÖÇ©Ãû£©
-```
-
-### ÎÊÌâ2: Æô¶¯Âı
-```
-ÏÖÏó: Ê×´ÎÆô¶¯ĞèÒª3-6Ãë
-
-½â¾ö:
-- ÕâÊÇÕı³£µÄ
-- PyQt6¿ò¼Ü¼ÓÔØĞèÒªÊ±¼ä
-- ºóĞøÆô¶¯»á¸ü¿ì
-```
-
-### ÎÊÌâ3: ÕÒ²»µ½outputÎÄ¼ş¼Ğ
-```
-ÏÖÏó: ²»ÖªµÀÎÄ¼ş±£´æÔÚÄÄ
-
-½â¾ö:
-- outputÎÄ¼ş¼ĞÔÚEXEÍ¬¼¶Ä¿Â¼
-- Ê×´ÎÉú³ÉÊ±×Ô¶¯´´½¨
-- Ê¹ÓÃquick_test.bat¿ÉÒÔÖ±½Ó´ò¿ª
-```
-
-### ÎÊÌâ4: È±ÉÙDLL
-```
-ÌáÊ¾: ÕÒ²»µ½Ä³Ä³DLL
-
-½â¾ö:
-- °²×° Visual C++ Redistributable
-- ÏÂÔØ: https://aka.ms/vs/17/release/vc_redist.x64.exe
-```
+Black screen/no response â†’ run from terminal to see logs; ensure antivirus isnâ€™t blocking.
 
 ---
 
-## ?? ĞÔÄÜ²Î¿¼
+## Performance (approx.)
 
-```
-Æô¶¯Ê±¼ä: 3-6 Ãë£¨Ê×´Î£©
-ÄÚ´æÕ¼ÓÃ: 150-250 MB
-CPUÕ¼ÓÃ: µÍ£¨´¦ÀíÊ±ÖĞµÈ£©
-
-ÎÄ×ÖÉú³É: <1 Ãë
-Í¼Æ¬´¦Àí: 1-3 Ãë
-ÎÄ¼ş±£´æ: <1 Ãë
-```
+- Cold start: < 1s
+- Text gen: 1â€“3s
+- First image import: < 1s
 
 ---
 
-## ?? ¹¦ÄÜÔ¤ÀÀ
+## Release tips
 
-### ¿ÉÓÃµÄY2KÌØĞ§
-```
-??? CRTĞ§¹û - É¨ÃèÏß + RGBÉ«²î
-?? VHS¹ÊÕÏ - Ë®Æ½Î»ÒÆ + Ê§Õæ
-?? È«Ï¢ÀØÉä - ²Êºç½¥±ä
-?? ¶Æ¸õ½ğÊô - ÒøÉ«ÖÊ¸Ğ
-?? ÄŞºç»Ô¹â - Ó«¹âÔöÇ¿
-?? ÏñËØ»¯ - ¸´¹ÅÓÎÏ··ç¸ñ
-```
+1) Artifacts
+	- dist/CRT_Buddy.exe
+	- README/USAGE/QUICKSTART
 
-### ¿ÉÓÃµÄÎÄ×Ö·ç¸ñ
-```
-? ½¥±äÎÄ×Ö - ¶àÉ«±³¾°
-? ¹ÊÕÏÎÄ×Ö - RGB·ÖÀë
-?? ÄŞºçÎÄ×Ö - ¶à²ã»Ô¹â
-?? ¶Æ¸õÎÄ×Ö - ½ğÊô½¥±ä
-?? ¸´¹ÅÎÄ×Ö - ²Êºç×ÖÄ¸
-```
+2) Archive
+	- Include one example image + how-to
+
+3) GitHub Release
+	- Tag + release with notes
 
 ---
 
-## ?? Ê¹ÓÃ¼¼ÇÉ
+Made for Y2K lovers.
 
-### ¼¼ÇÉ1: ¾­µäY2KÎÄ°¸
-```
-UNDER CONSTRUCTION ??
-WELCOME TO MY WEBSITE ?
-BEST VIEWED IN NETSCAPE ??
-Y2K AESTHETIC ?
-CYBER DREAMS 2000 ??
-POWERED BY GEOCITIES ??
-ENTER IF YOU DARE ??
-```
-
-### ¼¼ÇÉ2: ¿ìËÙ²âÊÔ
-```
-1. ÊäÈë¼òµ¥ÎÄ×Ö "TEST"
-2. µã»÷Éú³É
-3. ÑéÖ¤¹¦ÄÜÕı³£
-```
-
-### ¼¼ÇÉ3: ÅúÁ¿Éú³É
-```
-1. Á¬ĞøÊäÈë²»Í¬ÎÄ×Ö
-2. Ã¿´Îµã»÷Éú³É
-3. ¿ìËÙ´´½¨¶à¸öMeme
-```
 
 ---
-
-## ?? ²âÊÔÍ¨¹ıºóµÄÏÂÒ»²½
-
-### 1. ´´½¨Ñ¹Ëõ°ü
-```
-Ê¹ÓÃ7-ZipÑ¹ËõdistÎÄ¼ş¼Ğ:
-- ÎÄ¼şÃû: CRT_Buddy_v1.0.0_Windows_x64.7z
-- Ô¤ÆÚ´óĞ¡: 35-40 MB
-- Ñ¹ËõÂÊ: 60-65%
-```
-
-### 2. ×¼±¸·¢²¼²ÄÁÏ
-```
-±ØĞèÎÄ¼ş:
-? CRT_Buddy.exe (»òÑ¹Ëõ°ü)
-? Ê¹ÓÃËµÃ÷.txt
-? README.md
-? ½ØÍ¼/ÑİÊ¾GIF (¿ÉÑ¡µ«ÍÆ¼ö)
-```
-
-### 3. GitHub Release
-```bash
-# ´´½¨tag
-git tag -a v1.0.0 -m "First stable release"
-git push origin v1.0.0
-
-# ÔÚGitHub´´½¨Release
-# ÉÏ´«Ñ¹Ëõ°ü
-# ¸´ÖÆRELEASE_README.mdÄÚÈİ
-```
-
-### 4. ·ÖÏíÍÆ¹ã
-```
-Ä¿±êÆ½Ì¨:
-- GitHub Releases (Ö÷Òª)
-- ¼¼ÊõÂÛÌ³ (V2EX, Öªºõ)
-- Éç½»Ã½Ìå (Twitter, Instagram)
-- Éè¼ÆÉçÇø (Behance, Dribbble)
-```
-
----
-
-## ?? ²âÊÔ±¨¸æÄ£°å
-
-²âÊÔÍê³Éºó£¬¿ÉÒÔ¼ÇÂ¼£º
-
-```markdown
-## CRT Buddy ²âÊÔ±¨¸æ
-
-### ²âÊÔ»·¾³
-- ÏµÍ³: Windows 11
-- ÄÚ´æ: 16GB
-- ²âÊÔÊ±¼ä: 2024-11-11
-
-### ²âÊÔ½á¹û
-- [x] Æô¶¯Õı³£
-- [x] ¹¦ÄÜÍêÕû
-- [x] ĞÔÄÜÁ¼ºÃ
-- [x] ÎŞ±ÀÀ£
-
-### ·¢ÏÖµÄÎÊÌâ
-- ÎŞ
-
-### ½¨Òé
-- Ò»ÇĞÕı³££¬¿ÉÒÔ·¢²¼
-
-### ²âÊÔÈËÔ±
-- [ÄãµÄÃû×Ö]
-```
-
----
-
-## ?? ²âÊÔÍ¨¹ıºó
-
-Èç¹ûËùÓĞ²âÊÔÍ¨¹ı£¬¹§Ï²Äã£¡
-
-### ÄãÏÖÔÚÓµÓĞ£º
-- ? ÍêÈ«¶ÀÁ¢µÄWindowsÓ¦ÓÃ³ÌĞò
-- ? °üº¬ËùÓĞÒÀÀµºÍ¹¦ÄÜ
-- ? ¿ÉÒÔ×ÔÓÉ·Ö·¢ºÍ·ÖÏí
-- ? ¿ªÏä¼´ÓÃµÄÓÃ»§ÌåÑé
-- ? ÍêÕûµÄÎÄµµÌåÏµ
-
-### ¿ÉÒÔ¿ªÊ¼£º
-- ?? ·¢²¼µ½GitHub
-- ?? ·ÖÏíµ½Éç½»Ã½Ìå
-- ?? ÍÆ¹ãµ½ÉçÇø
-- ?? ÊÕ¼¯ÓÃ»§·´À¡
-- ? »ñµÃStarsºÍÖ§³Ö
-
----
-
-## ?? ĞèÒª°ïÖú£¿
-
-### ²âÊÔÓöµ½ÎÊÌâ
-1. ²é¿´ FINAL_SUCCESS.md
-2. ¼ì²éÏµÍ³ÒªÇó
-3. °²×° Visual C++ Redistributable
-4. Ìá½» GitHub Issue
-
-### ¹¦ÄÜ½¨Òé
-1. ´ò¿ª GitHub Discussions
-2. ÃèÊöÄãµÄÏë·¨
-3. ÓëÉçÇøÌÖÂÛ
-
----
-
-<div align="center">
-
-## ? Á¢¼´¿ªÊ¼²âÊÔ£¡?
-
-```
-Ë«»÷: quick_test.bat
-```
-
-»ò
-
-```
-Ë«»÷: dist\CRT_Buddy.exe
-```
-
----
-
-**ÏíÊÜY2K´´×÷Ö®ÂÃ£¡**
-
-Made with ?? in Y2K Spirit
-
-????????
-
-</div>

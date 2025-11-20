@@ -1,89 +1,113 @@
-# ?? PyQt6 °²×°ÎÊÌâ½â¾ö·½°¸
+## PYQT6_INSTALL_FIX â€” Windows ä¸‹å®‰è£…é—®é¢˜æŒ‡åŒ—
+èšç„¦è§£å†³ â€œpip å®‰è£… PyQt6 å¤±è´¥ / è¿è¡Œæ—¶æŠ¥ç¼º DLLâ€ ç­‰é—®é¢˜ã€‚
+---
+### 1) ä½¿ç”¨ç‹¬ç«‹è™šæ‹ŸçŽ¯å¢ƒ
+- åœ¨ä»“åº“æ ¹ç›®å½•åˆ›å»º .venvï¼Œå¹¶åœ¨ VS Code é€‰æ‹©è¯¥è§£é‡Šå™¨
+- ä¹‹åŽçš„ pip éƒ½åœ¨ .venv ä¸­æ‰§è¡Œï¼Œé¿å…ç³»ç»ŸçŽ¯å¢ƒå†²çª
+---
+### 2) å®‰è£…æ­£ç¡®çš„åŒ…é›†åˆ
+- æœ€å°é›†åˆï¼šPyQt6, PyQt6-Qt6, PyQt6-sip
+- è‹¥ pip è‡ªåŠ¨è§£æžå¤±è´¥ï¼Œå¯é€ä¸ªå®‰è£…ä¸Šè¿°ä¸‰è€…
+---
+### 3) è½®å­åŒ¹é…ï¼ˆwheelsï¼‰
+- Windows x64 é€šå¸¸ä½¿ç”¨ win_amd64 çš„ .whl
+- Python 3.13 å¯¹åº” cp313ï¼›ç¡®ä¿ä¸‹è½½/è§£æžåˆ°çš„ wheel ä¸Žç‰ˆæœ¬åŒ¹é…
+---
+### 4) è¿è¡Œæ—¶æŠ¥ Qt DLL ç¼ºå¤±
+- ç¡®è®¤å·²å®‰è£… PyQt6-Qt6ï¼ˆå…¶ä¸­åŒ…å« Qt6*.dllï¼‰
+- ANGLE/OpenGL æ¸²æŸ“å†²çªæ—¶ï¼Œå°è¯•åˆ‡æ¢/æ›´æ–°æ˜¾å¡é©±åŠ¨
+- è‹¥æç¤º platform pluginsï¼Œæ£€æŸ¥ PyQt6 çš„ plugins ç›®å½•æ˜¯å¦è¢«æ­£ç¡®å‘çŽ°ï¼ˆæ‰“åŒ…æ—¶å°¤å…¶éœ€è¦ï¼‰
+---
+### 5) ä»æ— æ³•å®‰è£…ï¼Ÿ
+- å‡çº§ pip å’Œ setuptools
+- åˆ‡æ¢åˆ°æ¸…åŽ/é˜¿é‡Œäº‘é•œåƒæºé‡è¯•
+- è´´å‡ºå®Œæ•´é”™è¯¯æ—¥å¿—ä»¥ä¾¿è¿›ä¸€æ­¥å®šä½
+# ?? PyQt6 ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-## ÎÊÌâÃèÊö
+## ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-°²×°PyQt6Ê±Óöµ½´íÎó£º
+ï¿½ï¿½×°PyQt6Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ```
 [Errno 2] No such file or directory: '...pageindicatordelegate-indicator-delegate-current-hovered@2x.png'
 ```
 
-ÕâÊÇWindows³¤Â·¾¶ÏÞÖÆ£¨260×Ö·û£©µ¼ÖÂµÄÎÊÌâ¡£
+ï¿½ï¿½ï¿½ï¿½Windowsï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½260ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½â¡£
 
 ---
 
-## ?? ½â¾ö·½°¸
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-### ·½°¸1: ÆôÓÃWindows³¤Â·¾¶Ö§³Ö£¨ÍÆ¼ö£©
+### ï¿½ï¿½ï¿½ï¿½1: ï¿½ï¿½ï¿½ï¿½Windowsï¿½ï¿½Â·ï¿½ï¿½Ö§ï¿½Ö£ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½
 
-1. ÒÔ¹ÜÀíÔ±Éí·Ý´ò¿ªPowerShell
-2. ÔËÐÐÒÔÏÂÃüÁî£º
+1. ï¿½Ô¹ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Ý´ï¿½PowerShell
+2. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î£º
 
 ```powershell
-# ÆôÓÃ³¤Â·¾¶Ö§³Ö
+# ï¿½ï¿½ï¿½Ã³ï¿½Â·ï¿½ï¿½Ö§ï¿½ï¿½
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" `
 -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
 ```
 
-3. ÖØÆôµçÄÔ
-4. ÖØÐÂ°²×°PyQt6£º
+3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+4. ï¿½ï¿½ï¿½Â°ï¿½×°PyQt6ï¿½ï¿½
 
 ```bash
 pip install PyQt6
 ```
 
-### ·½°¸2: Ê¹ÓÃPySide6Ìæ´ú£¨ÍÆ¼ö£¡£©
+### ï¿½ï¿½ï¿½ï¿½2: Ê¹ï¿½ï¿½PySide6ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
-PySide6ÊÇQt¹Ù·½µÄPython°ó¶¨£¬¹¦ÄÜÓëPyQt6ÏàÍ¬£º
+PySide6ï¿½ï¿½Qtï¿½Ù·ï¿½ï¿½ï¿½Pythonï¿½ó¶¨£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PyQt6ï¿½ï¿½Í¬ï¿½ï¿½
 
 ```bash
 pip install PySide6
 ```
 
-È»ºóÐÞ¸ÄÏîÄ¿ÖÐµÄËùÓÐµ¼Èë£º
+È»ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½Ä¿ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ë£º
 ```python
-# ½«ËùÓÐ
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 from PyQt6 import ...
 
-# ¸ÄÎª
+# ï¿½ï¿½Îª
 from PySide6 import ...
 ```
 
-### ·½°¸3: Ê¹ÓÃÐéÄâ»·¾³£¨¶ÌÂ·¾¶£©
+### ï¿½ï¿½ï¿½ï¿½3: Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½
 
-ÔÚCÅÌ¸ùÄ¿Â¼´´½¨ÐéÄâ»·¾³£¨Â·¾¶¸ü¶Ì£©£º
+ï¿½ï¿½Cï¿½Ì¸ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½Ì£ï¿½ï¿½ï¿½
 
 ```bash
-# ´´½¨ÐéÄâ»·¾³
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½
 python -m venv C:\venv
 
-# ¼¤»îÐéÄâ»·¾³
+# ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»·ï¿½ï¿½
 C:\venv\Scripts\activate
 
-# °²×°ÒÀÀµ
+# ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½
 pip install PyQt6 Pillow numpy opencv-python
 ```
 
-### ·½°¸4: ÐÞ¸Ä×¢²á±í±à¼­Æ÷
+### ï¿½ï¿½ï¿½ï¿½4: ï¿½Þ¸ï¿½×¢ï¿½ï¿½ï¿½ï¿½à¼­ï¿½ï¿½
 
-1. °´ Win+R£¬ÊäÈë `regedit`
-2. ÕÒµ½£º`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem`
-3. ÐÂ½¨DWORDÖµ£º`LongPathsEnabled`£¬ÉèÖÃÎª`1`
-4. ÖØÆôµçÄÔ
+1. ï¿½ï¿½ Win+Rï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ `regedit`
+2. ï¿½Òµï¿½ï¿½ï¿½`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem`
+3. ï¿½Â½ï¿½DWORDÖµï¿½ï¿½`LongPathsEnabled`ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª`1`
+4. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ---
 
-## ?? Õë¶ÔCRT BuddyµÄ¿ìËÙ½â¾ö·½°¸
+## ?? ï¿½ï¿½ï¿½CRT Buddyï¿½Ä¿ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-ÎÒ½¨ÒéÊ¹ÓÃ**PySide6**£¬ËüÓëPyQt6 API¼¸ºõÍêÈ«ÏàÍ¬£º
+ï¿½Ò½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½**PySide6**ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PyQt6 APIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½Í¬ï¿½ï¿½
 
-### ²½Öè1: °²×°PySide6
+### ï¿½ï¿½ï¿½ï¿½1: ï¿½ï¿½×°PySide6
 ```bash
 pip install PySide6
 ```
 
-### ²½Öè2: ´´½¨¼æÈÝ½Å±¾
+### ï¿½ï¿½ï¿½ï¿½2: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Å±ï¿½
 
-´´½¨ `run_pyside.py`£º
+ï¿½ï¿½ï¿½ï¿½ `run_pyside.py`ï¿½ï¿½
 ```python
 """
 CRT Buddy with PySide6
@@ -103,12 +127,12 @@ from main import main
 main()
 ```
 
-### ²½Öè3: ÔËÐÐ
+### ï¿½ï¿½ï¿½ï¿½3: ï¿½ï¿½ï¿½ï¿½
 ```bash
 python run_pyside.py
 ```
 
-### ²½Öè4: ´ò°ü
+### ï¿½ï¿½ï¿½ï¿½4: ï¿½ï¿½ï¿½
 ```bash
 pyinstaller --name=CRT_Buddy_PySide ^
             --onefile ^
@@ -120,50 +144,50 @@ pyinstaller --name=CRT_Buddy_PySide ^
 
 ---
 
-## ?? Ìæ´ú·½°¸¶Ô±È
+## ?? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½
 
-| ·½°¸ | ÓÅµã | È±µã |
+| ï¿½ï¿½ï¿½ï¿½ | ï¿½Åµï¿½ | È±ï¿½ï¿½ |
 |------|------|------|
-| **ÆôÓÃ³¤Â·¾¶** | Ò»ÀÍÓÀÒÝ | ÐèÒª¹ÜÀíÔ±È¨ÏÞ¡¢ÖØÆô |
-| **PySide6** | ÎÞÐèÈ¨ÏÞ¡¢¼´×°¼´ÓÃ | ÐèÐÞ¸ÄÉÙÁ¿´úÂë |
-| **ÐéÄâ»·¾³** | ²»Ó°ÏìÏµÍ³ | Â·¾¶ÈÔ¿ÉÄÜ¹ý³¤ |
-| **×¢²á±í** | ÓÀ¾ÃÉúÐ§ | ÐèÒª¹ÜÀíÔ±È¨ÏÞ |
+| **ï¿½ï¿½ï¿½Ã³ï¿½Â·ï¿½ï¿½** | Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ | ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ô±È¨ï¿½Þ¡ï¿½ï¿½ï¿½ï¿½ï¿½ |
+| **PySide6** | ï¿½ï¿½ï¿½ï¿½È¨ï¿½Þ¡ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½ | ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ |
+| **ï¿½ï¿½ï¿½â»·ï¿½ï¿½** | ï¿½ï¿½Ó°ï¿½ï¿½ÏµÍ³ | Â·ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ |
+| **×¢ï¿½ï¿½ï¿½** | ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ | ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ô±È¨ï¿½ï¿½ |
 
 ---
 
-## ?? ÍÆ¼öÁ÷³Ì
+## ?? ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
-1. **³¢ÊÔ°²×°PySide6**£¨×î¼òµ¥£©
-2. Èç¹ûPySide6Ò²Ê§°Ü ¡ú ÆôÓÃ³¤Â·¾¶Ö§³Ö
-3. ÖØÆôµçÄÔ
-4. ÖØÐÂ°²×°
+1. **ï¿½ï¿½ï¿½Ô°ï¿½×°PySide6**ï¿½ï¿½ï¿½ï¿½òµ¥£ï¿½
+2. ï¿½ï¿½ï¿½PySide6Ò²Ê§ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ã³ï¿½Â·ï¿½ï¿½Ö§ï¿½ï¿½
+3. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+4. ï¿½ï¿½ï¿½Â°ï¿½×°
 
 ---
 
-## ?? ÑéÖ¤³¤Â·¾¶ÊÇ·ñÆôÓÃ
+## ?? ï¿½ï¿½Ö¤ï¿½ï¿½Â·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
 
-ÔÚPowerShellÖÐÔËÐÐ£º
+ï¿½ï¿½PowerShellï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½
 ```powershell
 Get-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled"
 ```
 
-Èç¹û·µ»Ø `1`£¬ËµÃ÷ÒÑÆôÓÃ¡£
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ `1`ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
 
 ---
 
-## ?? ×¢ÒâÊÂÏî
+## ?? ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-- PySide6ºÍPyQt6 API 99%ÏàÍ¬
-- ´ó¶àÊý´úÂëÎÞÐèÐÞ¸Ä
-- PySide6ÊÇQt¹Ù·½ÍÆ¼öµÄPython°ó¶¨
-- Ðí¿ÉÖ¤ÓÑºÃ£¨LGPL£©
+- PySide6ï¿½ï¿½PyQt6 API 99%ï¿½ï¿½Í¬
+- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½
+- PySide6ï¿½ï¿½Qtï¿½Ù·ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Pythonï¿½ï¿½
+- ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ÑºÃ£ï¿½LGPLï¿½ï¿½
 
 ---
 
 <div align="center">
 
-**½¨Òé£ºÖ±½ÓÊ¹ÓÃPySide6£¡**
+**ï¿½ï¿½ï¿½é£ºÖ±ï¿½ï¿½Ê¹ï¿½ï¿½PySide6ï¿½ï¿½**
 
-Ëü¸üÎÈ¶¨£¬Ã»ÓÐÂ·¾¶ÎÊÌâ£¬¶øÇÒÊÇ¹Ù·½ÍÆ¼öµÄÑ¡Ôñ¡£
+ï¿½ï¿½ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½â£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ç¹Ù·ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½
 
 </div>

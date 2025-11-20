@@ -16,6 +16,7 @@ except ImportError:
     # Allow running this file directly: python ai/widgets.py
     from client import AIClient, AIConfig
 import configparser, os, requests
+from util.net import fetch_with_retry, NetworkError
 
 
 class WorkerChat(QThread):
@@ -328,7 +329,11 @@ class AISettingsWidget(QWidget):
                 self.status.setText("Enter Stability API Key.")
                 return
             try:
-                resp = requests.get(f"{base}/v1/engines/list", headers={"Authorization": f"Bearer {key}"}, timeout=15)
+                resp = fetch_with_retry(
+                    'GET', f"{base}/v1/engines/list",
+                    headers={"Authorization": f"Bearer {key}"},
+                    timeout=15, retries=3, backoff_base=0.5
+                )
                 if resp.status_code == 200:
                     try:
                         js = resp.json()
@@ -344,8 +349,10 @@ class AISettingsWidget(QWidget):
                     self.status.setText("Not Found (404): Check Base URL.")
                 else:
                     self.status.setText(f"HTTP {resp.status_code}: {resp.text[:120]}")
+            except NetworkError as e:
+                self.status.setText(f"Network retry failed: {e}")
             except requests.exceptions.RequestException as e:
-                self.status.setText(f"Network error: {e}")
+                self.status.setText(f"Network fatal error: {e}")
         else:
             key = self.api_key.text().strip()
             base = self.base_url.text().strip().rstrip("/") or "https://api.openai.com/v1"
@@ -353,7 +360,11 @@ class AISettingsWidget(QWidget):
                 self.status.setText("Please enter API Key first.")
                 return
             try:
-                resp = requests.get(f"{base}/models", headers={"Authorization": f"Bearer {key}"}, timeout=15)
+                resp = fetch_with_retry(
+                    'GET', f"{base}/models",
+                    headers={"Authorization": f"Bearer {key}"},
+                    timeout=15, retries=3, backoff_base=0.5
+                )
                 if resp.status_code == 200:
                     try:
                         js = resp.json()
@@ -369,8 +380,10 @@ class AISettingsWidget(QWidget):
                     self.status.setText("Not Found (404): Check Base URL.")
                 else:
                     self.status.setText(f"HTTP {resp.status_code}: {resp.text[:120]}")
+            except NetworkError as e:
+                self.status.setText(f"Network retry failed: {e}")
             except requests.exceptions.RequestException as e:
-                self.status.setText(f"Network error: {e}")
+                self.status.setText(f"Network fatal error: {e}")
 
     def _toggle_provider_fields(self, provider: str):
         p = provider.strip().lower()

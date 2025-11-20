@@ -62,6 +62,13 @@ class CRTBuddyApp:
         try:
             # Get user input text
             text = self.window.get_input_text()
+            # Validate image first
+            try:
+                _ = self.meme_engine.validate_image(image_path)  # returns PIL.Image but we re-open in generate
+            except self.meme_engine.ImageValidationError as ve:
+                self.window.set_status(f"IMAGE INVALID: {ve}")
+                self.window.set_mood("idle")
+                return
             
             # Generate meme from image
             result_img = self.meme_engine.generate_image_meme(

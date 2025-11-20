@@ -3,7 +3,7 @@
 CRT Buddy - Meme Generator Engine
 Y2K style Meme generation engine
 """
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance, UnidentifiedImageError
 import random
 import os
 from datetime import datetime
@@ -68,16 +68,8 @@ class MemeEngine:
     
     def generate_image_meme(self, image_path, text="", effect='random'):
         """Generate image-based meme with Y2K effects"""
-        # Load image
-        img = Image.open(image_path)
-        img = img.convert('RGB')
-        
-        # Resize if too large
-        max_size = 1200
-        if max(img.size) > max_size:
-            ratio = max_size / max(img.size)
-            new_size = tuple(int(dim * ratio) for dim in img.size)
-            img = img.resize(new_size, Image.Resampling.LANCZOS)
+        # Validate & load image (may auto-resize)
+        img = self.validate_image(image_path)
         
         # Apply Y2K effect
         if effect == 'random':
@@ -138,6 +130,49 @@ class MemeEngine:
             draw.line([(0, y), (width, y)], fill=(255, 0, 255, 30), width=1)
         
         return img
+
+    # ---------------- Image Validation -----------------
+    class ImageValidationError(Exception):
+        """Custom exception for image validation failures"""
+        pass
+
+    def validate_image(self, image_path, allowed_formats=None, max_side=2000, auto_resize_side=1200):
+        """Validate image file before meme generation.
+        Steps:
+        1. Exists & readable
+        2. Pillow can decode (catch UnidentifiedImageError)
+        3. Format in allowed list (if provided)
+        4. Size limits (reject if any side > max_side)
+        5. Auto downscale if any side > auto_resize_side (LANCZOS)
+        Returns: PIL.Image (RGB)
+        Raises: ImageValidationError with user-friendly message
+        """
+        if allowed_formats is None:
+            allowed_formats = {"PNG", "JPG", "JPEG", "BMP", "GIF"}
+        if not os.path.exists(image_path):
+            raise self.ImageValidationError(f"File not found: {image_path}")
+        try:
+            with Image.open(image_path) as im:
+                im.load()  # force decode
+                fmt = (im.format or '').upper()
+                if fmt == 'JPG':  # normalize
+                    fmt = 'JPEG'
+                if fmt not in allowed_formats:
+                    raise self.ImageValidationError(f"Unsupported format: {fmt}. Allowed: {', '.join(sorted(allowed_formats))}")
+                w, h = im.size
+                if w > max_side or h > max_side:
+                    raise self.ImageValidationError(f"Image too large: {w}x{h} (limit {max_side}px). Please downscale before using.")
+                # Auto resize if beyond soft threshold
+                if max(w, h) > auto_resize_side:
+                    ratio = auto_resize_side / max(w, h)
+                    new_size = (int(w * ratio), int(h * ratio))
+                    im = im.resize(new_size, Image.Resampling.LANCZOS)
+                return im.convert('RGB')
+        except UnidentifiedImageError:
+            raise self.ImageValidationError("Pillow could not decode the image (corrupted or unsupported data).")
+        except OSError as e:
+            raise self.ImageValidationError(f"I/O error reading image: {e}")
+
     
     def _add_text_overlay(self, img, text):
         """Add text overlay to image"""

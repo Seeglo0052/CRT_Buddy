@@ -49,6 +49,11 @@ class MemeEngine:
     
     def generate_text_meme(self, text, style='random', size=(800, 600)):
         """Generate text-based meme"""
+        # Central text validation
+        ok, cleaned, reason = self.validate_text(text)
+        if not ok:
+            raise self.TextValidationError(reason)
+        text = cleaned
         # Create base image
         img = Image.new('RGB', size, color=(0, 0, 0))
         
@@ -79,7 +84,10 @@ class MemeEngine:
         
         # Add text if provided
         if text:
-            img = self._add_text_overlay(img, text)
+            ok, cleaned, reason = self.validate_text(text)
+            if not ok:
+                raise self.TextValidationError(reason)
+            img = self._add_text_overlay(img, cleaned)
         
         return img
     
@@ -136,6 +144,10 @@ class MemeEngine:
         """Custom exception for image validation failures"""
         pass
 
+    class TextValidationError(Exception):
+        """Custom exception for text validation failures"""
+        pass
+
     def validate_image(self, image_path, allowed_formats=None, max_side=2000, auto_resize_side=1200):
         """Validate image file before meme generation.
         Steps:
@@ -172,6 +184,37 @@ class MemeEngine:
             raise self.ImageValidationError("Pillow could not decode the image (corrupted or unsupported data).")
         except OSError as e:
             raise self.ImageValidationError(f"I/O error reading image: {e}")
+
+    # ---------------- Text Validation -----------------
+    def validate_text(self, text, max_len=200, allow_empty=False, normalize_whitespace=True):
+        """Validate and normalize user provided text.
+        Returns (ok: bool, cleaned_text: str, reason: str|None)
+        Rules:
+          1. Strip leading/trailing whitespace
+          2. Optionally collapse internal whitespace sequences to single space
+          3. Remove control characters (<32) except newline
+          4. Enforce max length (after normalization)
+          5. Empty disallowed unless allow_empty=True
+        """
+        if text is None:
+            text = ""
+        cleaned = text.strip()
+        if normalize_whitespace and cleaned:
+            # Collapse all whitespace sequences to single spaces preserving newlines
+            # First replace newlines with placeholders to avoid collapsing across lines
+            placeholder = "\uFFFF"  # unlikely char
+            cleaned = cleaned.replace("\r", "")
+            cleaned = cleaned.replace("\n", f"{placeholder}")
+            parts = cleaned.split()
+            cleaned = " ".join(parts)
+            cleaned = cleaned.replace(placeholder, "\n")
+        # Remove control chars except newline
+        cleaned = "".join(ch for ch in cleaned if ch == "\n" or ord(ch) >= 32)
+        if not cleaned and not allow_empty:
+            return False, cleaned, "TEXT EMPTY"
+        if len(cleaned) > max_len:
+            return False, cleaned, f"TEXT TOO LONG (>{max_len} chars)"
+        return True, cleaned, None
 
     
     def _add_text_overlay(self, img, text):

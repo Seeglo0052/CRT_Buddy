@@ -63,12 +63,17 @@ class CRTBuddyApp:
     def process_image(self, image_path):
         """Process the dropped image and apply a random effect + optional text."""
         try:
-            # Get user input text
-            text = self.window.get_input_text()
-            if text and len(text.strip()) > MAX_TEXT_LEN:
-                self.window.set_status(f"TEXT TOO LONG (>{MAX_TEXT_LEN} chars)")
-                self.window.set_mood("idle")
-                return
+            # Get user input text and validate centrally
+            raw_text = self.window.get_input_text()
+            if raw_text:
+                ok, cleaned, reason = self.meme_engine.validate_text(raw_text, max_len=MAX_TEXT_LEN)
+                if not ok:
+                    self.window.set_status(reason)
+                    self.window.set_mood("idle")
+                    return
+                text = cleaned
+            else:
+                text = ""
             # Validate image first
             try:
                 _ = self.meme_engine.validate_image(image_path)  # returns PIL.Image but we re-open in generate
@@ -107,14 +112,12 @@ class CRTBuddyApp:
     
     def handle_generate(self):
         """Handle click to generate a text meme."""
-        text = self.window.get_input_text().strip()
-        
-        if not text:
-            self.window.set_status("Please enter some text first!")
+        raw_text = self.window.get_input_text()
+        ok, cleaned, reason = self.meme_engine.validate_text(raw_text, max_len=MAX_TEXT_LEN)
+        if not ok:
+            self.window.set_status(reason)
             return
-        if len(text) > MAX_TEXT_LEN:
-            self.window.set_status(f"TEXT TOO LONG (>{MAX_TEXT_LEN} chars)")
-            return
+        text = cleaned
         
         self.window.set_mood("processing")
         self.window.set_status("GENERATING Y2K MEME...")
@@ -124,7 +127,7 @@ class CRTBuddyApp:
     def generate_text_meme(self, text):
         """Generate meme from input text with random style."""
         try:
-            # Generate text meme
+            # Generate text meme (engine re-validates defensively)
             result_img = self.meme_engine.generate_text_meme(text, style='random')
             
             if result_img:
@@ -143,6 +146,8 @@ class CRTBuddyApp:
             else:
                 self.window.set_status("Failed to generate meme")
                 
+        except self.meme_engine.TextValidationError as ve:
+            self.window.set_status(str(ve))
         except Exception as e:
             print(f"Error generating text meme: {e}")
             self.window.set_status(f"ERROR: {str(e)}")

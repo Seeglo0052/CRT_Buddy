@@ -78,6 +78,8 @@ class CRTBuddyWindow(QWidget):
         # Window settings - narrower right panel
         self.setWindowTitle("CRT Buddy")
         self.setGeometry(100, 100, 460, 280)  # Narrower from 480
+        # 防止内容拉伸改变整体宽度：固定窗口尺寸
+        self.setFixedSize(460, 280)
         self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         
@@ -105,6 +107,11 @@ class CRTBuddyWindow(QWidget):
         
         # Status display
         self.status_label = QLabel("CRT BUDDY v5.1")
+        # 限制状态标签最大宽度，避免长文本撑开窗口
+        self.status_label.setMaximumWidth(220)
+        self.status_label.setMinimumWidth(220)
+        # 单行显示 + 禁止自动换行
+        self.status_label.setWordWrap(False)
         self.status_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.status_label.setStyleSheet(f"""
             QLabel {{
@@ -598,7 +605,14 @@ class CRTBuddyWindow(QWidget):
             self.image_dropped.emit(file_path)
     
     def set_status(self, text):
-        self.status_label.setText(text)
+        # 对过长文本进行省略，避免窗口横向扩展
+        fm = self.status_label.fontMetrics()
+        # 预留左右内边距和边框：减去 ~12 像素
+        max_width = self.status_label.width() - 12
+        if max_width <= 0:
+            max_width = 180
+        elided = fm.elidedText(text, Qt.TextElideMode.ElideRight, max_width)
+        self.status_label.setText(elided)
     
     def set_mood(self, mood):
         self.current_mood = mood

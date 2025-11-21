@@ -5,6 +5,7 @@ Y2K style text rendering effects
 """
 from PIL import Image, ImageDraw, ImageFont
 import random
+import math
 
 
 class FontCache:
@@ -26,8 +27,124 @@ class FontCache:
         return font
 
 class TextEffects:
-    """Y2K style text effects"""
-    font_cache = FontCache()
+    def save_animated_text(self, images, out_path, format='GIF', duration=60, loop=0):
+        """
+        Save a sequence of PIL.Image as animated GIF or WebP.
+        images: list of PIL.Image
+        out_path: output file path
+        format: 'GIF' or 'WEBP'
+        duration: ms per frame
+        loop: 0=infinite, n=repeat n times
+        """
+        if not images:
+            raise ValueError("No images to save.")
+        first, *rest = images
+        save_args = dict(save_all=True, append_images=rest, duration=duration, loop=loop)
+        if format.upper() == 'WEBP':
+            save_args['format'] = 'WEBP'
+        first.save(out_path, **save_args)
+    def __init__(self, default_font_path="arial.ttf"):
+        self.font_cache = FontCache(default_font_path)
+
+    def render_animated_text(self, text, size=(800, 600), style='gradient', frames=24, duration=60,
+                             flicker=False, flicker_mode='sin', flicker_speed_multiplier=32,
+                             flicker_amplitude=6, font_path=None, background_change_interval=1,
+                             background_rotate=False):
+        """
+        Generate animated text frames for gif/webp.
+        style: 'gradient' (流光), 'retro' (彩虹) or other supported styles
+        frames: total frame count
+        duration: ms per frame
+        flicker: if True, apply brightness/alpha flicker
+        flicker_mode: 'sin' or 'breath' (cosine easing)
+        flicker_speed_multiplier: larger -> slower cycle
+        flicker_amplitude: multiplier for brightness modulation (0-32 recommended)
+        Returns: (list[PIL.Image], duration)
+        """
+        width, height = size
+        images = []
+
+        # Prepare layout (lines/font/vertical start)
+        base_img = Image.new('RGB', size, color=(0, 0, 0))
+        lines, font, start_y, line_h = self.render_fitted_text(base_img, text, font_path=font_path)
+
+        # Gradient / rainbow stops
+        gradient_stops = [(255, 0, 255), (0, 255, 255), (255, 255, 0), (0, 255, 0)]
+        rainbow = [
+            (255, 0, 0), (255, 127, 0), (255, 255, 0), (0, 255, 0), (0, 0, 255), (75, 0, 130), (148, 0, 211)
+        ]
+
+        # Background rotation / selection
+        bg_style = None
+        last_bg = None
+        bg_order = ['grid', 'pixel_stars', 'neon_wave', 'smiley_overlay']
+        for f in range(frames):
+            img = Image.new('RGB', size, color=(0, 0, 0))
+            # Determine whether to (re)generate background this frame
+            should_regen = (background_change_interval <= 1) or (f % background_change_interval == 0) or (last_bg is None)
+            if should_regen:
+                if background_rotate:
+                    # pick style from ordered rotation
+                    idx = (f // max(1, background_change_interval)) % len(bg_order)
+                    bg_style = bg_order[idx]
+                else:
+                    bg_style = None
+                last_bg = self.draw_y2k_background(Image.new('RGB', size, color=(0, 0, 0)), style=bg_style)
+            img.paste(last_bg)
+            draw = ImageDraw.Draw(img)
+
+            y = start_y
+            for ln in lines:
+                bbox = draw.textbbox((0, 0), ln, font=font)
+                line_w = bbox[2] - bbox[0]
+                x_start = (width - line_w) // 2
+
+                # per-character widths
+                widths = [draw.textbbox((0, 0), ch, font=font)[2] - draw.textbbox((0, 0), ch, font=font)[0] for ch in ln]
+                total = sum(widths) if widths else 1
+                x_cursor = 0
+
+                for idx, ch in enumerate(ln):
+                    t = (x_cursor + widths[idx] / 2) / max(1, total)
+
+                    # color selection
+                    if style == 'gradient':
+                        phase = (t + f / frames) % 1.0
+                        seg_len = 1 / (len(gradient_stops) - 1)
+                        seg_index = min(len(gradient_stops) - 2, int(phase / seg_len))
+                        local_t = (phase - seg_index * seg_len) / seg_len
+                        c1 = gradient_stops[seg_index]; c2 = gradient_stops[seg_index + 1]
+                        color = tuple(int(c1[i] + (c2[i] - c1[i]) * local_t) for i in range(3))
+                    elif style == 'retro':
+                        phase = (t + f / frames) % 1.0
+                        seg_len = 1 / (len(rainbow) - 1)
+                        seg_index = min(len(rainbow) - 2, int(phase / seg_len))
+                        local_t = (phase - seg_index * seg_len) / seg_len
+                        c1 = rainbow[seg_index]; c2 = rainbow[seg_index + 1]
+                        color = tuple(int(c1[i] + (c2[i] - c1[i]) * local_t) for i in range(3))
+                    else:
+                        color = (255, 255, 255)
+
+                    # flicker / breathing modulation
+                    if flicker:
+                        base_phase = 2 * math.pi * f / (frames * max(1, int(flicker_speed_multiplier)))
+                        if flicker_mode == 'breath':
+                            breath = (1 - math.cos(base_phase)) / 2.0
+                            alpha = int(230 + int(flicker_amplitude) * breath)
+                        else:
+                            # sin mode oscillates around 230
+                            alpha = int(230 + int(flicker_amplitude) * math.sin(base_phase))
+                        # apply alpha-ish brightness multiplier
+                        color = tuple(min(255, max(0, int(c * alpha / 255))) for c in color)
+
+                    draw.text((x_start + x_cursor, y), ch, fill=color, font=font)
+                    x_cursor += widths[idx]
+
+                y += int(line_h * 0.9)
+
+            images.append(img)
+
+        return images, duration
 
     def render_fitted_text(self, img, text, base_divisor=8, min_font=12, padding=20, line_spacing=0.9, ellipsis=True, font_path=None):
         """Render potentially long text centered, auto-scaling & wrapping.
@@ -240,4 +357,47 @@ class TextEffects:
                 draw.text((x_start + x_cursor, start_y), ch, fill=color, font=font)
                 x_cursor += widths[idx]
             start_y += int(line_h * 0.9)
+        return img
+
+    def draw_y2k_background(self, img, style=None):
+        """
+        在img上绘制Y2K风格背景。style可选：gradient, grid, pixel_stars, neon_wave, smiley_overlay。
+        若style为None则随机选一种。
+        """
+        draw = ImageDraw.Draw(img)
+        width, height = img.size
+        if style is None:
+            style = random.choice(['grid', 'pixel_stars', 'neon_wave', 'smiley_overlay'])
+        if style == 'grid':
+            grid_color = (180,255,255)
+            spacing = 32
+            for x in range(0, width, spacing):
+                draw.line([(x,0),(x,height)], fill=grid_color, width=2)
+            for y in range(0, height, spacing):
+                draw.line([(0,y),(width,y)], fill=grid_color, width=2)
+        elif style == 'pixel_stars':
+            for _ in range(60):
+                x = random.randint(0,width-1)
+                y = random.randint(0,height-1)
+                r = random.randint(1,3)
+                color = random.choice([(255,255,0),(0,255,255),(255,0,255),(255,255,255)])
+                draw.ellipse([x-r,y-r,x+r,y+r], fill=color)
+        elif style == 'neon_wave':
+            wave_color = (0,255,255)
+            for i in range(5):
+                amp = 20 + i*8
+                freq = 0.04 + i*0.01
+                y0 = 60 + i*40
+                for x in range(width):
+                    y = int(y0 + amp*math.sin(freq*x + i))
+                    draw.point((x,y), fill=wave_color)
+        elif style == 'smiley_overlay':
+            for _ in range(12):
+                x = random.randint(40,width-40)
+                y = random.randint(40,height-40)
+                r = random.randint(16,28)
+                draw.ellipse([x-r,y-r,x+r,y+r], fill=(255,255,0), outline=(0,0,0))
+                draw.ellipse([x-r//3,y-r//4,x-r//6,y-r//8], fill=(0,0,0))
+                draw.ellipse([x+r//6,y-r//4,x+r//3,y-r//8], fill=(0,0,0))
+                draw.arc([x-r//2,y+r//8,x+r//2,y+r//2], 0, 180, fill=(0,0,0), width=2)
         return img

@@ -12,6 +12,36 @@ from effects.text_effects import TextEffects
 
 
 class MemeEngine:
+    def generate_text_meme_animated(self, text, style='gradient', size=(800, 600), frames=32, duration=50, out_prefix="y2k_text_animated"):
+        """Generate animated text meme and save as gif."""
+        ok, cleaned, reason = self.validate_text(text)
+        if not ok:
+            raise self.TextValidationError(reason)
+        # Use text effect animation
+        imgs, frame_duration = self.text_effects.render_animated_text(
+            cleaned,
+            size=size,
+            style=style,
+            frames=frames,
+            duration=duration,
+            flicker=True,
+            flicker_mode='breath',
+            flicker_speed_multiplier=384,
+            flicker_amplitude=2,
+            background_change_interval=4,
+            background_rotate=True,
+        )
+        # Save gif
+        counter = 1
+        while True:
+            filename = f"{out_prefix}_{counter}.gif"
+            filepath = os.path.join(self.output_dir, filename)
+            if not os.path.exists(filepath):
+                break
+            counter += 1
+        self.text_effects.save_animated_text(imgs, filepath, format='GIF', duration=duration)
+        print(f"Animated GIF saved: {filepath}")
+        return filepath
     """Y2K style Meme generation engine"""
     
     def __init__(self, output_dir="output"):

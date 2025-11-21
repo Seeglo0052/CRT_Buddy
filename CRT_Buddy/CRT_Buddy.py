@@ -7,6 +7,7 @@ plain ASCII to ensure interpreter loads the module.
 """
 import sys
 import os
+import random
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QIcon
@@ -125,33 +126,28 @@ class CRTBuddyApp:
         QTimer.singleShot(500, lambda: self.generate_text_meme(text))
     
     def generate_text_meme(self, text):
-        """Generate meme from input text with random style."""
+        """Generate meme from input text with random style and animated gif."""
         try:
-            # Generate text meme (engine re-validates defensively)
+            # Generate static meme
             result_img = self.meme_engine.generate_text_meme(text, style='random')
-            
+            # Generate animated meme gif
+            gif_path = self.meme_engine.generate_text_meme_animated(text, style='gradient', size=(800,600), frames=32, duration=50)
             if result_img:
-                # Save resulting meme image
                 output_path = self.meme_engine.save_meme(result_img, "y2k_text")
-                
                 if output_path:
                     self.window.set_mood("happy")
-                    self.window.set_status(f"SAVED: {os.path.basename(output_path)}")
+                    self.window.set_status(f"SAVED: {os.path.basename(output_path)} | GIF: {os.path.basename(gif_path)}")
                     self.window.clear_input()
-                    
-                    # Schedule success message
                     QTimer.singleShot(2000, self.show_success_message)
                 else:
                     self.window.set_status("Failed to save meme")
             else:
                 self.window.set_status("Failed to generate meme")
-                
         except self.meme_engine.TextValidationError as ve:
             self.window.set_status(str(ve))
         except Exception as e:
             print(f"Error generating text meme: {e}")
             self.window.set_status(f"ERROR: {str(e)}")
-        
         finally:
             QTimer.singleShot(3000, lambda: self.window.set_mood("idle"))
     
@@ -163,27 +159,24 @@ class CRTBuddyApp:
         QTimer.singleShot(500, self.generate_random_meme)
     
     def generate_random_meme(self):
-        """Generate a meme with random phrase, size and style."""
+        """Generate a meme with random phrase, size and style, and animated gif."""
         try:
-            result_img = self.meme_engine.generate_random_meme()
-            
+            phrase = random.choice(self.meme_engine.y2k_phrases)
+            result_img = self.meme_engine.generate_text_meme(phrase, style='random')
+            gif_path = self.meme_engine.generate_text_meme_animated(phrase, style='gradient', size=(800,600), frames=32, duration=50, out_prefix="y2k_random_animated")
             if result_img:
                 output_path = self.meme_engine.save_meme(result_img, "y2k_random")
-                
                 if output_path:
                     self.window.set_mood("happy")
-                    self.window.set_status(f"SAVED: {os.path.basename(output_path)}")
-                    
+                    self.window.set_status(f"SAVED: {os.path.basename(output_path)} | GIF: {os.path.basename(gif_path)}")
                     QTimer.singleShot(2000, self.show_success_message)
                 else:
                     self.window.set_status("Failed to save meme")
             else:
                 self.window.set_status("Failed to generate meme")
-                
         except Exception as e:
             print(f"Error generating random meme: {e}")
             self.window.set_status(f"ERROR: {str(e)}")
-        
         finally:
             QTimer.singleShot(3000, lambda: self.window.set_mood("idle"))
     

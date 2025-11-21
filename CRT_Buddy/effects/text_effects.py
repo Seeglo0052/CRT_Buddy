@@ -7,10 +7,29 @@ from PIL import Image, ImageDraw, ImageFont
 import random
 
 
+class FontCache:
+    """Cache for PIL ImageFont objects by (font_path, size)"""
+    def __init__(self, default_path="arial.ttf"):
+        self.cache = {}
+        self.default_path = default_path
+
+    def get_font(self, size, font_path=None):
+        path = font_path or self.default_path
+        key = (path, size)
+        if key in self.cache:
+            return self.cache[key]
+        try:
+            font = ImageFont.truetype(path, size)
+        except Exception:
+            font = ImageFont.load_default()
+        self.cache[key] = font
+        return font
+
 class TextEffects:
     """Y2K style text effects"""
+    font_cache = FontCache()
 
-    def render_fitted_text(self, img, text, base_divisor=8, min_font=12, padding=20, line_spacing=0.9, ellipsis=True):
+    def render_fitted_text(self, img, text, base_divisor=8, min_font=12, padding=20, line_spacing=0.9, ellipsis=True, font_path=None):
         """Render potentially long text centered, auto-scaling & wrapping.
         Steps:
           1. Choose initial font size = min(width,height)//base_divisor
@@ -27,12 +46,9 @@ class TextEffects:
         if len(words) == 1 and len(text) > 15:  # heuristic threshold
             words = list(text)
         # Initial font size guess
-        size_guess = max(min_font, min(width, height) // base_divisor)
-        try:
-            font = ImageFont.truetype("arial.ttf", size_guess)
-        except Exception:
-            font = ImageFont.load_default()
-            size_guess = font.size if hasattr(font, 'size') else min_font
+        max_font = max(min_font, min(width, height) // base_divisor)
+        min_font_size = min_font
+        font = self.font_cache.get_font(max_font, font_path)
 
         def wrap_lines(fnt):
             lines = []
@@ -51,40 +67,53 @@ class TextEffects:
                 lines.append(joiner.join(current))
             return lines
 
-        # Adjust font size downward until fits vertically & horizontally
-        while True:
-            lines = wrap_lines(font)
+        # Binary search for largest font size that fits
+        left = min_font_size
+        right = max_font
+        best_size = min_font_size
+        best_lines = None
+        best_font = self.font_cache.get_font(min_font_size, font_path)
+        while left <= right:
+            mid = (left + right) // 2
+            test_font = self.font_cache.get_font(mid, font_path)
+            lines = wrap_lines(test_font)
             line_heights = []
             max_line_w = 0
             for ln in lines:
-                bbox = draw.textbbox((0,0), ln, font=font)
+                bbox = draw.textbbox((0,0), ln, font=test_font)
                 w = bbox[2]-bbox[0]
                 h = bbox[3]-bbox[1]
                 line_heights.append(h)
                 max_line_w = max(max_line_w, w)
             total_h = int(sum(line_heights) + (len(lines)-1) * (line_heights[0]*line_spacing if line_heights else 0))
             if (max_line_w + padding*2 <= width) and (total_h + padding*2 <= height):
-                break
-            # reduce size
-            size_guess = int(size_guess * 0.9)
-            if size_guess < min_font:
-                # final attempt: wrap one more time and possibly truncate last line
-                lines = wrap_lines(font)
-                if ellipsis and lines:
-                    # ensure last line fits horizontally; if not, truncate
-                    last = lines[-1]
-                    while True:
-                        bbox_last = draw.textbbox((0,0), last + ("…" if last else ""), font=font)
-                        if bbox_last[2]-bbox_last[0] + padding*2 <= width or len(last) <= 1:
-                            lines[-1] = last + ("…" if bbox_last[2]-bbox_last[0] + padding*2 <= width else "")
-                            break
-                        last = last[:-1]
-                break
-            try:
-                font = ImageFont.truetype("arial.ttf", size_guess)
-            except Exception:
-                font = ImageFont.load_default()
-                break
+                best_size = mid
+                best_lines = lines
+                best_font = test_font
+                left = mid + 1
+            else:
+                right = mid - 1
+        # If no size fits, fallback to min_font and ellipsis
+        if best_lines is None:
+            font = self.font_cache.get_font(min_font_size, font_path)
+            lines = wrap_lines(font)
+            if ellipsis and lines:
+                last = lines[-1]
+                while True:
+                    bbox_last = draw.textbbox((0,0), last + ("…" if last else ""), font=font)
+                    if bbox_last[2]-bbox_last[0] + padding*2 <= width or len(last) <= 1:
+                        lines[-1] = last + ("…" if bbox_last[2]-bbox_last[0] + padding*2 <= width else "")
+                        break
+                    last = last[:-1]
+            best_lines = lines
+            best_font = font
+            best_size = min_font_size
+        # Centering coordinates
+        bbox_line = draw.textbbox((0,0), 'Ag', font=best_font)
+        line_h = bbox_line[3]-bbox_line[1]
+        total_h = int(len(best_lines)*line_h + (len(best_lines)-1)*line_h*line_spacing)
+        start_y = (height - total_h)//2
+        return best_lines, best_font, start_y, line_h
 
         # Centering coordinates
         bbox_line = draw.textbbox((0,0), 'Ag', font=font)

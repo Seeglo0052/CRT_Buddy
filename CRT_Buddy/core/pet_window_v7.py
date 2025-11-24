@@ -187,10 +187,20 @@ class CRTBuddyWindow(QWidget):
         self.upload_btn.clicked.connect(self.upload_image)
         right_layout.addWidget(self.upload_btn)
 
+        # Effect button
         self.effect_btn = QPushButton("RANDOM")
         self.effect_btn.setMinimumHeight(30)
         self.effect_btn.setStyleSheet(self.get_bar_button_style("#FFD700", "#FFE766"))
         right_layout.addWidget(self.effect_btn)
+
+        # AI Hub button (Chat / Image / Typing / Settings)
+        self.ai_btn = QPushButton("AI HUB")
+        self.ai_btn.setMinimumHeight(30)
+        self.ai_btn.setStyleSheet(self.get_bar_button_style("#66FF66", "#99FF99"))
+        self.ai_btn.setEnabled(_AI_AVAILABLE)
+        self.ai_btn.setToolTip("Open AI Chat / Image / Typing Game" if _AI_AVAILABLE else "AI modules not available")
+        self.ai_btn.clicked.connect(self.open_ai_hub)
+        right_layout.addWidget(self.ai_btn)
 
         # Animated background controls (simple toggles)
         self.bg_toggle_btn = QPushButton("Toggle Background Rotate")
@@ -198,6 +208,7 @@ class CRTBuddyWindow(QWidget):
         self.bg_toggle_btn.clicked.connect(self.toggle_background_rotate)
         right_layout.addWidget(self.bg_toggle_btn)
 
+        # Close button
         self.close_btn = QPushButton("X")
         self.close_btn.setFixedSize(45, 45)
         self.close_btn.setStyleSheet(self.get_round_button_style())
@@ -211,6 +222,22 @@ class CRTBuddyWindow(QWidget):
     def toggle_background_rotate(self):
         self.background_rotate = not self.background_rotate
         self.set_status(f"background_rotate={self.background_rotate}")
+
+    def open_ai_hub(self):
+        if not _AI_AVAILABLE:
+            self.set_status("AI modules not available. Check requirements.")
+            return
+        dlg = QDialog(self)
+        dlg.setWindowTitle("CRT Buddy - AI Hub")
+        tabs = QTabWidget(dlg)
+        tabs.addTab(AIChatWidget(), "Chat")
+        tabs.addTab(AIImageWidget(), "Image")
+        tabs.addTab(TypingGameWidget(), "Typing Game")
+        tabs.addTab(AISettingsWidget(), "Settings")
+        lay = QVBoxLayout(dlg)
+        lay.addWidget(tabs)
+        dlg.resize(720, 520)
+        dlg.exec()
 
     def get_bar_button_style(self, color1, color2):
         return f"""

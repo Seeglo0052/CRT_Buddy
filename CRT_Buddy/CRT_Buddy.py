@@ -11,7 +11,7 @@ import random
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QIcon
-from core.pet_window import CRTBuddyWindow
+from core.pet_window_v7 import CRTBuddyWindow
 from generators.meme_engine import MemeEngine
 
 # Maximum allowed length for user-entered text to avoid layout/performance issues

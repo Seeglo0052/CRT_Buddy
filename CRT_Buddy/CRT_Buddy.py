@@ -24,6 +24,19 @@ class CRTBuddyApp:
     def __init__(self):
         self.app = QApplication(sys.argv)
         self.app.setApplicationName("CRT Buddy")
+   
+    def start_break_reminder(self):
+    """启动/重置下次摸鱼提醒，时间10到30分钟随机"""
+    interval_minutes = random.randint(10, 30)
+    self.break_reminder_timer.start(interval_minutes * 60 * 1000)  
+
+    def show_break_reminder(self):
+    """弹出提醒气泡"""
+    if hasattr(self, "window") and self.window:
+        msg = random.choice(self.break_reminder_messages)
+        # 假定window有set_status方法，会显示气泡弹窗
+        self.window.set_status(msg)
+    self.start_break_reminder()  # 下一次提醒计时
         
     # Initialize meme engine
         self.meme_engine = MemeEngine(output_dir="output")
@@ -33,6 +46,18 @@ class CRTBuddyApp:
         
     # Setup signal connections
         self.setup_connections()
+
+        self.break_reminder_messages = [
+            "休息5分钟~",
+            "该喝水啦!",
+            "眨眨眼，放松下~",
+            "摸鱼时间到，伸个懒腰吧！",
+            "继续努力，别忘了休息~",
+            "Bug了吗？别急，休息一下再想！"
+        ]
+        self.break_reminder_timer = QTimer()
+        self.break_reminder_timer.timeout.connect(self.show_break_reminder)
+        self.start_break_reminder()   # Start the first timer
         
     # Show welcome message after short delay
         QTimer.singleShot(500, self.show_welcome)

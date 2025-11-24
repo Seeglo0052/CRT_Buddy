@@ -87,6 +87,16 @@ class AIClient:
             # Allow running without key; callers should handle None outputs gracefully
             print("[AI] Warning: No API key set. Set OPENAI_API_KEY or AI_API_KEY.")
 
+    def _log(self, message: str):
+        try:
+            log_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'output'))
+            os.makedirs(log_dir, exist_ok=True)
+            with open(os.path.join(log_dir, 'ai_log.txt'), 'a', encoding='utf-8') as f:
+                from datetime import datetime
+                f.write(f"[{datetime.now().isoformat()}] {message}\n")
+        except Exception:
+            pass
+
     # --------- Chat Completion ---------
     def chat(self, messages: List[dict], model: Optional[str] = None, temperature: float = 0.7, max_tokens: int = 512) -> Optional[str]:
         if not self.config.api_key:
@@ -102,14 +112,29 @@ class AIClient:
             "temperature": temperature,
             "max_tokens": max_tokens,
         }
-        try:
-            resp = requests.post(url, headers=headers, json=payload, timeout=60)
-            resp.raise_for_status()
-            data = resp.json()
-            return data.get("choices", [{}])[0].get("message", {}).get("content")
-        except Exception as e:
-            print(f"[AI] Chat error: {e}")
-            return None
+        last_err = None
+        for attempt in range(3):
+            try:
+                resp = requests.post(url, headers=headers, json=payload, timeout=60)
+                status = resp.status_code
+                if status >= 400:
+                    # Try to extract brief error body
+                    snippet = resp.text[:160].replace('\n', ' ').strip()
+                    raise RuntimeError(f"HTTP {status}: {snippet}")
+                data = resp.json()
+                content = data.get("choices", [{}])[0].get("message", {}).get("content")
+                if content:
+                    return content
+                # No content, treat as transient
+                last_err = "Empty response"
+            except Exception as e:
+                last_err = str(e)
+                self._log(f"chat attempt {attempt+1} failed: {last_err}")
+            # Backoff between attempts
+            import time
+            time.sleep(0.6 * (attempt + 1))
+        self._log(f"chat failed after retries: {last_err}")
+        return f"(chat error: {last_err}. Possible network/proxy issue. Set HTTPS_PROXY if needed.)"
 
     # --------- Image Generation ---------
     def generate_image(self, prompt: str, model: Optional[str] = None, size: str = "1024x1024") -> Optional[bytes]:
@@ -176,5 +201,6 @@ class AIClient:
             import base64
             return base64.b64decode(b64)
         except Exception as e:
+            self._log(f"image error: {e}")
             print(f"[AI] Image error: {e}")
             return None

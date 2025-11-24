@@ -61,6 +61,7 @@ class AIChatWidget(QWidget):
         self.input = QLineEdit()
         self.input.setPlaceholderText("Type your message and press Send...")
         self.send_btn = QPushButton("Send")
+        self.ping_btn = QPushButton("Ping")  # quick connectivity test
         self.system = QLineEdit("You are a helpful assistant living inside CRT Buddy.")
         self.system.setPlaceholderText("System prompt")
 
@@ -71,10 +72,12 @@ class AIChatWidget(QWidget):
         row = QHBoxLayout()
         row.addWidget(self.input)
         row.addWidget(self.send_btn)
+        row.addWidget(self.ping_btn)
         layout.addLayout(row)
 
         self.send_btn.clicked.connect(self.on_send)
         self.input.returnPressed.connect(self.on_send)
+        self.ping_btn.clicked.connect(self.on_ping)
 
     def on_send(self):
         text = self.input.text().strip()
@@ -89,6 +92,19 @@ class AIChatWidget(QWidget):
 
     def on_reply(self, content: str):
         self.history.append(f"AI: {content}")
+
+    def on_ping(self):
+        # minimal system prompt only
+        self.history.append("(Ping) Testing chat endpoint...")
+        msg = [
+            {"role": "system", "content": "Say PONG"},
+            {"role": "user", "content": "PING"},
+        ]
+        reply = self.client.chat(msg, max_tokens=8, temperature=0.0)
+        if not reply:
+            self.history.append("Ping result: (no response)")
+        else:
+            self.history.append(f"Ping result: {reply.strip()}")
 
 
 class AIImageWidget(QWidget):
@@ -226,6 +242,7 @@ class AISettingsWidget(QWidget):
         # Buttons & status
         self.save_btn = QPushButton("Save Settings")
         self.test_btn = QPushButton("Test Connection")
+        self.test_chat_btn = QPushButton("Test Chat")
         self.status = QLabel("")
 
         # Layout wiring
@@ -253,11 +270,15 @@ class AISettingsWidget(QWidget):
         row.addWidget(self.save_btn)
         row.addWidget(self.test_btn)
         layout.addLayout(row)
+        row2 = QHBoxLayout()
+        row2.addWidget(self.test_chat_btn)
+        layout.addLayout(row2)
         layout.addWidget(self.status)
 
         # Signals
         self.save_btn.clicked.connect(self.on_save)
         self.test_btn.clicked.connect(self.on_test)
+        self.test_chat_btn.clicked.connect(self.on_test_chat)
         self.image_provider.currentTextChanged.connect(self._toggle_provider_fields)
         self.chat_provider.currentTextChanged.connect(self._apply_chat_provider_defaults)
         self.base_url_preset.currentTextChanged.connect(self._on_base_url_preset_changed)
@@ -384,6 +405,23 @@ class AISettingsWidget(QWidget):
                 self.status.setText(f"Network retry failed: {e}")
             except requests.exceptions.RequestException as e:
                 self.status.setText(f"Network fatal error: {e}")
+
+    def on_test_chat(self):
+        key = self.api_key.text().strip()
+        base = self.base_url.text().strip().rstrip('/') or 'https://api.openai.com/v1'
+        if not key:
+            self.status.setText("Enter API Key before chat test.")
+            return
+        client = AIClient(AIConfig(api_key=key, base_url=base, chat_model=self.chat_model.text().strip()))
+        msg = [
+            {"role": "system", "content": "Reply with PONG"},
+            {"role": "user", "content": "PING"},
+        ]
+        ans = client.chat(msg, max_tokens=8, temperature=0.0)
+        if not ans:
+            self.status.setText("Chat test failed (see output/ai_log.txt)")
+        else:
+            self.status.setText(f"Chat test OK: {ans.strip()[:32]}")
 
     def _toggle_provider_fields(self, provider: str):
         p = provider.strip().lower()

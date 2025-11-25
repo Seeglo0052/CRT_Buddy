@@ -52,6 +52,20 @@ class AIChatWidget(QWidget):
         # Signals
         self.send_btn.clicked.connect(self.on_send)
         self.ping_btn.clicked.connect(self.on_ping)
+        # Provider info label
+        self.provider_label = QLabel("Provider: " + (self.client.config.chat_provider or 'openai'))
+        layout.addWidget(self.provider_label)
+
+    def apply_settings(self, provider: str, base_url: str, model: str, api_key: str):
+        # Update config in-place; no need to recreate client
+        self.client.config.chat_provider = provider
+        if api_key:
+            self.client.config.api_key = api_key
+        if base_url:
+            self.client.config.base_url = base_url
+        if model:
+            self.client.config.chat_model = model
+        self.provider_label.setText(f"Provider: {provider} | {model}")
 
     def _build_messages(self, user_text: str, image_url: Optional[str]) -> list:
         """Construct messages list; include image_url if provided and valid."""
@@ -120,6 +134,8 @@ class AISettingsWidget(QWidget):
     Chat Providers: openai, deepseek, groq, moonshot, siliconflow, ollama, volcengine, custom
     Image Providers: openai, stability, ollama, fal, replicate, custom
     """
+    from PyQt6.QtCore import pyqtSignal
+    settings_updated = pyqtSignal(dict)
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
         layout = QVBoxLayout(self)
@@ -210,6 +226,12 @@ class AISettingsWidget(QWidget):
         with open(path, "w", encoding="utf-8") as f:
             cfg.write(f)
         self.status.setText(f"Saved -> {path}")
+        self.settings_updated.emit({
+            "chat_provider": self.chat_provider.currentText().strip(),
+            "chat_model": self.chat_model.text().strip(),
+            "base_url": self.base_url.text().strip(),
+            "api_key": self.api_key.text().strip(),
+        })
 
     # ----- Chat presets -----
     def _apply_chat_provider_defaults(self, provider: str):

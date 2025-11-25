@@ -20,24 +20,41 @@ MAX_TEXT_LEN = 200
 
 
 class CRTBuddyApp:
-    """Main application class for CRT Buddy."""
-    
+    """Main application class for CRT Buddy.
+
+    FIX: Previous version accidentally defined __init__ twice. The second
+    definition shadowed the first and skipped QApplication + window creation,
+    causing AttributeError and QTimer warnings. Merged into a single __init__
+    that creates QApplication first, then timers and window.
+    """
+
     def __init__(self):
+        # Qt application must exist before any QTimer is constructed
         self.app = QApplication(sys.argv)
         self.app.setApplicationName("CRT Buddy")
 
-    def __init__(self):
-        # ... 其他初始化 ...
+        # Meme engine
+        self.meme_engine = MemeEngine(output_dir="output")
+
+        # Main window (created before timers use it)
+        self.window = CRTBuddyWindow()
+
+        # Break reminder setup
         self.break_reminder_messages = self.load_break_reminder_messages()
         self.break_reminder_timer = QTimer()
         self.break_reminder_timer.timeout.connect(self.show_break_reminder)
-
-        # 间隔配置：可读取配置文件或UI
         self.break_random_mode = True  # True = 10~30分钟随机, False = 固定interval
-        self.break_reminder_interval_minutes = 15  # 默认15分钟固定（用户可设置）
+        self.break_reminder_interval_minutes = 15
         self.break_reminder_paused = False
 
+        # Wire signals
+        self.setup_connections()
+
+        # Start timers only after window exists
         self.start_break_reminder()
+
+        # Deferred welcome message
+        QTimer.singleShot(500, self.show_welcome)
 
     def load_break_reminder_messages(self):
         config_path = os.path.join(os.path.dirname(__file__), "break_reminder.json")
@@ -85,17 +102,7 @@ class CRTBuddyApp:
         self.break_reminder_paused = False
         self.start_break_reminder()
 
-    # Initialize meme engine
-        self.meme_engine = MemeEngine(output_dir="output")
-        
-    # Create main window
-        self.window = CRTBuddyWindow()
-        
-    # Setup signal connections
-        self.setup_connections()
-
-    # Show welcome message after short delay
-        QTimer.singleShot(500, self.show_welcome)
+    # (Removed duplicated initialization block)
     
     def setup_connections(self):
         """Connect Qt signals to handlers."""

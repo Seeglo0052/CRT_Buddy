@@ -230,10 +230,22 @@ class CRTBuddyWindow(QWidget):
         dlg = QDialog(self)
         dlg.setWindowTitle("CRT Buddy - AI Hub")
         tabs = QTabWidget(dlg)
-        tabs.addTab(AIChatWidget(), "Chat")
+        chat_tab = AIChatWidget()
+        settings_tab = AISettingsWidget()
+        tabs.addTab(chat_tab, "Chat")
         tabs.addTab(AIImageWidget(), "Image")
         tabs.addTab(TypingGameWidget(), "Typing Game")
-        tabs.addTab(AISettingsWidget(), "Settings")
+        tabs.addTab(settings_tab, "Settings")
+        # Connect settings changes to chat tab
+        try:
+            settings_tab.settings_updated.connect(lambda data: chat_tab.apply_settings(
+                data.get("chat_provider","openai"),
+                data.get("base_url",""),
+                data.get("chat_model",""),
+                data.get("api_key","")
+            ))
+        except Exception:
+            pass
         lay = QVBoxLayout(dlg)
         lay.addWidget(tabs)
         dlg.resize(720, 520)

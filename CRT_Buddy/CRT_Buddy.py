@@ -8,6 +8,7 @@ plain ASCII to ensure interpreter loads the module.
 import sys
 import os
 import random
+import json
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QIcon
@@ -25,18 +26,64 @@ class CRTBuddyApp:
         self.app = QApplication(sys.argv)
         self.app.setApplicationName("CRT Buddy")
    
+    def __init__(self):
+        # ... 其他初始化 ...
+        self.break_reminder_messages = self.load_break_reminder_messages()
+        self.break_reminder_timer = QTimer()
+        self.break_reminder_timer.timeout.connect(self.show_break_reminder)
+
+        # 间隔配置：可读取配置文件或UI
+        self.break_random_mode = True  # True = 10~30分钟随机, False = 固定interval
+        self.break_reminder_interval_minutes = 15  # 默认15分钟固定（用户可设置）
+        self.break_reminder_paused = False
+
+        self.start_break_reminder()
+
+    def load_break_reminder_messages(self):
+        config_path = os.path.join(os.path.dirname(__file__), "break_reminder.json")
+        if os.path.exists(config_path):
+            try:
+                with open(config_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if isinstance(data, list) and all(isinstance(item, str) for item in data):
+                        return data
+            except Exception as e:
+                print("读取提示文本失败：", e)
+        # 兜底默认
+        return [
+            "休息5分钟~",
+            "该喝水啦!",
+            "眨眨眼，放松下~",
+            "摸鱼时间到，伸个懒腰吧！"
+        ]
+
     def start_break_reminder(self):
-    """启动/重置下次摸鱼提醒，时间10到30分钟随机"""
-    interval_minutes = random.randint(10, 30)
-    self.break_reminder_timer.start(interval_minutes * 60 * 1000)  
+        if self.break_reminder_paused:
+            self.break_reminder_timer.stop()
+            return
+        if self.break_random_mode:
+            interval = random.randint(10, 30)
+        else:
+            interval = self.break_reminder_interval_minutes
+        self.break_reminder_timer.start(interval * 60 * 1000)
 
     def show_break_reminder(self):
-    """弹出提醒气泡"""
-    if hasattr(self, "window") and self.window:
+        if self.break_reminder_paused:
+            return
         msg = random.choice(self.break_reminder_messages)
-        # 假定window有set_status方法，会显示气泡弹窗
-        self.window.set_status(msg)
-    self.start_break_reminder()  # 下一次提醒计时
+        # 尽量不用 set_status 覆盖主窗口状态，用弹窗（也可扩展为自定义气泡）
+        QMessageBox.information(self.window, "摸鱼提醒", msg)
+        self.start_break_reminder()
+
+    def pause_break_reminder(self):
+        """可通过菜单、按钮等调用暂停提醒"""
+        self.break_reminder_paused = True
+        self.break_reminder_timer.stop()
+
+    def resume_break_reminder(self):
+        """恢复提醒"""
+        self.break_reminder_paused = False
+        self.start_break_reminder()
         
     # Initialize meme engine
         self.meme_engine = MemeEngine(output_dir="output")
@@ -47,18 +94,6 @@ class CRTBuddyApp:
     # Setup signal connections
         self.setup_connections()
 
-        self.break_reminder_messages = [
-            "休息5分钟~",
-            "该喝水啦!",
-            "眨眨眼，放松下~",
-            "摸鱼时间到，伸个懒腰吧！",
-            "继续努力，别忘了休息~",
-            "Bug了吗？别急，休息一下再想！"
-        ]
-        self.break_reminder_timer = QTimer()
-        self.break_reminder_timer.timeout.connect(self.show_break_reminder)
-        self.start_break_reminder()   # Start the first timer
-        
     # Show welcome message after short delay
         QTimer.singleShot(500, self.show_welcome)
     

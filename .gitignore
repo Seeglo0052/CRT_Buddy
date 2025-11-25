@@ -395,6 +395,7 @@ build/
 # Environments
 .env
 .venv
+.venv312
 env/
 venv/
 ENV/

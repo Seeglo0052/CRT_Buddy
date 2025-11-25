@@ -61,3 +61,19 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+###############################################################################
+# GitHub Linguist language overrides to show Python instead of C
+###############################################################################
+*.py linguist-language=Python
+*.bat linguist-language=Batchfile
+CRT_Buddy/.venv linguist-vendored
+CRT_Buddy/.venv/** linguist-vendored
+CRT_Buddy/.venv312 linguist-vendored
+CRT_Buddy/.venv312/** linguist-vendored
+*.ttf linguist-documentation
+*.woff2 linguist-documentation
+*.md linguist-documentation
+*.sln linguist-language=Text
+*.pyproj linguist-language=XML
+###############################################################################

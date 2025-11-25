@@ -9,6 +9,18 @@ import requests
 class AIConfig:
     """Configuration for AI API access."""
 
+    # Doubao (Ark) setup guidance:
+    # 1. Set environment variables:
+    #    export ARK_API_KEY="sk-xxxxx"  (must match official key format)
+    #    export ARK_BASE_URL="https://ark.cn-beijing.volces.com/api/v3"
+    # 2. In UI select provider = doubao, choose correct model name.
+    #    For chat try: doubao-lite or doubao-pro (verify from docs)
+    #    For images use: doubaoseedream-3-0-t2i-250415 (example)
+    # 3. Simple text chat uses /responses with 'input' field automatically.
+    #    Rich (image+text) chat uses /chat/completions.
+    # 4. If you see 401 AuthenticationError: check key prefix & region.
+    # 5. If you see unknown field "messages": ensure ARK_BASE_URL points to /api/v3 (not /v1 or trailing /responses).
+
     def __init__(self,
                  api_key: Optional[str] = None,
                  base_url: Optional[str] = None,
@@ -25,13 +37,19 @@ class AIConfig:
         self.stability_api_key = None
         self.stability_engine = "stable-diffusion-v1-6"
         self.stability_base_url = "https://api.stability.ai"
+        self.image_api_key: Optional[str] = None
+        self.image_base_url: Optional[str] = None
 
         # Load from config.ini if present
         self._load_from_config()
 
-        # Environment overrides
-        self.api_key = os.getenv("OPENAI_API_KEY") or os.getenv("AI_API_KEY") or self.api_key
-        self.base_url = os.getenv("OPENAI_BASE_URL") or os.getenv("AI_BASE_URL") or self.base_url
+        # Environment overrides (Ark first if provided)
+        env_api_key = os.getenv("ARK_API_KEY") or os.getenv("OPENAI_API_KEY") or os.getenv("AI_API_KEY")
+        if env_api_key:
+            self.api_key = env_api_key
+        env_base = os.getenv("ARK_BASE_URL") or os.getenv("OPENAI_BASE_URL") or os.getenv("AI_BASE_URL")
+        if env_base:
+            self.base_url = env_base
         self.chat_model = os.getenv("AI_CHAT_MODEL", self.chat_model)
         self.image_model = os.getenv("AI_IMAGE_MODEL", self.image_model)
         self.chat_provider = os.getenv("AI_CHAT_PROVIDER", self.chat_provider)
@@ -39,6 +57,8 @@ class AIConfig:
         self.stability_api_key = os.getenv("STABILITY_API_KEY", self.stability_api_key)
         self.stability_engine = os.getenv("STABILITY_ENGINE", self.stability_engine)
         self.stability_base_url = os.getenv("STABILITY_BASE_URL", self.stability_base_url)
+        self.image_api_key = os.getenv("IMAGE_API_KEY", self.image_api_key)
+        self.image_base_url = os.getenv("IMAGE_BASE_URL", self.image_base_url)
 
         # Explicit arg overrides
         if api_key:
@@ -69,6 +89,8 @@ class AIConfig:
                         self.stability_api_key = cfg.get("AI", "stability_api_key", fallback=self.stability_api_key)
                         self.stability_engine = cfg.get("AI", "stability_engine", fallback=self.stability_engine)
                         self.stability_base_url = cfg.get("AI", "stability_base_url", fallback=self.stability_base_url)
+                        self.image_api_key = cfg.get("AI", "image_api_key", fallback=self.image_api_key)
+                        self.image_base_url = cfg.get("AI", "image_base_url", fallback=self.image_base_url)
                     break
                 except Exception:
                     # Ignore parse errors and continue
@@ -98,16 +120,96 @@ class AIClient:
             pass
 
     # --------- Chat Completion ---------
-    def chat(self, messages: List[dict], model: Optional[str] = None, temperature: float = 0.7, max_tokens: int = 512) -> Optional[str]:
+    def chat(self, messages: List[dict], model: Optional[str] = None, temperature: float = 0.7, max_tokens: int = 512, reasoning_effort: Optional[str] = None) -> Optional[str]:
         if not self.config.api_key:
             return None
-        url = f"{self.config.base_url}/chat/completions"
+        provider = (self.config.chat_provider or '').lower()
+        use_model = model or self.config.chat_model
         headers = {
             "Authorization": f"Bearer {self.config.api_key}",
             "Content-Type": "application/json",
         }
+
+        # Doubao (Ark) uses /responses endpoint and different output shape
+        if provider == 'doubao':
+            base = self.config.base_url.rstrip('/')
+            # If any message content is list/dict (multi-modal) use OpenAI-compatible /chat/completions
+            rich = any(isinstance(m.get('content'), (list, dict)) for m in messages)
+            if rich:
+                url = f"{base}/chat/completions"
+                self._log("doubao using /chat/completions rich payload")
+                # Doubao rich branch: prefer max_output_tokens, keep max_tokens fallback for generic compatibility
+                payload = {
+                    "model": use_model,
+                    "messages": messages,  # pass through rich content
+                    "temperature": temperature,
+                    "max_output_tokens": max_tokens,
+                    "reasoning_effort": reasoning_effort or "medium",
+                }
+            else:
+                # Prefer Ark 'input' format directly to avoid unknown field errors
+                if base.endswith('/responses'):
+                    url = base
+                else:
+                    url = f"{base}/responses"
+                self._log("doubao using /responses input payload")
+                ark_input = []
+                for m in messages:
+                    role = m.get('role', 'user')
+                    content = m.get('content', '')
+                    ark_input.append({
+                        "role": role,
+                        "content": [
+                            {"type": "text", "text": content}
+                        ]
+                    })
+                payload = {
+                    "model": use_model,
+                    "input": ark_input,
+                    "temperature": temperature,
+                    "max_output_tokens": max_tokens,
+                }
+            last_err = None
+            for attempt in range(2):
+                try:
+                    resp = requests.post(url, headers=headers, json=payload, timeout=60)
+                    if resp.status_code >= 400:
+                        snippet = resp.text[:200].replace('\n', ' ').strip()
+                        # If server complains about messages field we already use input; log diagnostic
+                        if 'unknown field "messages"' in snippet.lower():
+                            self._log("doubao server still reports messages field issue even with input payload")
+                        raise RuntimeError(f"HTTP {resp.status_code}: {snippet}")
+                    data = resp.json()
+                    # Ark format: data.get("output").get("text") or choices array? We'll attempt multiple fallbacks
+                    output = data.get('output') or {}
+                    if isinstance(output, dict):
+                        text = output.get('text') or ''
+                        if text:
+                            self._log("doubao chat success via output.text")
+                            return text
+                    # Fallback to choices style if proxied
+                    text = data.get("choices", [{}])[0].get("message", {}).get("content")
+                    if text:
+                        self._log("doubao chat success via choices.message.content")
+                        return text
+                    last_err = 'Empty response'
+                except Exception as e:
+                    last_err = str(e)
+                    body_part = ''
+                    try:
+                        body_part = resp.text[:160].replace('\n',' ') if 'resp' in locals() else ''
+                    except Exception:
+                        pass
+                    self._log(f"doubao chat attempt {attempt+1} failed: {last_err} body={body_part}")
+                import time
+                time.sleep(0.5 * (attempt + 1))
+            self._log(f"doubao chat failed: {last_err}")
+            return f"(doubao chat error: {last_err})"
+
+        # Default OpenAI-compatible path
+        url = f"{self.config.base_url.rstrip('/')}/chat/completions"
         payload = {
-            "model": model or self.config.chat_model,
+            "model": use_model,
             "messages": messages,
             "temperature": temperature,
             "max_tokens": max_tokens,
@@ -118,19 +220,16 @@ class AIClient:
                 resp = requests.post(url, headers=headers, json=payload, timeout=60)
                 status = resp.status_code
                 if status >= 400:
-                    # Try to extract brief error body
                     snippet = resp.text[:160].replace('\n', ' ').strip()
                     raise RuntimeError(f"HTTP {status}: {snippet}")
                 data = resp.json()
                 content = data.get("choices", [{}])[0].get("message", {}).get("content")
                 if content:
                     return content
-                # No content, treat as transient
                 last_err = "Empty response"
             except Exception as e:
                 last_err = str(e)
                 self._log(f"chat attempt {attempt+1} failed: {last_err}")
-            # Backoff between attempts
             import time
             time.sleep(0.6 * (attempt + 1))
         self._log(f"chat failed after retries: {last_err}")
@@ -138,12 +237,15 @@ class AIClient:
 
     # --------- Image Generation ---------
     def generate_image(self, prompt: str, model: Optional[str] = None, size: str = "1024x1024") -> Optional[bytes]:
-        # Stability AI branch
-        if self.config.image_provider.lower() == "stability":
+        key = self.config.image_api_key or self.config.api_key
+        base = self.config.image_base_url or self.config.base_url
+        provider = (self.config.image_provider or '').lower()
+
+        # Stability branch
+        if provider == "stability":
             api_key = self.config.stability_api_key or self.config.api_key
             if not api_key:
                 return None
-            # Parse size like "1024x1024"
             try:
                 w, h = [int(x) for x in size.lower().split("x")[:2]]
             except Exception:
@@ -177,12 +279,55 @@ class AIClient:
                 print(f"[AI] Stability image error: {e}")
                 return None
 
-        # Default: OpenAI-compatible images API
-        if not self.config.api_key:
+        if not key:
             return None
-        url = f"{self.config.base_url}/images/generations"
+
+        # Doubao image endpoint: POST /images/generate {model,prompt,size}
+        if provider == 'doubao':
+            url = f"{base.rstrip('/')}/images/generate"
+            headers = {
+                "Authorization": f"Bearer {key}",
+                "Content-Type": "application/json",
+            }
+            payload = {
+                "model": model or self.config.image_model,
+                "prompt": prompt,
+                "size": size,
+            }
+            try:
+                resp = requests.post(url, headers=headers, json=payload, timeout=180)
+                if resp.status_code >= 400:
+                    snippet = resp.text[:200].replace('\n', ' ').strip()
+                    raise RuntimeError(f"HTTP {resp.status_code}: {snippet}")
+                data = resp.json()
+                b64 = None
+                if isinstance(data, dict):
+                    # Native style
+                    if 'data' in data:
+                        b64 = (data.get('data') or [{}])[0].get('b64_json')
+                    if not b64:
+                        out = data.get('output') or {}
+                        if isinstance(out, dict):
+                            b64 = out.get('image_base64') or out.get('b64_json')
+                if not b64:
+                    self._log("doubao image missing b64")
+                    return None
+                import base64
+                return base64.b64decode(b64)
+            except Exception as e:
+                body_part = ''
+                try:
+                    body_part = resp.text[:160].replace('\n',' ') if 'resp' in locals() else ''
+                except Exception:
+                    pass
+                self._log(f"doubao image error: {e} body={body_part}")
+                print(f"[AI] Doubao image error: {e}")
+                return None
+
+        # Default OpenAI-compatible image endpoint
+        url = f"{base.rstrip('/')}/images/generations"
         headers = {
-            "Authorization": f"Bearer {self.config.api_key}",
+            "Authorization": f"Bearer {key}",
             "Content-Type": "application/json",
         }
         payload = {

@@ -91,6 +91,50 @@ In the app, click the AI HUB button to access Chat, Image, and Typing Game. Sett
    - `generators/meme_engine.py`: Meme generation engine.
    - `effects/`: Visual effects and styles (Y2K filters, text effects).
 
+## Architecture
+
+High-level components:
+- Core UI: `core/pet_window_v7.py` (v8 alias), creates the main window, AI Hub dialog (Chat/Image/Typing Game), timers, and event wiring.
+- AI Client: `ai/client.py` provides OpenAI-compatible chat and image generation; Doubao (Ark) uses `/chat/completions` and `/images/generations`.
+- AI Widgets: `ai/widgets.py` contains `AIChatWidget`, `AISettingsWidget`, `AIImageWidget`, and `TypingGameWidget`. Settings persist in `CRT_Buddy/config.ini` and emit live updates.
+- Generators: `generators/meme_engine.py` implements meme creation APIs.
+- Effects: `effects/text_effects.py`, `effects/y2k_styles.py` implement Y2K visual filters.
+- Utilities: `util/net.py` provides robust `fetch_with_retry` network calls.
+
+Configuration flow:
+- Load: `ai/client.py` reads `CRT_Buddy/config.ini` then environment variables (Ark overrides first).
+- Save: `AISettingsWidget.on_save()` writes the `[AI]` section and emits `settings_updated` to update Chat/Image.
+- Live apply: `AIChatWidget.apply_settings()` and `AIImageWidget.apply_settings()` update provider/base/model/key without restart.
+
+Endpoints:
+- Chat (Doubao): `POST {ARK_BASE_URL}/chat/completions` with standard `messages`.
+- Image (Doubao): `POST {ARK_BASE_URL}/images/generations` with `prompt`, `size`; supports `b64_json` or `url`.
+
+Logging:
+- `output/ai_log.txt` captures request snippets and errors to aid troubleshooting.
+
+Entry points:
+- `CRT_Buddy/main.py` default launcher; `CRT_Buddy/CRT_Buddy.py` alt launcher.
+- v8 alias: `core/pet_window_v8.py` references v7 implementation.
+
+Error handling:
+- Network retries in image tests; defensive fallbacks for varying response shapes.
+
+Persistence:
+- `.gitattributes` treats virtualenv as vendored to fix GitHub language stats.
+
+Known notes:
+- Provider coexistence supported (e.g., DeepSeek for chat + Doubao for image).
+
+## Version History (summary)
+
+- v8 (alias): Route main to v8 while using v7 window; AI Hub restored after widget fixes; Doubao chat/image standardized.
+- v7: AI Hub introduced with Chat/Image/Typing Game; provider presets and settings persistence; Y2K effects expanded.
+- v6: Input visualization, CPM tracking, improved window layout; effects refinements.
+- v5.2 / v5.1 / v5.0: Pixel font support, horizontal layout, metallic UI polish, bug fixes.
+- v4 and earlier: Core meme engine and initial Y2K filters established.
+
+See CHANGELOG and `V*` docs in `CRT_Buddy/` for detailed milestones.
 ---
 
 ## Custom theme
@@ -146,21 +190,15 @@ python main.py
 
 - Ensure the input image is in a supported format (PNG, JPG, JPEG, GIF, BMP)
 - Verify the image is not corrupted
-- Try converting the image to PNG if problems persist
+## Features (short)
 
-### Performance
-
-To reduce CPU usage, increase animation timer interval and lower particle counts:
-
-```python
+- Desktop mascot with Y2K UI and pixel fonts
+- Meme generator + Y2K effects
+- Keystroke visualization (CPM, history)
+- AI Hub: Chat, Image, Typing Game
 self.anim_timer.start(100)  # increase from 50 to 100 to lower frame rate
-for _ in range(1):  # reduce particle count
-```
-
----
 
 ## Changelog
-
 ### v7.0 (2025-11-21)
 - Added 4 animated Y2K backgrounds and background rotation
 - Added image validation and retry logic for network requests
@@ -169,43 +207,52 @@ for _ in range(1):  # reduce particle count
 - Implemented text length limiting and added a test case
 - Refactored text validation in MemeEngine and added tests
 - Fixed background rendering bug that sometimes produced black frames
+### AI Hub (brief)
 
+- Chat providers: openai, deepseek, groq, moonshot, siliconflow, ollama, volcengine, doubao
+- Image providers: openai, stability, ollama, fal, replicate, doubao
+- Doubao/Ark:
+   - Base: `https://ark.cn-beijing.volces.com/api/v3`
+   - Chat: `POST /chat/completions`
+   - Image: `POST /images/generations`
+- DeepSeek:
+   - Base: `https://api.deepseek.com/v1`
+   - Chat model: `deepseek-chat`
+
+Configure in `CRT_Buddy/config.ini` under `[AI]` or via env vars (`ARK_API_KEY`, `ARK_BASE_URL`, `OPENAI_API_KEY`, `OPENAI_BASE_URL`). Click AI HUB to use Chat/Image/Typing Game.
 ### v6.0 (2025-11-18)
-- Added input visualization system
-- Real-time key display and history
-- Typing speed (CPM) tracking
-- Particle effects on keypress
+## Usage (short)
+
+- Run mascot window; drag and interact
+- Generate memes from the main UI
+- Typing visualization with CPM and history
+- Customize via `config.ini`
 - Improved window layout (520x320)
 - Fixed import path issues
+## Architecture (short)
 
----
-
-## Contributing
-
-Contributions welcome! Ways to help:
+- Core UI: `core/pet_window_v7.py` (v8 alias)
+- AI Client: `ai/client.py` (OpenAI-compatible; Doubao uses `/chat/completions` & `/images/generations`)
+- AI Widgets: `ai/widgets.py` (Chat/Settings/Image/Typing)
+- Generators: `generators/meme_engine.py`
+- Effects: `effects/*`
 - Report bugs via Issues
-- Suggest new features
-- Submit pull requests
-- Improve documentation
-- Share creations
+## Version History (short)
 
-Contributing steps:
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push and open a PR
+- v8: v7 alias with AI Hub fixes; Doubao endpoints standardized
+- v7: AI Hub (Chat/Image/Typing), presets & persistence
+- v6: Input visualization & layout improvements
+- v5.x: Pixel fonts & Y2K UI polish
+- v4-: Core engine & filters
 
+
+## Troubleshooting (short)
+
+- 404: Check Ark base URL (`https://ark.cn-beijing.volces.com/api/v3`)
+- 401: Use the correct provider key (Ark vs DeepSeek/OpenAI)
+- See `output/ai_log.txt` for error snippets
 ---
 
-## License
-
-MIT License — see the `LICENSE` file for details
-
----
-
-## Author
-
-**Seeglo0052** — https://github.com/Seeglo0052
 
 ---
 
@@ -222,16 +269,8 @@ MIT License — see the `LICENSE` file for details
 ---
 
 ## Animated usage example
-If you want to generate an animated text GIF from a script, you can use the engine directly. Example using the high-level `MemeEngine`:
-
-```python
-from generators.meme_engine import MemeEngine
-
 engine = MemeEngine(output_dir='output')
-path = engine.generate_text_meme_animated(
-      text="Y2K FOREVER",
-      style='retro',
-      size=(800, 600),
+<!-- Screenshots and long examples omitted for brevity -->
       frames=32,
       background_change_interval=4,
       background_rotate=True,
@@ -608,12 +647,17 @@ This project is licensed under the MIT License — see [LICENSE](LICENSE) for de
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors & Contributors
 
-**Seeglo0052**
+Primary author:
+- **Seeglo0052** — [@Seeglo0052](https://github.com/Seeglo0052)
 
-- GitHub: [@Seeglo0052](https://github.com/Seeglo0052)
-- Project: https://github.com/Seeglo0052/CRT_Buddy
+Contributors:
+- [@Yiyuan0104](https://github.com/Yiyuan0104)
+- [@Zhexi7777777](https://github.com/Zhexi7777777)
+- [@wangleru](https://github.com/wangleru)
+
+Project: https://github.com/Seeglo0052/CRT_Buddy
 
 ---
 

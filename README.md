@@ -52,21 +52,29 @@ cd CRT_Buddy
 python main.py
 ```
 
-### Optional: Enable AI features
+### Optional: Enable AI features (AI Hub)
 
-Set your API credentials via environment variables or `CRT_Buddy/config.ini` under the `[AI]` section.
+You can use multiple providers for Chat and Image separately. Configure via environment variables or `CRT_Buddy/config.ini` under the `[AI]` section.
+
+Supported providers (Chat): `openai`, `deepseek`, `groq`, `moonshot`, `siliconflow`, `ollama`, `volcengine`, `doubao`, `custom`
+
+Supported providers (Image): `openai`, `stability`, `ollama`, `fal`, `replicate`, `doubao`, `custom`
 
 - Environment variables:
-   - `OPENAI_API_KEY` (or `AI_API_KEY`)
-   - `OPENAI_BASE_URL` (or `AI_BASE_URL`) for OpenAI-compatible servers
+   - Ark (Doubao): `ARK_API_KEY`, `ARK_BASE_URL` (e.g. `https://ark.cn-beijing.volces.com/api/v3`)
+   - OpenAI-compatible: `OPENAI_API_KEY`, `OPENAI_BASE_URL` (or generic `AI_API_KEY`, `AI_BASE_URL`)
 
 - Config file (`CRT_Buddy/config.ini`):
-   - `api_key = your_key`
-   - `base_url = https://api.openai.com/v1`
-   - `chat_model = gpt-4o-mini`
-   - `image_model = gpt-image-1`
+   - `chat_provider = deepseek` (example)
+   - `base_url = https://api.deepseek.com/v1`
+   - `chat_model = deepseek-chat`
+   - `api_key = sk-...` (your chat key)
+   - `image_provider = doubao`
+   - `image_base_url = https://ark.cn-beijing.volces.com/api/v3`
+   - `image_model = doubao-seedream-3-0-t2i-250415`
+   - `image_api_key = 8bcf64fb-...` (your Ark image key)
 
-In the app, click the AI HUB button to access Chat, Image, and Typing Game features.
+In the app, click the AI HUB button to access Chat, Image, and Typing Game. Settings persist across sessions.
 
 ## Usage
 
@@ -102,6 +110,21 @@ metal_color = QColor(220, 230, 240)   # silver
 ---
 
 ## Troubleshooting
+### AI — Doubao (Ark) endpoints
+
+- Chat: uses OpenAI-compatible `POST {ARK_BASE_URL}/chat/completions`
+- Image: uses OpenAI-compatible `POST {ARK_BASE_URL}/images/generations`
+
+Common issues:
+- 404: Base URL wrong. Use `https://ark.cn-beijing.volces.com/api/v3` (no extra path).
+- 401: API key format/region mismatch. Use Ark key for Doubao, not OpenAI/DeepSeek keys.
+- Empty response: Temporary service issue or payload mismatch; check `output/ai_log.txt`.
+
+### AI — Provider coexistence
+
+You can set DeepSeek for chat and Doubao for images simultaneously. Use the Settings tab in AI Hub:
+- Save after editing, then Image tab Apply Key if needed.
+- Changes apply immediately; config is stored in `CRT_Buddy/config.ini`.
 
 ### Font not rendering correctly
 

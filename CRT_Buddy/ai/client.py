@@ -130,67 +130,30 @@ class AIClient:
             "Content-Type": "application/json",
         }
 
-        # Doubao (Ark) uses /responses endpoint and different output shape
+        # Doubao (Ark) uses OpenAI-compatible /chat/completions endpoint
         if provider == 'doubao':
             base = self.config.base_url.rstrip('/')
-            # If any message content is list/dict (multi-modal) use OpenAI-compatible /chat/completions
-            rich = any(isinstance(m.get('content'), (list, dict)) for m in messages)
-            if rich:
-                url = f"{base}/chat/completions"
-                self._log("doubao using /chat/completions rich payload")
-                # Doubao rich branch: prefer max_output_tokens, keep max_tokens fallback for generic compatibility
-                payload = {
-                    "model": use_model,
-                    "messages": messages,  # pass through rich content
-                    "temperature": temperature,
-                    "max_output_tokens": max_tokens,
-                    "reasoning_effort": reasoning_effort or "medium",
-                }
-            else:
-                # Prefer Ark 'input' format directly to avoid unknown field errors
-                if base.endswith('/responses'):
-                    url = base
-                else:
-                    url = f"{base}/responses"
-                self._log("doubao using /responses input payload")
-                ark_input = []
-                for m in messages:
-                    role = m.get('role', 'user')
-                    content = m.get('content', '')
-                    ark_input.append({
-                        "role": role,
-                        "content": [
-                            {"type": "text", "text": content}
-                        ]
-                    })
-                payload = {
-                    "model": use_model,
-                    "input": ark_input,
-                    "temperature": temperature,
-                    "max_output_tokens": max_tokens,
-                }
+            url = f"{base}/chat/completions"
+            self._log("doubao using /chat/completions")
+            # Doubao uses standard OpenAI format but prefers max_output_tokens
+            payload = {
+                "model": use_model,
+                "messages": messages,
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+            }
             last_err = None
             for attempt in range(2):
                 try:
                     resp = requests.post(url, headers=headers, json=payload, timeout=60)
                     if resp.status_code >= 400:
                         snippet = resp.text[:200].replace('\n', ' ').strip()
-                        # If server complains about messages field we already use input; log diagnostic
-                        if 'unknown field "messages"' in snippet.lower():
-                            self._log("doubao server still reports messages field issue even with input payload")
                         raise RuntimeError(f"HTTP {resp.status_code}: {snippet}")
                     data = resp.json()
-                    # Ark format: data.get("output").get("text") or choices array? We'll attempt multiple fallbacks
-                    output = data.get('output') or {}
-                    if isinstance(output, dict):
-                        text = output.get('text') or ''
-                        if text:
-                            self._log("doubao chat success via output.text")
-                            return text
-                    # Fallback to choices style if proxied
+                    # Standard OpenAI format
                     text = data.get("choices", [{}])[0].get("message", {}).get("content")
                     if text:
-                        self._log("doubao chat success via choices.message.content")
+                        self._log("doubao chat success")
                         return text
                     last_err = 'Empty response'
                 except Exception as e:
@@ -282,9 +245,9 @@ class AIClient:
         if not key:
             return None
 
-        # Doubao image endpoint: POST /images/generate {model,prompt,size}
+        # Doubao image endpoint: Uses OpenAI-compatible path /images/generations (not /generate)
         if provider == 'doubao':
-            url = f"{base.rstrip('/')}/images/generate"
+            url = f"{base.rstrip('/')}/images/generations"
             headers = {
                 "Authorization": f"Bearer {key}",
                 "Content-Type": "application/json",
@@ -293,6 +256,8 @@ class AIClient:
                 "model": model or self.config.image_model,
                 "prompt": prompt,
                 "size": size,
+                # Doubao supports both b64_json and url
+                "response_format": "b64_json",
             }
             try:
                 resp = requests.post(url, headers=headers, json=payload, timeout=180)
@@ -301,16 +266,44 @@ class AIClient:
                     raise RuntimeError(f"HTTP {resp.status_code}: {snippet}")
                 data = resp.json()
                 b64 = None
+                img_url = None
                 if isinstance(data, dict):
                     # Native style
                     if 'data' in data:
-                        b64 = (data.get('data') or [{}])[0].get('b64_json')
+                        first = (data.get('data') or [{}])[0]
+                        b64 = first.get('b64_json')
+                        img_url = first.get('url')
                     if not b64:
                         out = data.get('output') or {}
                         if isinstance(out, dict):
+                            # Common doubao fields
                             b64 = out.get('image_base64') or out.get('b64_json')
+                            img_url = img_url or out.get('url')
+                            if not b64:
+                                images = out.get('images') or []
+                                if images and isinstance(images, list):
+                                    # images could be array of {base64: ...} or {b64_json: ...}
+                                    first = images[0] or {}
+                                    b64 = first.get('base64') or first.get('b64_json')
+                                    img_url = img_url or first.get('url')
+                    if not b64:
+                        # Some proxies wrap under result
+                        result = data.get('result') or []
+                        if isinstance(result, list) and result:
+                            first = (result[0] or {})
+                            b64 = first.get('image_base64') or first.get('b64_json')
+                            img_url = img_url or first.get('url')
+                if not b64 and img_url:
+                    # Fetch the URL and return bytes
+                    try:
+                        r2 = requests.get(img_url, timeout=60)
+                        r2.raise_for_status()
+                        return r2.content
+                    except Exception as e:
+                        self._log(f"doubao image url fetch error: {e}")
+                        return None
                 if not b64:
-                    self._log("doubao image missing b64")
+                    self._log(f"doubao image missing b64; keys={list(data.keys()) if isinstance(data, dict) else 'non-dict'}")
                     return None
                 import base64
                 return base64.b64decode(b64)

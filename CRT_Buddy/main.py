@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-CRT Buddy - Main Application v7.0
+CRT Buddy - Main Application v8.0
 Animated backgrounds + AI HUB + Input Visualization
 """
 import sys
@@ -8,7 +8,10 @@ import os
 from PyQt6.QtWidgets import QApplication, QMessageBox
 from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QIcon
-from core.pet_window_v7 import CRTBuddyWindow
+try:
+    from core.pet_window_v8 import CRTBuddyWindow
+except Exception:
+    from core.pet_window_v7 import CRTBuddyWindow
 from generators.meme_engine import MemeEngine
 
 

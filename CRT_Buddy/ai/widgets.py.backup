@@ -65,6 +65,10 @@ class AIChatWidget(QWidget):
             self.client.config.base_url = base_url
         if model:
             self.client.config.chat_model = model
+        # Lock Doubao chat model/base when provider is doubao
+        if provider and provider.lower() == 'doubao':
+            self.client.config.base_url = 'https://ark.cn-beijing.volces.com/api/v3'
+            self.client.config.chat_model = 'doubao-seed-1-6-251015'
         self.provider_label.setText(f"Provider: {provider} | {model}")
 
     def _build_messages(self, user_text: str, image_url: Optional[str]) -> list:
@@ -129,22 +133,23 @@ IMAGE_PRESETS = {
 }
 
 class AISettingsWidget(QWidget):
-    """Settings with extended provider choices and sensible defaults.
-
-    Chat Providers: openai, deepseek, groq, moonshot, siliconflow, ollama, volcengine, custom
-    Image Providers: openai, stability, ollama, fal, replicate, custom
-    """
     from PyQt6.QtCore import pyqtSignal
     settings_updated = pyqtSignal(dict)
 
     def __init__(self, parent: Optional[QWidget] = None):
         super().__init__(parent)
         layout = QVBoxLayout(self)
+        layout.addWidget(QLabel("Settings temporarily simplified"))
+        self.status = QLabel("")
+        self.save_btn = QPushButton("Save")
+        layout.addWidget(self.save_btn)
+        layout.addWidget(self.status)
+        self.save_btn.clicked.connect(self.on_save)
 
         # Chat fields
-        layout.addWidget(QLabel("Chat Provider"))
-        self.chat_provider = QComboBox(); self.chat_provider.addItems(["openai", "deepseek", "groq", "moonshot", "siliconflow", "ollama", "volcengine", "doubao", "custom"])
-        layout.addWidget(self.chat_provider)
+    layout.addWidget(QLabel("Chat Provider"))
+    self.chat_provider = QComboBox(); self.chat_provider.addItems(["openai", "deepseek", "groq", "moonshot", "siliconflow", "ollama", "volcengine", "doubao", "custom"])
+    layout.addWidget(self.chat_provider)
         self.chat_model = QLineEdit("gpt-4o-mini")
         layout.addWidget(QLabel("Chat Model")); layout.addWidget(self.chat_model)
         self.base_url = QLineEdit(); self.base_url.setPlaceholderText("Chat Base URL (e.g. https://api.openai.com/v1)")
@@ -153,9 +158,9 @@ class AISettingsWidget(QWidget):
         layout.addWidget(QLabel("Chat API Key")); layout.addWidget(self.api_key)
 
         # Image fields
-        layout.addWidget(QLabel("Image Provider"))
-        self.image_provider = QComboBox(); self.image_provider.addItems(["openai", "stability", "ollama", "fal", "replicate", "doubao", "custom"])
-        layout.addWidget(self.image_provider)
+    layout.addWidget(QLabel("Image Provider"))
+    self.image_provider = QComboBox(); self.image_provider.addItems(["openai", "stability", "ollama", "fal", "replicate", "doubao", "custom"])
+    layout.addWidget(self.image_provider)
         self.image_model = QLineEdit("gpt-image-1")
         layout.addWidget(QLabel("Image Model")); layout.addWidget(self.image_model)
         self.image_base_url = QLineEdit(); self.image_base_url.setPlaceholderText("Image Base URL (e.g. https://api.openai.com/v1)")
@@ -177,35 +182,32 @@ class AISettingsWidget(QWidget):
         self.save_btn.clicked.connect(self.on_save)
 
         # Initialize defaults
-        # Load existing config and populate fields
-        cfg = AIConfig()
+        # Lock both Chat and Image to Doubao defaults
         # Chat
-        if cfg.chat_provider:
-            idx = self.chat_provider.findText(cfg.chat_provider, Qt.MatchFlag.MatchFixedString)
-            if idx >= 0:
-                self.chat_provider.setCurrentIndex(idx)
-        if cfg.chat_model:
-            self.chat_model.setText(cfg.chat_model)
-        if cfg.base_url:
-            self.base_url.setText(cfg.base_url)
+        idx_d = self.chat_provider.findText("doubao", Qt.MatchFlag.MatchFixedString)
+        if idx_d >= 0:
+            self.chat_provider.setCurrentIndex(idx_d)
+        self.chat_model.setText("doubao-seed-1-6-251015")
+        self.base_url.setText("https://ark.cn-beijing.volces.com/api/v3")
+        # Image
+        idx_di = self.image_provider.findText("doubao", Qt.MatchFlag.MatchFixedString)
+        if idx_di >= 0:
+            self.image_provider.setCurrentIndex(idx_di)
+        self.image_model.setText("doubao-seedream-3-0-t2i-250415")
+        self.image_base_url.setText("https://ark.cn-beijing.volces.com/api/v3")
+
+        # Disable provider selectors to enforce lock
+        self.chat_provider.setEnabled(False)
+        self.image_provider.setEnabled(False)
+
+        # Load existing config and populate fields (keys)
+        cfg = AIConfig()
+        # Keys
         if cfg.api_key:
             self.api_key.setText(cfg.api_key)
-        # Image
-        if cfg.image_provider:
-            idx2 = self.image_provider.findText(cfg.image_provider, Qt.MatchFlag.MatchFixedString)
-            if idx2 >= 0:
-                self.image_provider.setCurrentIndex(idx2)
-        if cfg.image_model:
-            self.image_model.setText(cfg.image_model)
-        if cfg.image_base_url:
-            self.image_base_url.setText(cfg.image_base_url)
         if cfg.image_api_key:
             self.image_api_key.setText(cfg.image_api_key)
-        # Apply provider defaults only when fields are empty
-        if not self.base_url.text().strip():
-            self._apply_chat_provider_defaults(self.chat_provider.currentText())
-        if not self.image_base_url.text().strip():
-            self._apply_image_provider_defaults(self.image_provider.currentText())
+        # Skip applying other provider defaults due to Doubao lock
 
     def on_save(self):
         # Write to config.ini in project folder (parent of ai/)
@@ -292,14 +294,14 @@ class AISettingsWidget(QWidget):
         if provider == "doubao":
             base = self.image_base_url.text().strip().rstrip('/') or 'https://ark.cn-beijing.volces.com/api/v3'
             model = self.image_model.text().strip()
-            url = f"{base}/images/generations"
+            url = f"{base}/images/generate"
             headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
             payload = {"model": model, "prompt": "ping", "size": "512x512"}
             try:
                 r = fetch_with_retry('POST', url, headers=headers, json=payload, timeout=45, retries=0, backoff_base=0.3)
                 snippet = r.text[:120].replace('\n', ' ').strip()
                 if r.status_code == 200:
-                    self.status.setText(f"Doubao OK /images/generations -> {snippet[:40]}")
+                    self.status.setText(f"Doubao OK /images/generate -> {snippet[:40]}")
                 else:
                     self.status.setText(f"Doubao HTTP {r.status_code}: {snippet}")
                 return

@@ -586,6 +586,9 @@ for _ in range(1):  # reduce from 3 to 1
 
 ## 📝 Changelog
 
+### v8.0 (2025-11-24)
+- ✨ Added timed 【Rest Reminder】function
+
 ### v7.0 (2025-11-21)
 - ✨ Added 4 Y2K animated backgrounds and background rotation
 - ✨ Added image validation and retry logic for network requests
